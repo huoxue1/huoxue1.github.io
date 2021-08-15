@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+          <a class="main-nav-link" href="/categories">Categories</a>
+        
+          <a class="main-nav-link" href="/tags">Tags</a>
+        
+          <a class="main-nav-link" href="/about">About</a>
+        
+      </nav>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-模拟登录教务系统" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/08/12/%E6%A8%A1%E6%8B%9F%E7%99%BB%E5%BD%95%E6%95%99%E5%8A%A1%E7%B3%BB%E7%BB%9F/" class="article-date">
+  <time class="dt-published" datetime="2021-08-12T09:27:41.000Z" itemprop="datePublished">2021-08-12</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/08/12/%E6%A8%A1%E6%8B%9F%E7%99%BB%E5%BD%95%E6%95%99%E5%8A%A1%E7%B3%BB%E7%BB%9F/">模拟登录教务系统</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>+++</p>
+<h1 id="1-分析协议"><a href="#1-分析协议" class="headerlink" title="1.分析协议"></a>1.分析协议</h1><h2 id="1-1-使用fiddler进行抓包"><a href="#1-1-使用fiddler进行抓包" class="headerlink" title="1.1. 使用fiddler进行抓包"></a>1.1. 使用fiddler进行抓包</h2><p>首先尝试登录，登录网页为<a target="_blank" rel="noopener" href="http://jwc.scnucas.com/home.aspx">http://jwc.scnucas.com/home.aspx</a>然后通过fiddler抓包获取传递的参数。</p>
+<p><img src="https://github.com/3343780376/myBlog/blob/master/resources/static/image/scnucas/1.png?raw=true" alt="fiddler"></p>
+<p>发现其中有两个参数乱码，通过fiddler的syntaview选项可以找到内容</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">typeName=%D1%A7%C9%FA</span><br><span class="line">txt_psasas=%C7%EB%CA%E4%C8%EB%C3%DC%C2%EB</span><br></pre></td></tr></table></figure>
+
+<p>通过GBK解码得知，typeName的值为‘学生’， txtpsasas的值为‘请输入密码’，可得知这两个参数并不是我们需要的，<br>此时就只能通过分析‘dsdsdsdsdxcxdfgfg’和‘fgfggfdgtyuuyyuuckjg’参数了。可猜测这两个参数是加密后的验 证码和密码。然后通过正常解密手段尝试不通，就只能阅读javascript源码了。</p>
+<h2 id="1-2-使用浏览器自带的网络分析工具"><a href="#1-2-使用浏览器自带的网络分析工具" class="headerlink" title="1.2. 使用浏览器自带的网络分析工具"></a>1.2. 使用浏览器自带的网络分析工具</h2><p>通过浏览器的检查工具发现，登录区域是一个iframe页面，链接为<a target="_blank" rel="noopener" href="http://jwc.scnucas.com/_data/login_home.aspx">http://jwc.scnucas.com/_data/login_home.aspx</a>, 我们讲该网页下载到本地后进行阅读。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;td align=<span class="string">&quot;left&quot;</span> valign=<span class="string">&quot;bottom&quot;</span>&gt;</span><br><span class="line">    <span class="xml"><span class="tag">&lt;<span class="name">input</span> <span class="attr">class</span>=<span class="string">&quot;tx1&quot;</span> <span class="attr">id</span>=<span class="string">&quot;txt_pewerwedsdfsdff&quot;</span></span></span></span><br><span class="line"><span class="tag"><span class="xml">           <span class="attr">style</span>=<span class="string">&quot;display:none&quot;</span></span></span></span><br><span class="line"><span class="tag"><span class="xml">           <span class="attr">type</span>=<span class="string">&quot;password&quot;</span> <span class="attr">maxLength</span>=<span class="string">&quot;25&quot;</span> <span class="attr">name</span>=<span class="string">&quot;txt_pewerwedsdfsdff&quot;</span> <span class="attr">autocomplete</span>=<span class="string">&quot;off&quot;</span></span></span></span><br><span class="line"><span class="tag"><span class="xml">           <span class="attr">onblur</span>=<span class="string">&quot;shtitblur(this);chkpwd(this)&quot;</span> <span class="attr">onkeyup</span>=<span class="string">&quot;chkpwd(this)&quot;</span>&gt;</span></span></span><br><span class="line"><span class="xml">        <span class="tag">&lt;<span class="name">input</span> <span class="attr">class</span>=<span class="string">&quot;tx1&quot;</span> <span class="attr">id</span>=<span class="string">&quot;txt_psasas&quot;</span> <span class="attr">onfocus</span>=<span class="string">&quot;shtitcus(this)&quot;</span></span></span></span><br><span class="line"><span class="tag"><span class="xml">               <span class="attr">style</span>=<span class="string">&quot;&quot;</span></span></span></span><br><span class="line"><span class="tag"><span class="xml">               <span class="attr">maxLength</span>=<span class="string">&quot;25&quot;</span> <span class="attr">name</span>=<span class="string">&quot;txt_psasas&quot;</span> <span class="attr">value</span>=<span class="string">&quot;请输入密码&quot;</span> <span class="attr">autocomplete</span>=<span class="string">&quot;off&quot;</span> <span class="attr">onkeyup</span>=<span class="string">&quot;shtitblur(this)&quot;</span>&gt;</span></span></span><br><span class="line"><span class="xml"><span class="tag">&lt;/<span class="name">td</span>&gt;</span></span></span><br><span class="line"><span class="xml"></span></span><br></pre></td></tr></table></figure>
+
+<p>通过上面这段html发现关键函数‘shtitcus(this)’，然后通过notepad++的搜索功能找到了该函数</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">shtitcus</span>(<span class="params">obj</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (obj.id == <span class="string">&quot;txt_sdertfgsadscxcadsads&quot;</span>) &#123;</span><br><span class="line">        <span class="keyword">if</span> (obj.value == <span class="string">&quot;请输入验证码&quot;</span>) &#123;</span><br><span class="line">            obj.value = <span class="string">&quot;&quot;</span>;</span><br><span class="line">            obj.style.color = <span class="string">&quot;black&quot;</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (obj.id == <span class="string">&quot;txt_psasas&quot;</span>) &#123;</span><br><span class="line">        <span class="keyword">if</span> (obj.value == <span class="string">&quot;请输入密码&quot;</span>) &#123;</span><br><span class="line">            obj.style.display = <span class="string">&quot;none&quot;</span>;</span><br><span class="line">            <span class="built_in">document</span>.getElementById(<span class="string">&quot;txt_pewerwedsdfsdff&quot;</span>).style.display = <span class="string">&quot;&quot;</span>;</span><br><span class="line">            <span class="built_in">document</span>.getElementById(<span class="string">&quot;txt_pewerwedsdfsdff&quot;</span>).focus();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (obj.id == <span class="string">&quot;txt_asmcdefsddsd&quot;</span>) &#123;</span><br><span class="line">        <span class="keyword">if</span> (obj.value == <span class="string">&quot;请输入帐号&quot;</span>) &#123;</span><br><span class="line">            obj.value = <span class="string">&quot;&quot;</span>;</span><br><span class="line">            obj.style.color = <span class="string">&quot;black&quot;</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>也就是该函数判断当id为txt_psasas的input输入框获得焦点时触发，然后通过设置display的值来隐藏该输入框，并且使id为txt_pewerwedsdfsdff的<br>input输入框获得焦点。所以当我们正常通过检查得到的input是错误的输入框。然后我们发现真实输入框还有一个事件触发函数chkpwd函数。尝试搜索到该函数。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">chkpwd</span>(<span class="params">obj</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (obj.value != <span class="string">&#x27;&#x27;</span>) &#123;</span><br><span class="line">        <span class="keyword">var</span> s = md5(<span class="built_in">document</span>.all.txt_asmcdefsddsd.value + md5(obj.value).substring(<span class="number">0</span>, <span class="number">30</span>).toUpperCase() + <span class="string">&#x27;13671&#x27;</span>).substring(<span class="number">0</span>, <span class="number">30</span>).toUpperCase();</span><br><span class="line">        <span class="built_in">document</span>.all.dsdsdsdsdxcxdfgfg.value = s;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="built_in">document</span>.all.dsdsdsdsdxcxdfgfg.value = obj.value;</span><br><span class="line">    &#125;</span><br><span class="line">    chkLxstr(obj.value);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>然后我在这里就找到了上文提到的dsdsdsdsdxcxdfgfg的值了，该值就是通过加密之后的密码。然后在一起还找到了chkyzm函数。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">chkyzm</span>(<span class="params">obj</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (obj.value != <span class="string">&#x27;&#x27;</span>) &#123;</span><br><span class="line">        <span class="keyword">var</span> s = md5(md5(obj.value.toUpperCase()).substring(<span class="number">0</span>, <span class="number">30</span>).toUpperCase() + <span class="string">&#x27;13671&#x27;</span>).substring(<span class="number">0</span>, <span class="number">30</span>).toUpperCase();</span><br><span class="line">        <span class="built_in">document</span>.all.fgfggfdgtyuuyyuuckjg.value = s;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="built_in">document</span>.all.fgfggfdgtyuuyyuuckjg.value = obj.value.toUpperCase();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>所以说fgfggfdgtyuuyyuuckjg就是验证码加密后的值。至此我们基本已经有了头绪，这时候就指向了md5这个加密函数了。<br>通过浏览器的网络分析找到md5文件里面的md5函数。然后一部一部分析发现如果需要重构这个加密函数，那不过又是大废周折。<br>正好，最近学了node.js的一点基础。不妨直接使用node.js来调用这个加密函数。然后通过api的形式来调用。</p>
+<h1 id="2-模拟登录"><a href="#2-模拟登录" class="headerlink" title="2.模拟登录"></a>2.模拟登录</h1><h2 id="2-1-使用node-js编写加密api"><a href="#2-1-使用node-js编写加密api" class="headerlink" title="2.1. 使用node.js编写加密api"></a>2.1. 使用node.js编写加密api</h2><p>在这里使用了node.js的express框架。代码如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//将md5.js下载到同级目录，</span></span><br><span class="line"><span class="comment">//使用npm安装express和bodu-parser npm install express , npm install body-parser</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> md5 = <span class="built_in">require</span>(<span class="string">&quot;./md5&quot;</span>);</span><br><span class="line"><span class="keyword">var</span> express = <span class="built_in">require</span>(<span class="string">&quot;express&quot;</span>);</span><br><span class="line"><span class="keyword">var</span> path = <span class="built_in">require</span>(<span class="string">&quot;path&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> app = express();</span><br><span class="line"><span class="keyword">var</span> bodyParser = <span class="built_in">require</span>(<span class="string">&#x27;body-parser&#x27;</span>);</span><br><span class="line">app.use(bodyParser.urlencoded(&#123;</span><br><span class="line">    <span class="attr">extended</span>:<span class="literal">true</span></span><br><span class="line">&#125;));</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">chkpwd</span>(<span class="params">account, pass</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (pass !== <span class="string">&#x27;&#x27;</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> md5(account + md5(pass).substring(<span class="number">0</span>, <span class="number">30</span>).toUpperCase() + <span class="string">&#x27;13671&#x27;</span>).substring(<span class="number">0</span>, <span class="number">30</span>).toUpperCase();</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">chkyzm</span>(<span class="params">value</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (value !== <span class="string">&#x27;&#x27;</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> md5(md5(value.toUpperCase()).substring(<span class="number">0</span>, <span class="number">30</span>).toUpperCase() + <span class="string">&#x27;13671&#x27;</span>).substring(<span class="number">0</span>, <span class="number">30</span>).toUpperCase();</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;&quot;</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">app.post(<span class="string">&quot;/login&quot;</span>,<span class="function"><span class="keyword">function</span> (<span class="params">req,res</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> account = req.body.account;</span><br><span class="line">    <span class="built_in">console</span>.log(account)</span><br><span class="line">    <span class="keyword">var</span> password = req.body.password;</span><br><span class="line">    <span class="built_in">console</span>.log(account+password)</span><br><span class="line">    <span class="keyword">var</span> data = chkpwd(account,password);</span><br><span class="line">    res.send(data)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">app.post(<span class="string">&quot;/yzm&quot;</span>,<span class="function"><span class="keyword">function</span> (<span class="params">req,res</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> value = req.body.value;</span><br><span class="line">    <span class="keyword">var</span> yzm = chkyzm(value);</span><br><span class="line">    res.send(yzm)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">app.listen(<span class="number">10001</span>,<span class="string">&quot;127.0.0.1&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>当我们此时使用post方法访问<a target="_blank" rel="noopener" href="http://127.0.0.1:10001/login">http://127.0.0.1:10001/login</a>,然后加上需要加密账号和密码，就可以返回<br>加密后的内容了。同理<a target="_blank" rel="noopener" href="http://127.0.0.1:10001/yzm">http://127.0.0.1:10001/yzm</a>可以对验证码进行加密。</p>
+<h2 id="2-2-使用python模拟登录"><a href="#2-2-使用python模拟登录" class="headerlink" title="2.2. 使用python模拟登录"></a>2.2. 使用python模拟登录</h2><p>首先创建类和构造方法</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Education</span>:</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self, account: <span class="built_in">str</span>, password: <span class="built_in">str</span></span>):</span></span><br><span class="line">        self.account = account</span><br><span class="line">        self.password = password</span><br><span class="line">        self.client = httpx.Client()</span><br><span class="line">        self.source = <span class="string">&quot;http://jwc.scnucas.com&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>然后在类里面编写两个加密api调用的函数</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">//加密账户和密码</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">__md5Account</span>(<span class="params">self</span>) -&gt; <span class="built_in">str</span>:</span></span><br><span class="line">    data = &#123;</span><br><span class="line">        <span class="string">&quot;account&quot;</span>: self.account,</span><br><span class="line">        <span class="string">&quot;password&quot;</span>: self.password</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> httpx.post(<span class="string">&quot;http://47.110.228.1:10001/login&quot;</span>, data=data).text</span><br><span class="line"></span><br><span class="line">//加密验证码</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">__md5_verification</span>(<span class="params">self</span>):</span></span><br><span class="line">    content = <span class="built_in">input</span>(<span class="string">&quot;请输入验证码：&quot;</span>)</span><br><span class="line">    data = &#123;</span><br><span class="line">        <span class="string">&quot;value&quot;</span>: content</span><br><span class="line">    &#125;</span><br><span class="line">    result = httpx.post(<span class="string">&quot;http://47.110.228.1:10001/yzm&quot;</span>, data=data)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> result</span><br></pre></td></tr></table></figure>
+
+<p>然后编写发送请求的工具方法，因为教务系统偶尔会返回503服务器繁忙，所以我们对此进行判断并且重新进行请求,</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">__ask</span>(<span class="params">self, url: <span class="built_in">str</span>, method: <span class="built_in">str</span>, data=<span class="literal">None</span></span>) -&gt; httpx.Response:</span>        //带上常用请求头        headers = &#123;            <span class="string">&#x27;Content-Type&#x27;</span>: <span class="string">&#x27;application/x-www-form-urlencoded&#x27;</span>,            <span class="string">&#x27;Host&#x27;</span>: <span class="string">&#x27;jwc.scnucas.com&#x27;</span>,            <span class="string">&#x27;Referer&#x27;</span>: <span class="string">&#x27;http://jwc.scnucas.com/_data/login_home.aspx&#x27;</span>,            <span class="string">&#x27;User-Agent&#x27;</span>: <span class="string">&#x27;Mozilla / 5.0(Windows NT 10.0;Win64;x64) AppleWebKit / 537.36(KHTML, likeGecko) Chrome / 88.0.4324.96Safari / 537.36Edg / 88.0.705.50&#x27;</span>        &#125;        <span class="keyword">if</span> data <span class="keyword">is</span> <span class="literal">None</span>:            data = &#123;&#125;        response = self.client.request(method=method, url=url, headers=headers, data=data, allow_redirects=<span class="literal">False</span>,)        code = response.status_code        <span class="keyword">while</span> code &gt;= <span class="number">500</span>:            response = self.client.request(method=method, url=url, data=data, allow_redirects=<span class="literal">False</span>)            code = response.status_code        response.encoding = <span class="string">&quot;GBK&quot;</span>        <span class="keyword">return</span> response</span><br></pre></td></tr></table></figure>
+
+<p>最后就是调用该方法进行登录</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">login</span>(<span class="params">self</span>):</span></span><br><span class="line">    //这是模拟使用get方法获取登录页面</span><br><span class="line">    self.__ask(self.source + <span class="string">&quot;/_data/login_home.aspx&quot;</span>, <span class="string">&quot;GET&quot;</span>, data=<span class="literal">None</span>)</span><br><span class="line">    //该接口是获得验证码的接口</span><br><span class="line">    a = self.__ask(self.source + <span class="string">&quot;/sys/ValidateCode.aspx&quot;</span>, <span class="string">&quot;GET&quot;</span>).content</span><br><span class="line">    <span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&quot;code.png&quot;</span>, <span class="string">&quot;wb+&quot;</span>) <span class="keyword">as</span> f:</span><br><span class="line">        f.write(a)</span><br><span class="line">    //使用PIL库的Image方法打开验证码</span><br><span class="line">    Image.<span class="built_in">open</span>(<span class="string">&quot;code.png&quot;</span>).show()</span><br><span class="line">    data = &#123;</span><br><span class="line">        <span class="comment"># &quot;__VIEWSTATE&quot;: view,</span></span><br><span class="line">        <span class="string">&quot;pcInfo&quot;</span>: <span class="string">&quot;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) &quot;</span></span><br><span class="line">                  <span class="string">&quot;Chrome/88.0.4324.96 Safari/537.36 Edg/88.0.705.50undefined5.0 (Windows NT 10.0; Win64; x64) &quot;</span></span><br><span class="line">                  <span class="string">&quot;AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.96 Safari/537.36 Edg/88.0.705.50 &quot;</span></span><br><span class="line">                  <span class="string">&quot;SN:NULL&quot;</span>,</span><br><span class="line">        <span class="string">&quot;txt_mm_expression&quot;</span>: <span class="string">&quot;&quot;</span>,</span><br><span class="line">        <span class="string">&quot;txt_mm_length&quot;</span>: <span class="string">&quot;&quot;</span>,</span><br><span class="line">        <span class="string">&quot;txt_mm_userzh&quot;</span>: <span class="string">&quot;&quot;</span>,</span><br><span class="line">        <span class="string">&quot;typeName&quot;</span>: <span class="string">&quot;学生&quot;</span>,</span><br><span class="line">        <span class="string">&quot;dsdsdsdsdxcxdfgfg&quot;</span>: self.__md5Account(),</span><br><span class="line">        <span class="string">&quot;fgfggfdgtyuuyyuuckjg&quot;</span>: self.__md5_verification().text,</span><br><span class="line"></span><br><span class="line">        <span class="string">&quot;Sel_Type&quot;</span>: <span class="string">&quot;STU&quot;</span>,</span><br><span class="line">        <span class="string">&quot;txt_asmcdefsddsd&quot;</span>: <span class="string">&quot;19104978&quot;</span>,</span><br><span class="line">        <span class="string">&quot;txt_pewerwedsdfsdff&quot;</span>: <span class="string">&quot;&quot;</span>,</span><br><span class="line">        <span class="string">&quot;txt_psasas&quot;</span>: <span class="string">&quot;请输入密码&quot;</span>,</span><br><span class="line">        <span class="string">&quot;txt_sdertfgsadscxcadsads&quot;</span>: <span class="string">&quot;&quot;</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    result = self.__ask(self.source + <span class="string">&quot;/_data/login_home.aspx&quot;</span>, <span class="string">&quot;POST&quot;</span>, data=data).text</span><br></pre></td></tr></table></figure>
+
+<p>通过发现当登录成功的时候，就会出现‘window.top.document.location.replace(“../MAINFRM.aspx”)’语句进行页面跳转。<br>所以我们只需要判断返回的结果有没有该语句就可以确定是否登录成功。修改上面代码为：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">result = self.__ask(self.source + <span class="string">&quot;/_data/login_home.aspx&quot;</span>, <span class="string">&quot;POST&quot;</span>, data=data).text.find(</span><br><span class="line">            <span class="string">&#x27;window.top.document.location.replace(&quot;../MAINFRM.aspx&quot;)&#x27;</span>)</span><br><span class="line">        <span class="keyword">if</span> result != -<span class="number">1</span>:</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">f&quot;登录成功\n<span class="subst">&#123;self.account&#125;</span>&quot;</span>)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&quot;登录失败&quot;</span>)</span><br><span class="line">            exit(<span class="number">3</span>)</span><br></pre></td></tr></table></figure>
+
+<p>然后尝试调用该类</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    account = <span class="built_in">input</span>(<span class="string">&quot;请输入你的教务系统账号：&quot;</span>)</span><br><span class="line">    password = <span class="built_in">input</span>(<span class="string">&quot;请输入你的教务系统密码：&quot;</span>)</span><br><span class="line">    e = Education(account=account,password=password)</span><br><span class="line">    e.login()</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/08/12/%E6%A8%A1%E6%8B%9F%E7%99%BB%E5%BD%95%E6%95%99%E5%8A%A1%E7%B3%BB%E7%BB%9F/" data-id="cksda5nmw0003v8v1693h7szl" data-title="模拟登录教务系统" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/" rel="tag">python</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-java文件操作" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/08/12/java%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/" class="article-date">
+  <time class="dt-published" datetime="2021-08-12T09:26:24.000Z" itemprop="datePublished">2021-08-12</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/08/12/java%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/">java文件操作</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="java文件操作"><a href="#java文件操作" class="headerlink" title="java文件操作"></a>java文件操作</h1><h3 id="1-文件字符流"><a href="#1-文件字符流" class="headerlink" title="1. 文件字符流"></a>1. 文件字符流</h3><p>​    reader </p>
+<p>​     <strong>writer</strong></p>
+<pre><code>+ *write()*
++ *append()*
++ *flush()*
++ *close()*
+</code></pre>
+<p>​            </p>
+<ul>
+<li><h3 id="文件字符输入流"><a href="#文件字符输入流" class="headerlink" title="文件字符输入流"></a>文件字符输入流</h3><p>FileReader</p>
+</li>
+</ul>
+<ul>
+<li><h3 id="文件字符输出流"><a href="#文件字符输出流" class="headerlink" title="文件字符输出流"></a>文件字符输出流</h3><p>FileWriter</p>
+</li>
+</ul>
+<h3 id="2-文件文件字节流"><a href="#2-文件文件字节流" class="headerlink" title="2. 文件文件字节流"></a>2. 文件文件字节流</h3><p>inputstream   </p>
+<p>outputstream</p>
+<ul>
+<li><h4 id="文件字节输入流"><a href="#文件字节输入流" class="headerlink" title="文件字节输入流"></a>文件字节输入流</h4><p>​    FileInputStream</p>
+</li>
+</ul>
+<ul>
+<li><h4 id="文件字节输出流"><a href="#文件字节输出流" class="headerlink" title="文件字节输出流"></a>文件字节输出流</h4><p>​    FileOutputStream</p>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/08/12/java%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/" data-id="cksda5nms0001v8v1b5rv3471" data-title="java文件操作" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/" rel="tag">java</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-第一次使用springMvc的记录" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/08/12/%E7%AC%AC%E4%B8%80%E6%AC%A1%E4%BD%BF%E7%94%A8springMvc%E7%9A%84%E8%AE%B0%E5%BD%95/" class="article-date">
+  <time class="dt-published" datetime="2021-08-12T09:25:07.000Z" itemprop="datePublished">2021-08-12</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/08/12/%E7%AC%AC%E4%B8%80%E6%AC%A1%E4%BD%BF%E7%94%A8springMvc%E7%9A%84%E8%AE%B0%E5%BD%95/">第一次使用springMvc的记录</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>+++</p>
+<h1 id="第一次使用springmvc的记录"><a href="#第一次使用springmvc的记录" class="headerlink" title="第一次使用springmvc的记录"></a>第一次使用springmvc的记录</h1><h2 id="1-webxml配置文件"><a href="#1-webxml配置文件" class="headerlink" title="1. webxml配置文件"></a>1. webxml配置文件</h2><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">web-app</span> <span class="attr">xmlns</span>=<span class="string">&quot;http://xmlns.jcp.org/xml/ns/javaee&quot;</span></span></span><br><span class="line"><span class="tag">         <span class="attr">xmlns:xsi</span>=<span class="string">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span></span></span><br><span class="line"><span class="tag">         <span class="attr">xsi:schemaLocation</span>=<span class="string">&quot;http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd&quot;</span></span></span><br><span class="line"><span class="tag">         <span class="attr">version</span>=<span class="string">&quot;4.0&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">listener</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">listener-class</span>&gt;</span>org.springframework.web.context.ContextLoaderListener<span class="tag">&lt;/<span class="name">listener-class</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">listener</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">context-param</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">param-name</span>&gt;</span>contextConfigLocation<span class="tag">&lt;/<span class="name">param-name</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">param-value</span>&gt;</span>classpath:spring/applicationContext.xml<span class="tag">&lt;/<span class="name">param-value</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">context-param</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">servlet</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">servlet-name</span>&gt;</span>springmvc<span class="tag">&lt;/<span class="name">servlet-name</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">servlet-class</span>&gt;</span>org.springframework.web.servlet.DispatcherServlet<span class="tag">&lt;/<span class="name">servlet-class</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">init-param</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">param-name</span>&gt;</span>contextConfigLocation<span class="tag">&lt;/<span class="name">param-name</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">param-value</span>&gt;</span>classpath:spring/springmvc.xml<span class="tag">&lt;/<span class="name">param-value</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">init-param</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">load-on-startup</span>&gt;</span>1<span class="tag">&lt;/<span class="name">load-on-startup</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">servlet</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">servlet-mapping</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">servlet-name</span>&gt;</span>springmvc<span class="tag">&lt;/<span class="name">servlet-name</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">url-pattern</span>&gt;</span>/<span class="tag">&lt;/<span class="name">url-pattern</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">servlet-mapping</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">web-app</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="1-1-listener的作用"><a href="#1-1-listener的作用" class="headerlink" title="1.1. listener的作用"></a>1.1. listener的作用</h4><p>配置listener的作用是在启动时初始化ioc容器</p>
+<h4 id="1-2-context-param"><a href="#1-2-context-param" class="headerlink" title="1.2. context-param"></a>1.2. context-param</h4><p>param-name为关键字：contextConfigLocation，当初始化ioc时，会从这个给关键字位置寻找spring的配置文件位置，param-value就为spring配置文件的位置</p>
+<h4 id="1-3-初始化servlet"><a href="#1-3-初始化servlet" class="headerlink" title="1.3. 初始化servlet"></a>1.3. 初始化servlet</h4><p>其中init-param中指定springMvc配置文件的位置</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;load-on-startup&gt;1&lt;/load-on-startup&gt;</span><br></pre></td></tr></table></figure>
+
+<p>的意思为指定初始化的时间，如果不指定，当在第一个用户访问时才会进行初始化，会导致第一个用户访问时间变得特别长</p>
+<h4 id="1-4-指定拦截器"><a href="#1-4-指定拦截器" class="headerlink" title="1.4. 指定拦截器"></a>1.4. 指定拦截器</h4><p>seevlet-mapping为指定一个过滤器，url-pattern的参数为拦截的url，servlet为拦截后交个哪一个servlet进行处理</p>
+<h2 id="2-前端控制器的配置"><a href="#2-前端控制器的配置" class="headerlink" title="2. 前端控制器的配置"></a>2. 前端控制器的配置</h2><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">beans</span> <span class="attr">xmlns</span>=<span class="string">&quot;http://www.springframework.org/schema/beans&quot;</span></span></span><br><span class="line"><span class="tag">       <span class="attr">xmlns:context</span>=<span class="string">&quot;http://www.springframework.org/schema/context&quot;</span></span></span><br><span class="line"><span class="tag">       <span class="attr">xmlns:xsi</span>=<span class="string">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span></span></span><br><span class="line"><span class="tag">       <span class="attr">xmlns:mvc</span>=<span class="string">&quot;http://www.springframework.org/schema/mvc&quot;</span></span></span><br><span class="line"><span class="tag">       <span class="attr">xsi:schemaLocation</span>=<span class="string">&quot;http://www.springframework.org/schema/beans</span></span></span><br><span class="line"><span class="string"><span class="tag">   http://www.springframework.org/schema/beans/spring-beans-3.0.xsd</span></span></span><br><span class="line"><span class="string"><span class="tag">   http://www.springframework.org/schema/context</span></span></span><br><span class="line"><span class="string"><span class="tag">   http://www.springframework.org/schema/context/spring-context-3.0.xsd</span></span></span><br><span class="line"><span class="string"><span class="tag">   http://www.springframework.org/schema/mvc</span></span></span><br><span class="line"><span class="string"><span class="tag">   https://www.springframework.org/schema/mvc/spring-mvc.xsd&quot;</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">mvc:resources</span> <span class="attr">mapping</span>=<span class="string">&quot;/page/**&quot;</span> <span class="attr">location</span>=<span class="string">&quot;/page/&quot;</span>/&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">context:component-scan</span> <span class="attr">base-package</span>=<span class="string">&quot;com.gxa.controller&quot;</span>/&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">mvc:annotation-driven</span>/&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">bean</span> <span class="attr">class</span>=<span class="string">&quot;org.springframework.web.servlet.view.InternalResourceViewResolver&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;prefix&quot;</span> <span class="attr">value</span>=<span class="string">&quot;/&quot;</span> /&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;suffix&quot;</span> <span class="attr">value</span>=<span class="string">&quot;.jsp&quot;</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">beans</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="2-1-指定静态文件资源路径"><a href="#2-1-指定静态文件资源路径" class="headerlink" title="2.1. 指定静态文件资源路径"></a>2.1. 指定静态文件资源路径</h4><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">mvc:resources</span> <span class="attr">mapping</span>=<span class="string">&quot;/page/**&quot;</span> <span class="attr">location</span>=<span class="string">&quot;/page/&quot;</span>/&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>mapping 为映射后的路径，location为相对于web目录的路径</p>
+<p>例如**”/page/“**表示将page文件夹放在web根目录下面</p>
+<h4 id="2-2-设置控制器扫描路径"><a href="#2-2-设置控制器扫描路径" class="headerlink" title="2.2. 设置控制器扫描路径"></a>2.2. 设置控制器扫描路径</h4><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">context:component-scan</span> <span class="attr">base-package</span>=<span class="string">&quot;com.gxa.controller&quot;</span>/&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>base-package</strong>为mvc控制器类的路径</p>
+<h4 id="2-3-配置mvc的试图模板"><a href="#2-3-配置mvc的试图模板" class="headerlink" title="2.3. 配置mvc的试图模板"></a>2.3. 配置mvc的试图模板</h4><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">class</span>=<span class="string">&quot;org.springframework.web.servlet.view.InternalResourceViewResolver&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;prefix&quot;</span> <span class="attr">value</span>=<span class="string">&quot;/&quot;</span> /&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;suffix&quot;</span> <span class="attr">value</span>=<span class="string">&quot;.jsp&quot;</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>prefix</strong>参数为试图模板的前缀路径</p>
+<p><strong>suffix</strong>参数为视图模板的后缀</p>
+<h2 id="3-mybatis与spring的整合"><a href="#3-mybatis与spring的整合" class="headerlink" title="3. mybatis与spring的整合"></a>3. mybatis与spring的整合</h2><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">beans</span> <span class="attr">xmlns</span>=<span class="string">&quot;http://www.springframework.org/schema/beans&quot;</span></span></span><br><span class="line"><span class="tag">       <span class="attr">xmlns:xsi</span>=<span class="string">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span> <span class="attr">xmlns:context</span>=<span class="string">&quot;http://www.springframework.org/schema/context&quot;</span></span></span><br><span class="line"><span class="tag">       <span class="attr">xsi:schemaLocation</span>=<span class="string">&quot;</span></span></span><br><span class="line"><span class="string"><span class="tag">        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd</span></span></span><br><span class="line"><span class="string"><span class="tag">       http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd&quot;</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">context:property-placeholder</span> <span class="attr">location</span>=<span class="string">&quot;classpath:spring/gxa.properties&quot;</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">&quot;dataSource&quot;</span> <span class="attr">class</span>=<span class="string">&quot;com.alibaba.druid.pool.DruidDataSource&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;username&quot;</span> <span class="attr">value</span>=<span class="string">&quot;$&#123;jdbc.username&#125;&quot;</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;password&quot;</span> <span class="attr">value</span>=<span class="string">&quot;$&#123;jdbc.password&#125;&quot;</span> /&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;url&quot;</span> <span class="attr">value</span>=<span class="string">&quot;$&#123;jdbc.url&#125;&quot;</span> /&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;driverClassName&quot;</span> <span class="attr">value</span>=<span class="string">&quot;$&#123;jdbc.driverClassName&#125;&quot;</span> /&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;maxActive&quot;</span> <span class="attr">value</span>=<span class="string">&quot;10&quot;</span> /&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;minIdle&quot;</span> <span class="attr">value</span>=<span class="string">&quot;5&quot;</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">bean</span> <span class="attr">class</span>=<span class="string">&quot;org.mybatis.spring.SqlSessionFactoryBean&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;dataSource&quot;</span> <span class="attr">ref</span>=<span class="string">&quot;dataSource&quot;</span> /&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;mapperLocations&quot;</span> <span class="attr">value</span>=<span class="string">&quot;classpath:main/java/com/gxa/mapper/*.xml&quot;</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">bean</span> <span class="attr">class</span>=<span class="string">&quot;org.mybatis.spring.mapper.MapperScannerConfigurer&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;basePackage&quot;</span> <span class="attr">value</span>=<span class="string">&quot;com.gxa.mapper&quot;</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">beans</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="3-1-加载property配置文件"><a href="#3-1-加载property配置文件" class="headerlink" title="3.1. 加载property配置文件"></a>3.1. 加载property配置文件</h4><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">context:property-placeholder</span> <span class="attr">location</span>=<span class="string">&quot;classpath:spring/gxa.properties&quot;</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p> <strong>location</strong>为需要加载的文件的位置</p>
+<h4 id="3-2-配置mybatis数据源"><a href="#3-2-配置mybatis数据源" class="headerlink" title="3.2. 配置mybatis数据源"></a>3.2. 配置mybatis数据源</h4><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">&quot;dataSource&quot;</span> <span class="attr">class</span>=<span class="string">&quot;com.alibaba.druid.pool.DruidDataSource&quot;</span>&gt;</span>        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;username&quot;</span> <span class="attr">value</span>=<span class="string">&quot;$&#123;jdbc.username&#125;&quot;</span>/&gt;</span>        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;password&quot;</span> <span class="attr">value</span>=<span class="string">&quot;$&#123;jdbc.password&#125;&quot;</span> /&gt;</span>        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;url&quot;</span> <span class="attr">value</span>=<span class="string">&quot;$&#123;jdbc.url&#125;&quot;</span> /&gt;</span>        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;driverClassName&quot;</span> <span class="attr">value</span>=<span class="string">&quot;$&#123;jdbc.driverClassName&#125;&quot;</span> /&gt;</span>        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;maxActive&quot;</span> <span class="attr">value</span>=<span class="string">&quot;10&quot;</span> /&gt;</span>        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;minIdle&quot;</span> <span class="attr">value</span>=<span class="string">&quot;5&quot;</span> /&gt;</span>    <span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p><em>username</em> 数据库的用户名</p>
+</li>
+<li><p><em>password</em> 数据库的密码</p>
+</li>
+<li><p><em>url</em> 数据库连接的网址</p>
+</li>
+<li><p><em>driverClassName</em> 数据库连接的驱动名</p>
+</li>
+<li><p><em>maxActive</em> 数据库连接池的最大数量</p>
+</li>
+<li><p><em>minIdle</em> 数据库连接池的最小空闲数量</p>
+</li>
+</ul>
+<h4 id="3-3-配置mybatis的注解扫描类"><a href="#3-3-配置mybatis的注解扫描类" class="headerlink" title="3.3. 配置mybatis的注解扫描类"></a>3.3. 配置mybatis的注解扫描类</h4><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">class</span>=<span class="string">&quot;org.mybatis.spring.mapper.MapperScannerConfigurer&quot;</span>&gt;</span>        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;basePackage&quot;</span> <span class="attr">value</span>=<span class="string">&quot;com.gxa.mapper&quot;</span>/&gt;</span>    <span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>basePackage</strong>为mybatis类的权限类名</p>
+<h4 id="3-4-配置mybatis的SqlSessionFactoryBean"><a href="#3-4-配置mybatis的SqlSessionFactoryBean" class="headerlink" title="3.4.  配置mybatis的SqlSessionFactoryBean"></a>3.4.  配置mybatis的SqlSessionFactoryBean</h4><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">class</span>=<span class="string">&quot;org.mybatis.spring.SqlSessionFactoryBean&quot;</span>&gt;</span>        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;dataSource&quot;</span> <span class="attr">ref</span>=<span class="string">&quot;dataSource&quot;</span> /&gt;</span>        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;mapperLocations&quot;</span> <span class="attr">value</span>=<span class="string">&quot;classpath:main/java/com/gxa/mapper/*.xml&quot;</span> /&gt;</span><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p><strong>dataSource</strong>为mybatis的数据源引用</p>
+</li>
+<li><p><strong>mapperLocations</strong>为mybatis的xml配置文件位置，当<strong>mybatis的配置文件与其接口类在同一路径</strong>，且<strong>接口名等于配置文件的namespece参数</strong>时，就可以不需要配置该属性，spring为对其进行自动扫描</p>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/08/12/%E7%AC%AC%E4%B8%80%E6%AC%A1%E4%BD%BF%E7%94%A8springMvc%E7%9A%84%E8%AE%B0%E5%BD%95/" data-id="cksda5nmx0004v8v1aey83nlh" data-title="第一次使用springMvc的记录" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/" rel="tag">java</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-git常用命令" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/08/12/git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" class="article-date">
+  <time class="dt-published" datetime="2021-08-12T09:22:28.000Z" itemprop="datePublished">2021-08-12</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/08/12/git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/">git常用命令</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>+++</p>
+<h2 id="1-git基本配置"><a href="#1-git基本配置" class="headerlink" title="1. git基本配置"></a>1. git基本配置</h2><h3 id="1-1-配置邮箱和用户名"><a href="#1-1-配置邮箱和用户名" class="headerlink" title="1.1 配置邮箱和用户名"></a>1.1 配置邮箱和用户名</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># 这里的“huoxue1&quot; 可以替换成自己的用户名</span><br><span class="line">git config --global user.name &quot;huoxue1&quot;</span><br><span class="line"># 这里的邮箱 123456@163.com  替换成自己的邮箱</span><br><span class="line">git config --global user.email  &quot;123456@163.com&quot;</span><br></pre></td></tr></table></figure>
+
+<h3 id="1-2-生成ssh密钥"><a href="#1-2-生成ssh密钥" class="headerlink" title="1.2 生成ssh密钥"></a>1.2 生成ssh密钥</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># 这里的邮箱 123456@163.com  替换成自己的邮箱</span><br><span class="line">ssh-keygen -t rsa -C &quot;123456@163.com&quot;</span><br></pre></td></tr></table></figure>
+
+<p>默认密钥存储位置为 “C:\\Users\你的用户名.ssh\”</p>
+<h3 id="1-3-配置到github"><a href="#1-3-配置到github" class="headerlink" title="1.3 配置到github"></a>1.3 配置到github</h3><p>将id_rsa.pub的内容复制下来然后在github的setting里面配置</p>
+<h2 id="2-基本使用"><a href="#2-基本使用" class="headerlink" title="2. 基本使用"></a>2. 基本使用</h2><h3 id="2-1-初始化项目"><a href="#2-1-初始化项目" class="headerlink" title="2.1.初始化项目"></a>2.1.初始化项目</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">git init  #初始化项目git配置</span><br><span class="line"></span><br><span class="line">git remote add origin git@github.com:huoxue1/LeafBot.git # 关联远程仓库，将远程仓库命名为origin</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># 也可以直接clone远程仓库</span><br><span class="line">git clone git@github.com:huoxue1/leafBot.git</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="2-2-提交本地更改"><a href="#2-2-提交本地更改" class="headerlink" title="2.2. 提交本地更改"></a>2.2. 提交本地更改</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">git add .   # .代表提交所有修改的文件，可以替换成对应的文件或者通配符</span><br><span class="line"></span><br><span class="line">git commit -m “ 第一次提交”    # m参数表示对这次提交的描述</span><br><span class="line"></span><br><span class="line">git push -u origin master    # 表示将本地当前分支内容提交的远程的master分支，第一次使用之后以后可以直接git push</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="2-3-分支管理"><a href="#2-3-分支管理" class="headerlink" title="2.3. 分支管理"></a>2.3. 分支管理</h3><ul>
+<li><p>一般项目会将master或者main作为主要分支</p>
+</li>
+<li><p>然后开发者会在dev分支进行开发，当需要发布版本时合并到主分支发布版本</p>
+</li>
+<li><p>当线上版本出现bug需要修复时，会创建一个fix分支进行修复，修复完后将其合并到主分支，然后删除fix分支</p>
+</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">git branch # 查看本地所有分支</span><br><span class="line"></span><br><span class="line">git branch -a # 查看所有分支，包括远程分支</span><br><span class="line"></span><br><span class="line">git checkout dev # 创建一个dev分支</span><br><span class="line"></span><br><span class="line">git checkout -b dev  # 创建一个dev分支并切换到该分支</span><br><span class="line"></span><br><span class="line">git branch –set-upstream dev origin/dev  # 把本地dev分支各远程dev分支进行关联</span><br><span class="line"></span><br><span class="line">git merge --no-ff dev  # 将dev分支合并到当前分支，使用--no-ff参数后，会执行正常合并，在当前分支上生成一个新节点</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="2-4-tag管理"><a href="#2-4-tag管理" class="headerlink" title="2.4. tag管理"></a>2.4. tag管理</h3><ul>
+<li><p>git作为版本管理，可以在特定时刻为其打上标签</p>
+</li>
+<li><p>Git 支持两种标签：轻量标签（lightweight）与附注标签（annotated）。</p>
+<p>轻量标签很像一个不会改变的分支——它只是某个特定提交的引用。</p>
+<p>而附注标签是存储在 Git 数据库中的一个完整对象， 它们是可以被校验的，其中包含打标签者的名字、电子邮件地址、日期时间， 此外还有一个标签信息，并且可以使用 GNU Privacy Guard （GPG）签名并验证。 通常会建议创建附注标签，这样你可以拥有以上所有信息。但是如果你只是想用一个临时的标签， 或者因为某些原因不想要保存这些信息，那么也可以用轻量标签。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">git tag -a v1.0 -m &quot;我的第一个标签&quot;</span><br><span class="line"></span><br><span class="line"># -a表示为附注标签，-m表示为其加上描述</span><br><span class="line"></span><br><span class="line">git tag v1.1</span><br><span class="line"></span><br><span class="line"># 默认为轻量标签</span><br><span class="line"></span><br><span class="line">git tag show v1.0  #使用git tag show可以显示标签的信息</span><br><span class="line"></span><br><span class="line">git push origin v1.0  # 将本地标签提交到远程成为共享标签</span><br><span class="line"></span><br><span class="line">git tag -d &lt;tagname&gt;  # 删除本地标签</span><br><span class="line"></span><br><span class="line">git push origin --delete &lt;tagname&gt;  # 删除远程标签</span><br><span class="line"></span><br><span class="line">git checkout v1.0  # checkout命令可以使当前文件指向标签位置</span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/08/12/git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" data-id="cksda5nmk0000v8v14f9i0xm7" data-title="git常用命令" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/git/" rel="tag">git</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+
+</section>
+        <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/" rel="tag">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/" rel="tag">python</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2021/08/12/%E6%A8%A1%E6%8B%9F%E7%99%BB%E5%BD%95%E6%95%99%E5%8A%A1%E7%B3%BB%E7%BB%9F/">模拟登录教务系统</a>
+          </li>
+        
+          <li>
+            <a href="/2021/08/12/java%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/">java文件操作</a>
+          </li>
+        
+          <li>
+            <a href="/2021/08/12/%E7%AC%AC%E4%B8%80%E6%AC%A1%E4%BD%BF%E7%94%A8springMvc%E7%9A%84%E8%AE%B0%E5%BD%95/">第一次使用springMvc的记录</a>
+          </li>
+        
+          <li>
+            <a href="/2021/08/12/git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/">git常用命令</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">August 2021</a></li></ul>
+    </div>
+  </div>
+
+  
+</aside>
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2021 By Autoload<br>
+      Driven - <a href="https://hexo.io/" target="_blank">Hexo</a>|Theme - <a href="https://github.com/autoload/hexo-theme-auto" target="_blank">Auto</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/categories" class="mobile-nav-link">Categories</a>
+  
+    <a href="/tags" class="mobile-nav-link">Tags</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>
