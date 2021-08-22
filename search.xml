@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>从零开始搭建一个自动回复qq机器人.md</title>
+      <link href="/2021/08/22/cong-ling-kai-shi-da-jian-yi-ge-zi-dong-hui-fu-qq-ji-qi-ren/"/>
+      <url>/2021/08/22/cong-ling-kai-shi-da-jian-yi-ge-zi-dong-hui-fu-qq-ji-qi-ren/</url>
+      
+        <content type="html"><![CDATA[<h2 id="1-下载leafBotPlugin"><a href="#1-下载leafBotPlugin" class="headerlink" title="1. 下载leafBotPlugin"></a>1. 下载leafBotPlugin</h2><ul><li><h4 id="打开leafBotPlugin"><a href="#打开leafBotPlugin" class="headerlink" title="打开leafBotPlugin"></a>打开<a href="https://github.com/huoxue1/leafBotPlugin/releases">leafBotPlugin</a></h4></li><li><h4 id="选择最新的版本，下载leafBotPlugin-windows-amd64-exe"><a href="#选择最新的版本，下载leafBotPlugin-windows-amd64-exe" class="headerlink" title="选择最新的版本，下载leafBotPlugin_windows_amd64.exe"></a>选择最新的版本，下载leafBotPlugin_windows_amd64.exe</h4></li><li><h4 id="选择一个合适的文件夹放置该文件"><a href="#选择一个合适的文件夹放置该文件" class="headerlink" title="选择一个合适的文件夹放置该文件"></a>选择一个合适的文件夹放置该文件</h4></li><li><h4 id="双击打开leafBotPlugin-windows-amd64-exe-在黑窗口中输入自己的机器人qq号"><a href="#双击打开leafBotPlugin-windows-amd64-exe-在黑窗口中输入自己的机器人qq号" class="headerlink" title="双击打开leafBotPlugin_windows_amd64.exe,在黑窗口中输入自己的机器人qq号"></a>双击打开leafBotPlugin_windows_amd64.exe,在黑窗口中输入自己的机器人qq号</h4></li><li><h4 id="会在当前目录的config目录下生成两个文件，分别是congfig-json和config-yml"><a href="#会在当前目录的config目录下生成两个文件，分别是congfig-json和config-yml" class="headerlink" title="会在当前目录的config目录下生成两个文件，分别是congfig.json和config.yml"></a>会在当前目录的config目录下生成两个文件，分别是congfig.json和config.yml</h4></li></ul><h2 id="2-下载go-cqhttp"><a href="#2-下载go-cqhttp" class="headerlink" title="2. 下载go-cqhttp"></a>2. 下载go-cqhttp</h2><ul><li><h4 id="打开go-cqhttp"><a href="#打开go-cqhttp" class="headerlink" title="打开go-cqhttp"></a>打开<a href="https://github.com/Mrs4s/go-cqhttp/releases">go-cqhttp</a></h4></li><li><h4 id="选择最新版本，下载go-cqhttp-windows-amd64-exe，将其重命名为go-cqhttp-exe"><a href="#选择最新版本，下载go-cqhttp-windows-amd64-exe，将其重命名为go-cqhttp-exe" class="headerlink" title="选择最新版本，下载go-cqhttp_windows_amd64.exe，将其重命名为go-cqhttp.exe"></a>选择最新版本，下载go-cqhttp_windows_amd64.exe，将其重命名为go-cqhttp.exe</h4></li><li><h4 id="选择一个空文件夹放置文件，将刚才生成的config-yml移动到当前文件夹"><a href="#选择一个空文件夹放置文件，将刚才生成的config-yml移动到当前文件夹" class="headerlink" title="选择一个空文件夹放置文件，将刚才生成的config,yml移动到当前文件夹"></a>选择一个空文件夹放置文件，将刚才生成的config,yml移动到当前文件夹</h4></li><li><h4 id="创建一个文本文件，输入以下内容"><a href="#创建一个文本文件，输入以下内容" class="headerlink" title="创建一个文本文件，输入以下内容"></a>创建一个文本文件，输入以下内容</h4></li><li><pre><code>./go-cqhttp.exe<pre class="line-numbers language-none"><code class="language-none">+ #### 将其重命名为start.bat，双击打开文件，待其出现验证码后使用手机qq进行扫码登录+ #### 此时继续打开leafBotPlugin_windows_amd64.exe## 3. 验证##### 使用qq向机器人qq发送<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>/echo 123<pre class="line-numbers language-none"><code class="language-none">###### 如果机器人回复<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>123</code></pre></li></ul><h6 id="证明机器人搭建成功"><a href="#证明机器人搭建成功" class="headerlink" title="证明机器人搭建成功"></a>证明机器人搭建成功</h6><h2 id="4-更多命令"><a href="#4-更多命令" class="headerlink" title="4.更多命令"></a>4.更多命令</h2><p><a href="https://vtsqr.xyz/leafBotPlugin/Features">机器人帮助</a></p><p>需要更多功能欢迎联系邮箱：<a href="mailto:&#51;&#51;&#x34;&#x33;&#x37;&#x38;&#48;&#x33;&#x37;&#x36;&#64;&#x71;&#113;&#x2e;&#99;&#111;&#109;">&#51;&#51;&#x34;&#x33;&#x37;&#x38;&#48;&#x33;&#x37;&#x36;&#64;&#x71;&#113;&#x2e;&#99;&#111;&#109;</a></p><p>或直接在github提交issue</p><p><a href="https://github.com/huoxue1/leafBotPlugin">https://github.com/huoxue1/leafBotPlugin</a></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> bot </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> bot </tag>
+            
+            <tag> go </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>playwright报错缺少libatk-1.0.so.0:异常处理.md</title>
       <link href="/2021/08/18/playwright-bao-cuo-que-shao-libatk-1-0-so-0-yi-chang-chu-li-md/"/>
       <url>/2021/08/18/playwright-bao-cuo-que-shao-libatk-1-0-so-0-yi-chang-chu-li-md/</url>
