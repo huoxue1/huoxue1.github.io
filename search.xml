@@ -13,12 +13,14 @@
       
       <categories>
           
-          <category> default </category>
+          <category> exception </category>
           
       </categories>
       
       
         <tags>
+            
+            <tag> exception </tag>
             
             <tag> android </tag>
             
