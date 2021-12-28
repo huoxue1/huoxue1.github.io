@@ -431,8 +431,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/default/">
-                                <span class="chip bg-color">default</span>
+                            <a href="/tags/bot/">
+                                <span class="chip bg-color">bot</span>
                             </a>
                         
                     </div>
@@ -443,8 +443,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/default/" class="post-category">
-                                default
+                            <a href="/categories/bot-go/" class="post-category">
+                                bot,go
                             </a>
                         
                     </div>
@@ -480,7 +480,151 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                
+                <h1 id="环境搭建"><a href="#环境搭建" class="headerlink" title="环境搭建"></a>环境搭建</h1><h2 id="安装golang"><a href="#安装golang" class="headerlink" title="安装golang"></a>安装golang</h2><ul>
+<li>从golang<a target="_blank" rel="noopener" href="https://studygolang.com/dl">中文官网</a>下载go语言安装包</li>
+<li>下载完成后解压配置环境变量</li>
+</ul>
+<p>命令行输入<strong>go version</strong></p>
+<p><img src="https://gitee.com/aabbccddeeeff/img/raw/master//img/202112282212881.png"></p>
+<h2 id="安装goland"><a href="#安装goland" class="headerlink" title="安装goland"></a>安装goland</h2><ul>
+<li>从goland官网下载goland安装包</li>
+<li>双击后正常安装就可</li>
+</ul>
+<h1 id="创建项目"><a href="#创建项目" class="headerlink" title="创建项目"></a>创建项目</h1><h2 id="初始化项目"><a href="#初始化项目" class="headerlink" title="初始化项目"></a>初始化项目</h2><ul>
+<li>打开goland,创建go项目，取名为leafBot-plugin</li>
+<li>初始化项目<code>go mod init github.com/huoxue1/fan</code></li>
+<li>安装leafbot依赖  <code>go get github.com/huoxue1/leafbot</code></li>
+<li>跟项目下创建<strong>main.go</strong>文件</li>
+</ul>
+<h2 id="编写main-go文件，初始化leafBot"><a href="#编写main-go文件，初始化leafBot" class="headerlink" title="编写main.go文件，初始化leafBot"></a>编写main.go文件，初始化leafBot</h2><ul>
+<li>在<strong>main.go</strong>中修改package为main</li>
+<li>创建main方法，添加如下代码<pre class="line-numbers language-go" data-language="go"><code class="language-go"><span class="token comment">// main方法，项目运行起点</span>
+<span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token comment">// 创建一个cqhttp的driver</span>
+	driver <span class="token operator">:=</span> cqhttp_default_driver<span class="token punctuation">.</span><span class="token function">NewDriver</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token comment">// 为leafBot加载该驱动</span>
+	leafbot<span class="token punctuation">.</span><span class="token function">LoadDriver</span><span class="token punctuation">(</span>driver<span class="token punctuation">)</span>
+    <span class="token comment">// 初始化leafBot</span>
+	leafbot<span class="token punctuation">.</span><span class="token function">InitBots</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token comment">// 运行cqhttp驱动</span>
+	driver<span class="token punctuation">.</span><span class="token function">Run</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+<li>一般main.go会自动导入如下依赖<pre class="line-numbers language-go" data-language="go"><code class="language-go"><span class="token keyword">import</span> <span class="token punctuation">(</span>
+    <span class="token comment">// leafbot核心依赖</span>
+	<span class="token string">"github.com/huoxue1/leafbot"</span>
+    <span class="token comment">// leafbot的cqhttp与leafbot直接结合所用的依赖</span>
+	<span class="token string">"github.com/huoxue1/leafbot/cqhttp_default_driver"</span>
+<span class="token punctuation">)</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+<li>main.go最终结果为<pre class="line-numbers language-go" data-language="go"><code class="language-go"><span class="token keyword">package</span> main
+
+<span class="token keyword">import</span> <span class="token punctuation">(</span>
+	<span class="token string">"github.com/huoxue1/leafbot"</span>
+	<span class="token string">"github.com/huoxue1/leafbot/cqhttp_default_driver"</span>
+<span class="token punctuation">)</span>
+
+<span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+	driver <span class="token operator">:=</span> cqhttp_default_driver<span class="token punctuation">.</span><span class="token function">NewDriver</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+	leafbot<span class="token punctuation">.</span><span class="token function">LoadDriver</span><span class="token punctuation">(</span>driver<span class="token punctuation">)</span>
+	leafbot<span class="token punctuation">.</span><span class="token function">InitBots</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+	driver<span class="token punctuation">.</span><span class="token function">Run</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+<li>首次运行该项目，输入bot的qq号即可<br><img src="https://gitee.com/aabbccddeeeff/img/raw/master//img/202112282225028.png"></li>
+<li>再次运行，因为还需要初始化go-cqhttp的配置文件，所有好需要交互<br><img src="https://gitee.com/aabbccddeeeff/img/raw/master//img/202112282226998.png"></li>
+<li>再次运行即可运行成功，生成二维码后使用手机扫码登录即可<br><img src="https://gitee.com/aabbccddeeeff/img/raw/master//img/202112282227074.png"></li>
+</ul>
+<h1 id="插件编写"><a href="#插件编写" class="headerlink" title="插件编写"></a>插件编写</h1><h2 id="创建插件项目"><a href="#创建插件项目" class="headerlink" title="创建插件项目"></a>创建插件项目</h2><ul>
+<li>在项目跟目录添加文件夹plugin，在plugin下继续创建文件夹plugin-manager，并且创建manager.go文件</li>
+<li>在manager.go文件夹中添加如下代码<pre class="line-numbers language-go" data-language="go"><code class="language-go"><span class="token keyword">package</span> group_manager
+
+<span class="token keyword">import</span> <span class="token punctuation">(</span>
+	<span class="token string">"fmt"</span>
+	<span class="token string">"strconv"</span>
+
+	<span class="token string">"github.com/huoxue1/leafbot"</span>
+	<span class="token string">"github.com/huoxue1/leafbot/message"</span>
+<span class="token punctuation">)</span>
+
+<span class="token keyword">func</span> <span class="token function">init</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+	<span class="token function">manager</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">&#125;</span>
+
+<span class="token keyword">func</span> <span class="token function">manager</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token comment">// 创建一个leafBot插件，插件名为group-manager</span>
+	plugin <span class="token operator">:=</span> leafbot<span class="token punctuation">.</span><span class="token function">NewPlugin</span><span class="token punctuation">(</span><span class="token string">"group-manager"</span><span class="token punctuation">)</span>
+	<span class="token comment">// 为plugin添加一个matcher,匹配器为Onstart，即匹配消息开始为升为管理的语句</span>
+	plugin<span class="token punctuation">.</span><span class="token function">OnStart</span><span class="token punctuation">(</span><span class="token string">"升为管理"</span><span class="token punctuation">,</span> leafbot<span class="token punctuation">.</span>Option<span class="token punctuation">&#123;</span>
+        <span class="token comment">// 添加matcher的权重，权重越低，越先匹配</span>
+		Weight<span class="token punctuation">:</span> <span class="token number">1</span><span class="token punctuation">,</span>
+        <span class="token comment">// 设置匹配成功后是否匹配其他matcher</span>
+		Block<span class="token punctuation">:</span>  <span class="token boolean">true</span><span class="token punctuation">,</span>
+		Rules<span class="token punctuation">:</span>  <span class="token punctuation">[</span><span class="token punctuation">]</span>leafbot<span class="token punctuation">.</span>Rule<span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
+	<span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">Handle</span><span class="token punctuation">(</span><span class="token keyword">func</span><span class="token punctuation">(</span>ctx <span class="token operator">*</span>leafbot<span class="token punctuation">.</span>Context<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token comment">// 遍历事件中的message</span>
+		<span class="token keyword">for</span> <span class="token boolean">_</span><span class="token punctuation">,</span> v <span class="token operator">:=</span> <span class="token keyword">range</span> ctx<span class="token punctuation">.</span>Event<span class="token punctuation">.</span>Message <span class="token punctuation">&#123;</span>
+            <span class="token comment">// 判断事件中的消息类型weiat</span>
+			<span class="token keyword">if</span> v<span class="token punctuation">.</span>Type <span class="token operator">==</span> <span class="token string">"at"</span> <span class="token punctuation">&#123;</span>
+                <span class="token comment">// 取出at的qq号，并强制转为整形</span>
+				qq<span class="token punctuation">,</span> <span class="token boolean">_</span> <span class="token operator">:=</span> strconv<span class="token punctuation">.</span><span class="token function">Atoi</span><span class="token punctuation">(</span>v<span class="token punctuation">.</span>Data<span class="token punctuation">[</span><span class="token string">"qq"</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+                <span class="token comment">// 调用api，为其设置为管理员</span>
+				ctx<span class="token punctuation">.</span>Bot<span class="token punctuation">.</span><span class="token punctuation">(</span>leafbot<span class="token punctuation">.</span>OneBotApi<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">SetGroupAdmin</span><span class="token punctuation">(</span>ctx<span class="token punctuation">.</span>Event<span class="token punctuation">.</span>GroupId<span class="token punctuation">,</span> qq<span class="token punctuation">,</span> <span class="token boolean">true</span><span class="token punctuation">)</span>
+                <span class="token comment">// 发送消息，xxx已升为管理员</span>
+				ctx<span class="token punctuation">.</span><span class="token function">Send</span><span class="token punctuation">(</span>message<span class="token punctuation">.</span><span class="token function">Text</span><span class="token punctuation">(</span>fmt<span class="token punctuation">.</span><span class="token function">Sprintf</span><span class="token punctuation">(</span><span class="token string">"%v已经升为管理员"</span><span class="token punctuation">,</span> qq<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+			<span class="token punctuation">&#125;</span>
+		<span class="token punctuation">&#125;</span>
+	<span class="token punctuation">&#125;</span><span class="token punctuation">)</span>
+
+	<span class="token comment">// 取消管理</span>
+	plugin<span class="token punctuation">.</span><span class="token function">OnStart</span><span class="token punctuation">(</span><span class="token string">"取消管理"</span><span class="token punctuation">,</span>leafbot<span class="token punctuation">.</span>Option<span class="token punctuation">&#123;</span>
+		Weight<span class="token punctuation">:</span> <span class="token number">1</span><span class="token punctuation">,</span>
+		Block<span class="token punctuation">:</span>  <span class="token boolean">true</span><span class="token punctuation">,</span>
+	<span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">Handle</span><span class="token punctuation">(</span><span class="token keyword">func</span><span class="token punctuation">(</span>ctx <span class="token operator">*</span>leafbot<span class="token punctuation">.</span>Context<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+		<span class="token keyword">for</span> <span class="token boolean">_</span><span class="token punctuation">,</span> v <span class="token operator">:=</span> <span class="token keyword">range</span> ctx<span class="token punctuation">.</span>Event<span class="token punctuation">.</span>Message <span class="token punctuation">&#123;</span>
+			<span class="token keyword">if</span> v<span class="token punctuation">.</span>Type <span class="token operator">==</span> <span class="token string">"at"</span> <span class="token punctuation">&#123;</span>
+				qq<span class="token punctuation">,</span> <span class="token boolean">_</span> <span class="token operator">:=</span> strconv<span class="token punctuation">.</span><span class="token function">Atoi</span><span class="token punctuation">(</span>v<span class="token punctuation">.</span>Data<span class="token punctuation">[</span><span class="token string">"qq"</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+				ctx<span class="token punctuation">.</span>Bot<span class="token punctuation">.</span><span class="token punctuation">(</span>leafbot<span class="token punctuation">.</span>OneBotApi<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">SetGroupAdmin</span><span class="token punctuation">(</span>ctx<span class="token punctuation">.</span>Event<span class="token punctuation">.</span>GroupId<span class="token punctuation">,</span> qq<span class="token punctuation">,</span> <span class="token boolean">false</span><span class="token punctuation">)</span>
+				ctx<span class="token punctuation">.</span><span class="token function">Send</span><span class="token punctuation">(</span>message<span class="token punctuation">.</span><span class="token function">Text</span><span class="token punctuation">(</span>fmt<span class="token punctuation">.</span><span class="token function">Sprintf</span><span class="token punctuation">(</span><span class="token string">"%v已被取消管理员"</span><span class="token punctuation">,</span> qq<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+			<span class="token punctuation">&#125;</span>
+		<span class="token punctuation">&#125;</span>
+	<span class="token punctuation">&#125;</span><span class="token punctuation">)</span>
+
+<span class="token punctuation">&#125;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+<li>在main.go中导入该插件，即在import中添加<pre class="line-numbers language-none"><code class="language-none">import(
+	&quot;github.com&#x2F;huoxue1&#x2F;leafbot&quot;
+	&quot;github.com&#x2F;huoxue1&#x2F;leafbot&#x2F;cqhttp_default_driver&quot;
+
+	_ &quot;github.com&#x2F;huoxue1&#x2F;fan&#x2F;plugin&#x2F;group-mamanger&quot;
+)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+<li>运行后，在机器人为群主的群里发送，升为管理并且艾特需要升为管理的人即可设置管理</li>
+</ul>
+<h1 id="leafBot解释"><a href="#leafBot解释" class="headerlink" title="leafBot解释"></a>leafBot解释</h1><p>leafBot为一个go语言版本实现了onebot11协议的SDK,推荐对接onebot为go-cqhttp<br>leafBot除了Onstart匹配器外，还有匹配器</p>
+<pre class="line-numbers language-go" data-language="go"><code class="language-go"><span class="token comment">// 命令匹配</span>
+<span class="token function">OnCommand</span><span class="token punctuation">(</span>command <span class="token builtin">string</span><span class="token punctuation">,</span> options <span class="token operator">...</span>Option<span class="token punctuation">)</span> Matcher
+<span class="token comment">// 消息匹配</span>
+<span class="token function">OnMessage</span><span class="token punctuation">(</span>messageType <span class="token builtin">string</span><span class="token punctuation">,</span> options <span class="token operator">...</span>Option<span class="token punctuation">)</span> Matcher
+<span class="token comment">// 请求事件匹配</span>
+<span class="token function">OnRequest</span><span class="token punctuation">(</span>requestType <span class="token builtin">string</span><span class="token punctuation">,</span> options <span class="token operator">...</span>Option<span class="token punctuation">)</span> Matcher
+<span class="token comment">// 提醒事件匹配</span>
+<span class="token function">OnNotice</span><span class="token punctuation">(</span>noticeType <span class="token builtin">string</span><span class="token punctuation">,</span> options <span class="token operator">...</span>Option<span class="token punctuation">)</span> Matcher
+<span class="token comment">// 元事件匹配</span>
+<span class="token function">OnMeta</span><span class="token punctuation">(</span>options <span class="token operator">...</span>Option<span class="token punctuation">)</span> Matcher
+<span class="token comment">// 正则匹配</span>
+<span class="token function">OnRegex</span><span class="token punctuation">(</span>regexMatcher <span class="token builtin">string</span><span class="token punctuation">,</span> options <span class="token operator">...</span>Option<span class="token punctuation">)</span> Matcher
+<span class="token comment">// 匹配字符串开始</span>
+<span class="token function">OnStart</span><span class="token punctuation">(</span>start <span class="token builtin">string</span><span class="token punctuation">,</span> options <span class="token operator">...</span>Option<span class="token punctuation">)</span> Matcher
+<span class="token comment">// 匹配字符串结尾</span>
+<span class="token function">OnEnd</span><span class="token punctuation">(</span>end <span class="token builtin">string</span><span class="token punctuation">,</span> options <span class="token operator">...</span>Option<span class="token punctuation">)</span> Matcher
+<span class="token comment">// 消息完全匹配</span>
+<span class="token function">OnFullMatch</span><span class="token punctuation">(</span>content <span class="token builtin">string</span><span class="token punctuation">,</span> options <span class="token operator">...</span>Option<span class="token punctuation">)</span> Matcher
+<span class="token comment">// 群组消息完全匹配</span>
+<span class="token function">OnFullMatchGroup</span><span class="token punctuation">(</span>content <span class="token builtin">string</span><span class="token punctuation">,</span> options <span class="token operator">...</span>Option<span class="token punctuation">)</span> Matcher
+<span class="token comment">// bot连接回调</span>
+<span class="token function">OnConnect</span><span class="token punctuation">(</span>options <span class="token operator">...</span>Option<span class="token punctuation">)</span> Matcher
+<span class="token comment">// bot断开回调</span>
+<span class="token function">OnDisConnect</span><span class="token punctuation">(</span>options <span class="token operator">...</span>Option<span class="token punctuation">)</span> Matcher<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>更多内容参考<a target="_blank" rel="noopener" href="https://github.com/huoxue1/leafbot">LeafBot</a></p>
+
                 
             </div>
             <hr/>
@@ -544,8 +688,8 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/default/">
-                                    <span class="chip bg-color">default</span>
+                                <a href="/tags/bot/">
+                                    <span class="chip bg-color">bot</span>
                                 </a>
                             
                         </div>
@@ -745,8 +889,8 @@
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/default/" class="post-category">
-                                    default
+                            <a href="/categories/bot-go/" class="post-category">
+                                    bot,go
                                 </a>
                             
                             
@@ -757,8 +901,8 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/default/">
-                        <span class="chip bg-color">default</span>
+                    <a href="/tags/bot/">
+                        <span class="chip bg-color">bot</span>
                     </a>
                     
                 </div>
