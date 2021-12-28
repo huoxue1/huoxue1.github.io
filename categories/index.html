@@ -377,10 +377,19 @@
                 </a>
                 
                 
+                <a href="/categories/default/" title="default: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            style="background-color: #F5EEF8;">default
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
                 <a href="/categories/exception/" title="exception: 1">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            style="background-color: #F5EEF8;">exception
+                            style="background-color: #D5F5E3;">exception
                         <span class="tag-length">1</span>
                     </span>
                 </a>
@@ -428,7 +437,7 @@
                     color: '#3C4858'
                 }
             },
-            indicator: [{"name":"bot","max":2},{"name":"exception","max":2}],
+            indicator: [{"name":"bot","max":2},{"name":"default","max":2},{"name":"exception","max":2}],
             nameGap: 5,
             center: ['50%','55%'],
             radius: '66%'
@@ -439,7 +448,7 @@
             itemStyle: {normal: {areaStyle: {type: 'default'}}},
             data : [
                 {
-                    value : [1,1],
+                    value : [1,1,1],
                     name : '文章分类数量'
                 }
             ]
