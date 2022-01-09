@@ -370,21 +370,21 @@
                     <div class="post-statis col l4 hide-on-med-and-down" data-aos="zoom-in-right">
                         
 <div class="statis">
-    <span class="count"><a href="/">9</a></span>
+    <span class="count"><a href="/">10</a></span>
     <span class="name">文章</span>
 </div>
 
 
 
 <div class="statis">
-    <span class="count"><a href="/categories">3</a></span>
+    <span class="count"><a href="/categories">4</a></span>
     <span class="name">分类</span>
 </div>
 
 
 
 <div class="statis">
-    <span class="count"><a href="/tags">8</a></span>
+    <span class="count"><a href="/tags">9</a></span>
     <span class="name">标签</span>
 </div>
 
@@ -400,21 +400,21 @@
                                 <div class="post-statis hide-on-large-only" data-aos="zoom-in-right">
                                     
 <div class="statis">
-    <span class="count"><a href="/">9</a></span>
+    <span class="count"><a href="/">10</a></span>
     <span class="name">文章</span>
 </div>
 
 
 
 <div class="statis">
-    <span class="count"><a href="/categories">3</a></span>
+    <span class="count"><a href="/categories">4</a></span>
     <span class="name">分类</span>
 </div>
 
 
 
 <div class="statis">
-    <span class="count"><a href="/tags">8</a></span>
+    <span class="count"><a href="/tags">9</a></span>
     <span class="name">标签</span>
 </div>
 
@@ -540,7 +540,7 @@
         },
         xAxis: {
             type: 'category',
-            data: ["2020-12","2021-01","2021-02","2021-03","2021-04","2021-05","2021-06","2021-07","2021-08","2021-09","2021-10","2021-11","2021-12"]
+            data: ["2021-01","2021-02","2021-03","2021-04","2021-05","2021-06","2021-07","2021-08","2021-09","2021-10","2021-11","2021-12","2022-01"]
         },
         yAxis: {
             type: 'value',
@@ -550,7 +550,7 @@
                 name: '文章篇数',
                 type: 'line',
                 color: ['#6772e5'],
-                data: [0,0,0,0,0,0,0,0,6,0,1,0,2],
+                data: [0,0,0,0,0,0,0,6,0,1,0,2,1],
                 markPoint: {
                     symbolSize: 45,
                     color: ['#fa755a','#3ecf8e','#82d3f4'],
@@ -592,7 +592,7 @@
                 type: 'pie',
                 radius: '50%',
                 color: ['#6772e5', '#ff9e0f', '#fa755a', '#3ecf8e', '#82d3f4', '#ab47bc', '#525f7f', '#f51c47', '#26A69A'],
-                data: [{"name":"bot","value":2},{"name":"bot,go","value":1},{"name":"exception","value":1}],
+                data: [{"name":"bot","value":2},{"name":"bot,go","value":1},{"name":"default","value":1},{"name":"exception","value":1}],
                 itemStyle: {
                     emphasis: {
                         shadowBlur: 10,
@@ -616,7 +616,7 @@
         xAxis: [
             {
                 type: 'category',
-                data: ["java","exception","bot","git","bot,go","go","python","android"]
+                data: ["bot","java","exception","bot,go","git","default","python","android","go"]
             }
         ],
         yAxis: [
@@ -629,7 +629,7 @@
                 type: 'bar',
                 color: ['#82d3f4'],
                 barWidth : 18,
-                data: [2,2,2,1,1,1,1,1],
+                data: [2,2,2,1,1,1,1,1,1],
                 markPoint: {
                     symbolSize: 45,
                     data: [{
@@ -747,26 +747,14 @@
         <div class="tag-chips center-align">
             
             
-            <a href="/tags/git/">
-                <span class="chip center-align waves-effect waves-light chip-default">git</span>
-            </a>
-            
-            
-            
             <a href="/tags/bot-go/">
                 <span class="chip center-align waves-effect waves-light chip-default">bot,go</span>
             </a>
             
             
             
-            <a href="/tags/java/">
-                <span class="chip center-align waves-effect waves-light chip-default">java</span>
-            </a>
-            
-            
-            
-            <a href="/tags/exception/">
-                <span class="chip center-align waves-effect waves-light chip-default">exception</span>
+            <a href="/tags/git/">
+                <span class="chip center-align waves-effect waves-light chip-default">git</span>
             </a>
             
             
@@ -777,8 +765,14 @@
             
             
             
-            <a href="/tags/go/">
-                <span class="chip center-align waves-effect waves-light chip-default">go</span>
+            <a href="/tags/default/">
+                <span class="chip center-align waves-effect waves-light chip-default">default</span>
+            </a>
+            
+            
+            
+            <a href="/tags/java/">
+                <span class="chip center-align waves-effect waves-light chip-default">java</span>
             </a>
             
             
@@ -791,6 +785,18 @@
             
             <a href="/tags/android/">
                 <span class="chip center-align waves-effect waves-light chip-default">android</span>
+            </a>
+            
+            
+            
+            <a href="/tags/exception/">
+                <span class="chip center-align waves-effect waves-light chip-default">exception</span>
+            </a>
+            
+            
+            
+            <a href="/tags/go/">
+                <span class="chip center-align waves-effect waves-light chip-default">go</span>
             </a>
             
             
@@ -916,7 +922,7 @@
         <div class="col s12 m8 l8 copy-right">
             Copyright&nbsp;&copy;
             
-                <span id="year">2019-2021</span>
+                <span id="year">2019-2022</span>
             
             <span id="year">2019</span>
             <a href="/about" target="_blank">huoxue1</a>

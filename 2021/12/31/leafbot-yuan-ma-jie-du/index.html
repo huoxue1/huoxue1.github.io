@@ -485,8 +485,7 @@
 <li><h3 id="leafbot的github仓库地址为-http-github-con-huoxue1-leafbot"><a href="#leafbot的github仓库地址为-http-github-con-huoxue1-leafbot" class="headerlink" title="leafbot的github仓库地址为:http://github.con/huoxue1/leafbot"></a>leafbot的github仓库地址为:<a target="_blank" rel="noopener" href="http://github.con/huoxue1/leafbot">http://github.con/huoxue1/leafbot</a></h3></li>
 <li><h3 id="leafbot文档地址为：https-vtsqr-xyz-leafbot-dist"><a href="#leafbot文档地址为：https-vtsqr-xyz-leafbot-dist" class="headerlink" title="leafbot文档地址为：https://vtsqr.xyz/leafbot/dist/"></a>leafbot文档地址为：<a href="https://vtsqr.xyz/leafbot/dist/">https://vtsqr.xyz/leafbot/dist/</a></h3></li>
 </ul>
-<h1 id="driver介绍"><a href="#driver介绍" class="headerlink" title="driver介绍"></a>driver介绍</h1><pre><code>    driver为和onebot端的通信抽象层实现，目前内置了四种driver，分别对应了go-cqhttp的三种通信模式，还有一个直接连接go-cqhttp进行内置启动,driver包含在形目的driver文件夹下面，每一个driver需要实现如下接口。
-</code></pre>
+<h1 id="driver介绍"><a href="#driver介绍" class="headerlink" title="driver介绍"></a>driver介绍</h1><p>driver为和onebot端的通信抽象层实现，目前内置了四种driver，分别对应了go-cqhttp的三种通信模式，还有一个直接连接go-cqhttp进行内置启动,driver包含在形目的driver文件夹下面，每一个driver需要实现如下接口。</p>
 <pre class="line-numbers language-go" data-language="go"><code class="language-go"><span class="token keyword">type</span> Driver <span class="token keyword">interface</span> <span class="token punctuation">&#123;</span>
 	<span class="token comment">// Run</span>
 	<span class="token comment">// @Description: 运行该驱动的接口，该接口应该为阻塞式运行</span>
@@ -522,10 +521,10 @@
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <ul>
-<li><h2 id="cqhttp-http-driver"><a href="#cqhttp-http-driver" class="headerlink" title="cqhttp_http_driver"></a>cqhttp_http_driver</h2><pre><code>  该驱动对应go-cqhttp的http连接方式，需要在配置文件中配置listen_address和listen_port，分别为leafbot的监听地址，还需要配置对应的webhook，对应了go-cqhttp端的监听地址。
-
-  driver通过实现了http包中的handler接口，即实现了ServerHttp方法，在ServerHttp方法中监听来自cqhttp的上报消息，并在在run方法中注册bot对象，每一个bot对象记录了自己上报端的接口地址和自己的selfId,bot通过调用Do方法进行api的调用
-</code></pre>
+<li><h2 id="cqhttp-http-driver"><a href="#cqhttp-http-driver" class="headerlink" title="cqhttp_http_driver"></a>cqhttp_http_driver</h2></li>
+</ul>
+<p>该驱动对应go-cqhttp的http连接方式，需要在配置文件中配置listen_address和listen_port，分别为leafbot的监听地址，还需要配置对应的webhook，对应了go-cqhttp端的监听地址。</p>
+<p>driver通过实现了http包中的handler接口，即实现了ServerHttp方法，在ServerHttp方法中监听来自cqhttp的上报消息，并在在run方法中注册bot对象，每一个bot对象记录了自己上报端的接口地址和自己的selfId,bot通过调用Do方法进行api的调用</p>
 <pre class="line-numbers language-go" data-language="go"><code class="language-go">
 
 <span class="token comment">// 实现了ServerHttp方法</span>
@@ -580,13 +579,12 @@
 		<span class="token keyword">return</span>
 	<span class="token punctuation">&#125;</span>
 	b<span class="token punctuation">.</span>responses<span class="token punctuation">.</span><span class="token function">Store</span><span class="token punctuation">(</span>data<span class="token punctuation">.</span>Echo<span class="token punctuation">,</span> resp<span class="token punctuation">)</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
-</ul>
-<ul>
-<li><h2 id="cqhttp-positive-driver"><a href="#cqhttp-positive-driver" class="headerlink" title="cqhttp_positive_driver"></a>cqhttp_positive_driver</h2><pre><code>      该驱动对应了go-cqhttp的正向websocket连接方式，即go-cqhttp为服务的，leafbot为客户端，只需要在配置文件中配置**host**和**port**即可，对应了go-cqhttp的正向ws监听地址。
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-      该驱动通过直接在Run方法中主动连接onebot端进行通信，然后再连接成功后从请求头中获取到bot的SelfId。并且创建Bot对象，bot对象中持有ws的conn连接对象，可以通过该对象主动进行Api调用。
-</code></pre>
+
+<ul>
+<li><h2 id="cqhttp-positive-driver"><a href="#cqhttp-positive-driver" class="headerlink" title="cqhttp_positive_driver"></a>cqhttp_positive_driver</h2><p>  该驱动对应了go-cqhttp的正向websocket连接方式，即go-cqhttp为服务的，leafbot为客户端，只需要在配置文件中配置<strong>host</strong>和<strong>port</strong>即可，对应了go-cqhttp的正向ws监听地址。</p>
+<p>  该驱动通过直接在Run方法中主动连接onebot端进行通信，然后再连接成功后从请求头中获取到bot的SelfId。并且创建Bot对象，bot对象中持有ws的conn连接对象，可以通过该对象主动进行Api调用。</p>
 </li>
 </ul>
  <pre class="line-numbers language-go" data-language="go"><code class="language-go"> <span class="token keyword">func</span> <span class="token punctuation">(</span>d <span class="token operator">*</span>Driver<span class="token punctuation">)</span> <span class="token function">Run</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
@@ -648,10 +646,8 @@
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <ul>
-<li><h2 id="cqhttp-reverse-driver"><a href="#cqhttp-reverse-driver" class="headerlink" title="cqhttp_reverse_driver"></a>cqhttp_reverse_driver</h2><pre><code>  该驱动对应了cqhttp的反向websocket连接方式，需要配置host和port即可，该驱动leafbot作为服务器，onebot端主动连接leafbot，所以可以实现同时连接多个onebot实现。
-
-  驱动通过实现http包中的handler接口，再SeverHttp方法中，升级http协议为websocket协议，然后再升级成功后从header中获取selfId，然后创建Bot对象，bot对象分别持有websocket连接对象，可以通过对象赖调用对应的Onebot的api.
-</code></pre>
+<li><h2 id="cqhttp-reverse-driver"><a href="#cqhttp-reverse-driver" class="headerlink" title="cqhttp_reverse_driver"></a>cqhttp_reverse_driver</h2><p>  该驱动对应了cqhttp的反向websocket连接方式，需要配置host和port即可，该驱动leafbot作为服务器，onebot端主动连接leafbot，所以可以实现同时连接多个onebot实现。</p>
+<p>  驱动通过实现http包中的handler接口，再SeverHttp方法中，升级http协议为websocket协议，然后再升级成功后从header中获取selfId，然后创建Bot对象，bot对象分别持有websocket连接对象，可以通过对象赖调用对应的Onebot的api.</p>
 </li>
 </ul>
 <pre class="line-numbers language-go" data-language="go"><code class="language-go"><span class="token keyword">func</span> <span class="token punctuation">(</span>d <span class="token operator">*</span>Driver<span class="token punctuation">)</span> <span class="token function">ServeHTTP</span><span class="token punctuation">(</span>writer http<span class="token punctuation">.</span>ResponseWriter<span class="token punctuation">,</span> request <span class="token operator">*</span>http<span class="token punctuation">.</span>Request<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
@@ -710,8 +706,7 @@
 <span class="token punctuation">&#125;</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h2 id="cqhttp-default-driver"><a href="#cqhttp-default-driver" class="headerlink" title="cqhttp_default_driver"></a>cqhttp_default_driver</h2><pre><code>    该驱动为leafbot最新版本添加的驱动，通过调用go-cqhttp的registerServer对象，直接实现内置go-cqhttp来实现铜线，驱动在run方法中调用了gocq.Main()方法，并且注册了一个默认的服务，注册了一个事件回调，使用该驱动控制台同时会输出go-cqhttp的日志和leafbot日志。并且leafbot一些日志配置会被go-cqhttp所覆盖。
-</code></pre>
+<h2 id="cqhttp-default-driver"><a href="#cqhttp-default-driver" class="headerlink" title="cqhttp_default_driver"></a>cqhttp_default_driver</h2><p>该驱动为leafbot最新版本添加的驱动，通过调用go-cqhttp的registerServer对象，直接实现内置go-cqhttp来实现铜线，驱动在run方法中调用了gocq.Main()方法，并且注册了一个默认的服务，注册了一个事件回调，使用该驱动控制台同时会输出go-cqhttp的日志和leafbot日志。并且leafbot一些日志配置会被go-cqhttp所覆盖。</p>
 <pre class="line-numbers language-go" data-language="go"><code class="language-go">
 
 <span class="token keyword">func</span> <span class="token punctuation">(</span>d <span class="token operator">*</span>Driver<span class="token punctuation">)</span> <span class="token function">Run</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
@@ -734,10 +729,8 @@
 <span class="token punctuation">&#125;</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h1 id="Plugin介绍"><a href="#Plugin介绍" class="headerlink" title="Plugin介绍"></a>Plugin介绍</h1><pre><code>    leafbot使用命令模式进行运作，先注册插件，然后去回调插件中的方法，其中一个插件包含多个Matcher，一个Matcher为最小的执行者。
-
-    Plugin结构体中存储了当前插件的插件名、插件帮助以及插件所包含的Matcher，可以通过NewPlugin(name string)方法进行注册一个插件，插件实现了多个注册Matcher的方法。
-</code></pre>
+<h1 id="Plugin介绍"><a href="#Plugin介绍" class="headerlink" title="Plugin介绍"></a>Plugin介绍</h1><p>leafbot使用命令模式进行运作，先注册插件，然后去回调插件中的方法，其中一个插件包含多个Matcher，一个Matcher为最小的执行者。</p>
+<p>Plugin结构体中存储了当前插件的插件名、插件帮助以及插件所包含的Matcher，可以通过NewPlugin(name string)方法进行注册一个插件，插件实现了多个注册Matcher的方法。</p>
 <pre class="line-numbers language-go" data-language="go"><code class="language-go">   <span class="token comment">// Plugin所实现的方法</span>
 basePlugin <span class="token keyword">interface</span> <span class="token punctuation">&#123;</span>
 	<span class="token function">OnCommand</span><span class="token punctuation">(</span>command <span class="token builtin">string</span><span class="token punctuation">,</span> options <span class="token operator">...</span>Option<span class="token punctuation">)</span> Matcher
@@ -1032,18 +1025,17 @@ MatcherSet <span class="token keyword">interface</span> <span class="token punct
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="far fa-dot-circle"></i>&nbsp;本篇
-            </div>
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2021/12/31/leafbot-yuan-ma-jie-du/">
+                <a href="/2022/01/09/shi-yong-go-shi-xian-lian-zhan/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/22.jpg" class="responsive-img" alt="leafbot源码解读">
+                        <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="使用go实现链栈">
                         
-                        <span class="card-title">leafbot源码解读</span>
+                        <span class="card-title">使用go实现链栈</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1053,27 +1045,26 @@ MatcherSet <span class="token keyword">interface</span> <span class="token punct
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-12-31
-                            </span>
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2022-01-09
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/bot/" class="post-category">
-                                    bot
+                            <a href="/categories/default/" class="post-category">
+                                    default
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/bot-go/">
-                        <span class="chip bg-color">bot,go</span>
+                    <a href="/tags/default/">
+                        <span class="chip bg-color">default</span>
                     </a>
                     
                 </div>
@@ -1318,7 +1309,7 @@ MatcherSet <span class="token keyword">interface</span> <span class="token punct
         <div class="col s12 m8 l8 copy-right">
             Copyright&nbsp;&copy;
             
-                <span id="year">2019-2021</span>
+                <span id="year">2019-2022</span>
             
             <span id="year">2019</span>
             <a href="/about" target="_blank">huoxue1</a>
