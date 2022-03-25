@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>linux软件的安装</title>
+      <link href="/2022/03/25/linux-ruan-jian-de-an-zhuang/"/>
+      <url>/2022/03/25/linux-ruan-jian-de-an-zhuang/</url>
+      
+        <content type="html"><![CDATA[<h1 id="查询已经安装的软件"><a href="#查询已经安装的软件" class="headerlink" title="查询已经安装的软件"></a>查询已经安装的软件</h1><h2 id="软件的查询"><a href="#软件的查询" class="headerlink" title="软件的查询"></a>软件的查询</h2><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">rpm -qa | grep 软件名<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><h2 id="软件包的版本查询"><a href="#软件包的版本查询" class="headerlink" title="软件包的版本查询"></a>软件包的版本查询</h2><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">rpm -qi 软件名<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>软件包的常用信息</p><pre class="line-numbers language-none"><code class="language-none">Name: bzip2Version: 1.0.6Release : 0.17.20131004.git.e17Install DateL Thu 17 Mar 2022 08:39:28Size: 83791URL: http:&#x2F;&#x2F;www.bzip.org # 软件包来源<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><h2 id="软件包的安装位置"><a href="#软件包的安装位置" class="headerlink" title="软件包的安装位置"></a>软件包的安装位置</h2><pre class="line-numbers language-none"><code class="language-none">rmp -ql 软件名<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">&#x2F;etc                 -- 配置文件&#x2F;usr&#x2F;bin&#x2F;            -- 启动文件&#x2F;usr&#x2F;share&#x2F;man&#x2F;      -- 用户手册&#x2F;var&#x2F;lib&#x2F;mysql       -- 数据库文件&#x2F;var&#x2F;log&#x2F;            -- 日志目录&#x2F;var&#x2F;run&#x2F;            -- 进程号文件<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><h1 id="查询未安装的包的详细信息"><a href="#查询未安装的包的详细信息" class="headerlink" title="查询未安装的包的详细信息"></a>查询未安装的包的详细信息</h1><pre class="line-numbers language-none"><code class="language-none">rpm -qpi 软件报名rpm -qpl<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre><h1 id="软件的卸载"><a href="#软件的卸载" class="headerlink" title="软件的卸载"></a>软件的卸载</h1><pre class="line-numbers language-none"><code class="language-none">rpm -e 软件名rpm -ev 软件名 显示卸载信息并卸载rpm -evh 软件名，显示卸载信息和进度<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre><h1 id="软件的安装"><a href="#软件的安装" class="headerlink" title="软件的安装"></a>软件的安装</h1><pre class="line-numbers language-none"><code class="language-none">rmp -i 软件包名rmp -i 软件包名 --nodeps   # 忽略依赖关系安装<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre><h1 id="光驱的挂载与卸载"><a href="#光驱的挂载与卸载" class="headerlink" title="光驱的挂载与卸载"></a>光驱的挂载与卸载</h1><pre class="line-numbers language-none"><code class="language-none">&#x2F;dev  光驱的目录mount &#x2F;dev&#x2F;sr0 &#x2F;mnt -- 挂载光驱df -- 查询挂载umount &#x2F;dev&#x2F;sr0 -- 卸载光盘<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> linux </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> linux </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>vi的基础使用</title>
       <link href="/2022/03/25/vi-de-ji-chu-shi-yong/"/>
       <url>/2022/03/25/vi-de-ji-chu-shi-yong/</url>
