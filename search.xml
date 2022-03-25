@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>vi的基础使用</title>
+      <link href="/2022/03/25/vi-de-ji-chu-shi-yong/"/>
+      <url>/2022/03/25/vi-de-ji-chu-shi-yong/</url>
+      
+        <content type="html"><![CDATA[<h1 id="vi的三种模式"><a href="#vi的三种模式" class="headerlink" title="vi的三种模式"></a>vi的三种模式</h1><ul><li>命令模式</li><li>末行模式</li><li>编辑模式</li></ul><blockquote><p>命令模式 ==》末行模式   快捷键：冒号</p></blockquote><blockquote><p>命令模式 ==》 编辑模式  快捷键： a,i,o   ,a代表在光标前输入，i代表在光标后输入，o代表换行输入</p></blockquote><blockquote><p>编辑模式 ==》 命令模式  快捷键：esc</p></blockquote><h1 id="从vi中退出："><a href="#从vi中退出：" class="headerlink" title="从vi中退出："></a>从vi中退出：</h1><ul><li>进入命令模式</li><li>输入<strong>wq</strong> 保存并退出</li><li>输入<strong>q</strong> 不保存退出</li><li>输入q!强制退出</li></ul><h1 id="快捷键"><a href="#快捷键" class="headerlink" title="快捷键"></a>快捷键</h1><ul><li>移动到末尾,命令模式输入<br><code>:G</code></li><li>移动到第一行，行尾模式输入<code>:1</code></li><li>显示行数，行尾模式输入<code>:set nu</code></li><li>取消行数，行尾u模式输入<code>:set nonu</code></li><li>查询，输入<code>/</code></li><li>删除 在命令模式下输入<code>dd</code>,删除一整行，在行尾模式输入<code>:.,%d</code>,删除所有</li><li>复制，在行尾模式输入<code>:yy</code>,复制一整行，命令模式下<code>p</code>粘贴</li><li>命令模式<code>u</code>撤销上一步操作</li><li>行尾模式下 <code>s /old/new/g</code>进行替换</li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> linux </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> linux </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>用go实现队列</title>
       <link href="/2022/01/09/yong-go-shi-xian-dui-lie/"/>
       <url>/2022/01/09/yong-go-shi-xian-dui-lie/</url>
