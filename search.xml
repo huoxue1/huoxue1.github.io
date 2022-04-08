@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>hadoop的使用</title>
+      <link href="/2022/04/08/hadoop-de-shi-yong/"/>
+      <url>/2022/04/08/hadoop-de-shi-yong/</url>
+      
+        <content type="html"><![CDATA[<h1 id="什么是hadoop"><a href="#什么是hadoop" class="headerlink" title="什么是hadoop"></a>什么是hadoop</h1><blockquote><p>分布式大数据平台</p></blockquote><h1 id="hadoop组件"><a href="#hadoop组件" class="headerlink" title="hadoop组件"></a>hadoop组件</h1><ul><li>hdfs – <code>分布式文件系统</code></li><li>have – <code>数据仓库</code></li><li>HBase – <code>分布式数据库</code></li></ul><h1 id="hadoop的搭建"><a href="#hadoop的搭建" class="headerlink" title="hadoop的搭建"></a>hadoop的搭建</h1><blockquote><p>master  —主要节点 – 内存4500MB –cpu一个 – 硬盘40Gb – ip地址 10.0.0.100</p></blockquote><blockquote><p>slave   — 从节点 –内存  2500MB  –cpu一个 –硬盘40Gb – ip地址 10.0.0.200</p></blockquote><pre class="line-numbers language-none"><code class="language-none">systemtcl stop firewalled &amp;&amp;  systemtcl disable firewalled关闭防火墙&#x2F;etc&#x2F;selinux&#x2F;config  关闭linuxsetenforce 0 刷新配置文件&#x2F;etc&#x2F;hosts 本地host文件scp source目录 用户名@ip 源文件目录 # 远程copy文件<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><pre class="line-numbers language-none"><code class="language-none">ntpdate # 修改时间的工具ntp1.aliyun.com 阿里时间服务器ntpdate ntp1.aliyun.com 配置时间服务器clock -w 保存当前时间<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> default </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> default </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>linux软件的安装</title>
       <link href="/2022/03/25/linux-ruan-jian-de-an-zhuang/"/>
       <url>/2022/03/25/linux-ruan-jian-de-an-zhuang/</url>
