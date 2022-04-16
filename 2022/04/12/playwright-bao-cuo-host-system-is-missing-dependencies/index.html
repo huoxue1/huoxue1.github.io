@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="hadoop的使用, huoxue1&#39;s blog">
+    <meta name="keywords" content="playwright报错Host system is missing dependencies, huoxue1&#39;s blog">
     <meta name="description" content="用于记录学习中一些问题">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>hadoop的使用 | huoxue1&#39;s blog</title>
+    <title>playwright报错Host system is missing dependencies | huoxue1&#39;s blog</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -310,12 +310,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/8.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/3.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">hadoop的使用</h1>
+                    <h1 class="description center-align post-title">playwright报错Host system is missing dependencies</h1>
                 </div>
             </div>
         </div>
@@ -431,8 +431,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/default/">
-                                <span class="chip bg-color">default</span>
+                            <a href="/tags/exception/">
+                                <span class="chip bg-color">exception</span>
                             </a>
                         
                     </div>
@@ -443,8 +443,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/default/" class="post-category">
-                                default
+                            <a href="/categories/%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86/" class="post-category">
+                                异常处理
                             </a>
                         
                     </div>
@@ -456,7 +456,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2022-04-08
+                    2022-04-12
                 </div>
                 
 
@@ -480,84 +480,43 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="什么是hadoop"><a href="#什么是hadoop" class="headerlink" title="什么是hadoop"></a>什么是hadoop</h1><blockquote>
-<p>分布式大数据平台</p>
-</blockquote>
-<h1 id="hadoop组件"><a href="#hadoop组件" class="headerlink" title="hadoop组件"></a>hadoop组件</h1><ul>
-<li>hdfs – <code>分布式文件系统</code></li>
-<li>have – <code>数据仓库</code></li>
-<li>HBase – <code>分布式数据库</code></li>
+                <p>在使用playwright的过程中，在linux中运行总是会出现各种依赖问题，今天尝试解决。</p>
+<h1 id="playwright"><a href="#playwright" class="headerlink" title="playwright"></a>playwright</h1><h2 id="报错-Host-system-is-missing-dependencies"><a href="#报错-Host-system-is-missing-dependencies" class="headerlink" title="报错 Host system is missing dependencies"></a>报错 <strong>Host system is missing dependencies</strong></h2><ul>
+<li>系统：centos7</li>
+<li>playwright: 使用<a href="mailto:&#103;&#111;&#45;&#x70;&#x6c;&#x61;&#x79;&#x77;&#x72;&#105;&#103;&#x68;&#x74;&#64;&#x76;&#49;&#46;&#x31;&#x34;">&#103;&#111;&#45;&#x70;&#x6c;&#x61;&#x79;&#x77;&#x72;&#105;&#103;&#x68;&#x74;&#64;&#x76;&#49;&#46;&#x31;&#x34;</a></li>
+<li>浏览器： firefox</li>
+<li>具体报错  <details>
+  <summary>展开查看</summary>
+  <pre><code>
+  could not send message: could not send message to server: Host system is missing dependencies!
+  Missing libraries are:
+      libgtk-3.so.0
+      libgdk-3.so.0
+      libX11.so.6
+      libX11-xcb.so.1
+      libxcb.so.1
+      libXcomposite.so.1
+      libXcursor.so.1
+      libXdamage.so.1
+      libXext.so.6
+      libXfixes.so.3
+      libXi.so.6
+      libXrender.so.1
+      libfontconfig.so.1
+      libpangocairo-1.0.so.0
+      libpango-1.0.so.0
+      libharfbuzz.so.0
+      libatk-1.0.so.0
+      libcairo-gobject.so.2
+      libcairo.so.2
+      libgdk_pixbuf-2.0.so.0
+      libxcb-shm.so.0
+      libpangoft2-1.0.so.0
+      libXt.so.6
+  </code></pre>
+  </details></li>
 </ul>
-<h1 id="hadoop的搭建"><a href="#hadoop的搭建" class="headerlink" title="hadoop的搭建"></a>hadoop的搭建</h1><blockquote>
-<p>master  —主要节点 – 内存4500MB –cpu一个 – 硬盘40Gb – ip地址 10.0.0.100</p>
-</blockquote>
-<blockquote>
-<p>slave   — 从节点 –内存  2500MB  –cpu一个 –硬盘40Gb – ip地址 10.0.0.200</p>
-</blockquote>
-<pre class="line-numbers language-none"><code class="language-none">systemtcl stop firewalled &amp;&amp;  systemtcl disable firewalled关闭防火墙
-&#x2F;etc&#x2F;selinux&#x2F;config  关闭linux
-setenforce 0 刷新配置文件
-&#x2F;etc&#x2F;hosts 本地host文件
-&#x2F;etc&#x2F;ntp.conf 时间配置文件
-scp source目录 用户名@ip：源文件目录 # 远程copy文件<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<pre class="line-numbers language-none"><code class="language-none">ntpdate # 修改时间的工具
-ntp1.aliyun.com 阿里时间服务器
-ntpdate ntp1.aliyun.com 配置时间服务器
-clock -w 保存当前时间<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-
-<h2 id="修改主机名"><a href="#修改主机名" class="headerlink" title="修改主机名"></a>修改主机名</h2><pre class="line-numbers language-none"><code class="language-none">hostnamectl set-hostname 主机名
-bash #刷新<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-
-<h2 id="任务计划"><a href="#任务计划" class="headerlink" title="任务计划"></a>任务计划</h2><pre class="line-numbers language-none"><code class="language-none">crontab -e 书写任务计划
-crontab -l 查询任务计划
-*&#x2F;1 * * * * &#x2F;sbin&#x2F;ntp
-systemctl restart crond 重启计划任务
-PATH&#x3D;$JAVA_HOME&#x2F;bin:$PATh<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<h2 id="设置本地yum源"><a href="#设置本地yum源" class="headerlink" title="设置本地yum源"></a>设置本地yum源</h2><p><em>/etc/yum.repo.d</em></p>
-<pre class="line-numbers language-none"><code class="language-none">[hadoop]
-name&#x3D;hadoop
-baseurl&#x3D;file:&#x2F;&#x2F;&#x2F;
-enable&#x3D;1
-gpgcheck&#x3D;1
-
-
-yum respse-list  查看yun源<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-
-<pre class="line-numbers language-none"><code class="language-none">
-09:52
-Absinthe
-任务计划   crontab -e 书写任务计划
-           crontab -l 查询任务计划
-		   
-		   ntpdate
-		   
-*&#x2F;1 * * * * &#x2F;sbin&#x2F;ntpdate s1 &gt;&gt; &#x2F;var&#x2F;log&#x2F;ntpdate.log
-
-
-hadoop java  ---jdk
-
-
-
-
-
-
-mariadb mariadb-server mysql-connector-java
-ambari-server
-
-
-create database ambari;   ---创建一个库
-
-grant all privileges on ambari.* to &#39;ambari&#39;@&#39;localhost&#39; identified by &#39;bigdata&#39;;
-
----为数据库创建一个用户 ambari 密码为 bigdata
-grant all privileges on ambari.* to &#39;ambari&#39;@&#39;%&#39; identified by &#39;bigdata&#39;;
----把权限交给ambari
- <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-
+<h3 id="解决方式，先查询playwright的issue"><a href="#解决方式，先查询playwright的issue" class="headerlink" title="解决方式，先查询playwright的issue"></a>解决方式，先查询playwright的<a target="_blank" rel="noopener" href="https://github.com/microsoft/playwright/issues/5893">issue</a></h3><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">yum -y install libappindicator-gtk3 &amp;&amp; yum -y install liberation-fonts &amp;&amp; yum install libXt<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
                 
             </div>
             <hr/>
@@ -583,7 +542,7 @@ grant all privileges on ambari.* to &#39;ambari&#39;@&#39;%&#39; identified by &
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://shhy.xyz/2022/04/08/hadoop-de-shi-yong/">https://shhy.xyz/2022/04/08/hadoop-de-shi-yong/</a>
+                    <a href="https://shhy.xyz/2022/04/12/playwright-bao-cuo-host-system-is-missing-dependencies/">https://shhy.xyz/2022/04/12/playwright-bao-cuo-host-system-is-missing-dependencies/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -621,8 +580,8 @@ grant all privileges on ambari.* to &#39;ambari&#39;@&#39;%&#39; identified by &
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/default/">
-                                    <span class="chip bg-color">default</span>
+                                <a href="/tags/exception/">
+                                    <span class="chip bg-color">exception</span>
                                 </a>
                             
                         </div>
@@ -798,13 +757,13 @@ grant all privileges on ambari.* to &#39;ambari&#39;@&#39;%&#39; identified by &
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2022/04/12/playwright-bao-cuo-host-system-is-missing-dependencies/">
+                <a href="/2022/04/15/yong-go-shi-xian-lru-huan-cun/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/3.jpg" class="responsive-img" alt="playwright报错Host system is missing dependencies">
+                        <img src="/medias/featureimages/10.jpg" class="responsive-img" alt="用go实现LRU缓存">
                         
-                        <span class="card-title">playwright报错Host system is missing dependencies</span>
+                        <span class="card-title">用go实现LRU缓存</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -815,14 +774,14 @@ grant all privileges on ambari.* to &#39;ambari&#39;@&#39;%&#39; identified by &
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2022-04-12
+                            <i class="far fa-clock fa-fw icon-date"></i>2022-04-15
                         </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86/" class="post-category">
-                                    异常处理
+                            <a href="/categories/default/" class="post-category">
+                                    default
                                 </a>
                             
                             
@@ -832,8 +791,8 @@ grant all privileges on ambari.* to &#39;ambari&#39;@&#39;%&#39; identified by &
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/exception/">
-                        <span class="chip bg-color">exception</span>
+                    <a href="/tags/default/">
+                        <span class="chip bg-color">default</span>
                     </a>
                     
                 </div>
@@ -847,13 +806,13 @@ grant all privileges on ambari.* to &#39;ambari&#39;@&#39;%&#39; identified by &
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2022/03/25/linux-ruan-jian-de-an-zhuang/">
+                <a href="/2022/04/08/hadoop-de-shi-yong/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/3.jpg" class="responsive-img" alt="linux软件的安装">
+                        <img src="/medias/featureimages/8.jpg" class="responsive-img" alt="hadoop的使用">
                         
-                        <span class="card-title">linux软件的安装</span>
+                        <span class="card-title">hadoop的使用</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -864,14 +823,14 @@ grant all privileges on ambari.* to &#39;ambari&#39;@&#39;%&#39; identified by &
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-03-25
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-04-08
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/linux/" class="post-category">
-                                    linux
+                            <a href="/categories/default/" class="post-category">
+                                    default
                                 </a>
                             
                             
@@ -881,8 +840,8 @@ grant all privileges on ambari.* to &#39;ambari&#39;@&#39;%&#39; identified by &
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/linux/">
-                        <span class="chip bg-color">linux</span>
+                    <a href="/tags/default/">
+                        <span class="chip bg-color">default</span>
                     </a>
                     
                 </div>
