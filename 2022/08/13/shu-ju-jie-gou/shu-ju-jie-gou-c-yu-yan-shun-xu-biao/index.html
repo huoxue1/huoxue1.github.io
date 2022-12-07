@@ -4,10 +4,13 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="playwright报错缺少libatk-1.0.so.0:异常处理.md, huoxue1&#39;s blog">
-    <meta name="description" content="最近开发qq机器人插件时想通过playwright自动github的页面1. 安装go-playwrightgo get github.com/mxschmitt/playwright-go
+    <meta name="keywords" content="数据结构-c语言-顺序表, huoxue1&#39;s blog">
+    <meta name="description" content="什么是顺序表
+顺序表是用一段物理地址连续的存储单元依次存储数据元素的线性结构，一般情况下采用数组存储。在数组上完成数据的增删查改。
 
-2.安装chromiumplaywright ">
+顺序表：可动态增长的数组，要求数据是连续存储的
+
+与链表的区别：同样是存储想同类型数据的线性表，但是链表两">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -19,7 +22,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>playwright报错缺少libatk-1.0.so.0:异常处理.md | huoxue1&#39;s blog</title>
+    <title>数据结构-c语言-顺序表 | huoxue1&#39;s blog</title>
     <link rel="icon" type="image/png" href="/favicon.png">
     
 
@@ -273,12 +276,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/18.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/14.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">playwright报错缺少libatk-1.0.so.0:异常处理.md</h1>
+                    <h1 class="description center-align post-title">数据结构-c语言-顺序表</h1>
                 </div>
             </div>
         </div>
@@ -302,14 +305,23 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/exception/">
-                                <span class="chip bg-color">exception</span>
+                            <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-C%E8%AF%AD%E8%A8%80/">
+                                <span class="chip bg-color">数据结构,C语言</span>
                             </a>
                         
                     </div>
                     
                 </div>
                 <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-C%E8%AF%AD%E8%A8%80/" class="post-category">
+                                数据结构,C语言
+                            </a>
+                        
+                    </div>
                     
                 </div>
             </div>
@@ -318,7 +330,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2021-08-18
+                    2022-08-13
                 </div>
                 
 
@@ -342,65 +354,164 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h3 id="最近开发qq机器人插件时想通过playwright自动github的页面"><a href="#最近开发qq机器人插件时想通过playwright自动github的页面" class="headerlink" title="最近开发qq机器人插件时想通过playwright自动github的页面"></a>最近开发qq机器人插件时想通过playwright自动github的页面</h3><h4 id="1-安装go-playwright"><a href="#1-安装go-playwright" class="headerlink" title="1. 安装go-playwright"></a>1. 安装go-playwright</h4><pre class="line-numbers language-go" data-language="go"><code class="language-go"><span class="token keyword">go</span> get github<span class="token punctuation">.</span>com<span class="token operator">/</span>mxschmitt<span class="token operator">/</span>playwright<span class="token operator">-</span><span class="token keyword">go</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+                <h1 id="什么是顺序表"><a href="#什么是顺序表" class="headerlink" title="什么是顺序表"></a>什么是顺序表</h1><ul>
+<li><p>顺序表是用一段物理地址连续的存储单元依次存储数据元素的线性结构，一般情况下采用数组存储。在数组上完成数据的增删查改。</p>
+</li>
+<li><p>顺序表：可动态增长的数组，要求数据是连续存储的</p>
+</li>
+<li><p>与链表的区别：同样是存储想同类型数据的线性表，但是链表两个节点之间使用指针进行链接，相比来说占用更大的空间，但是对于增加和删除节点时相比比顺序表更快。</p>
+</li>
+</ul>
+<h1 id="静态顺序表和动态顺序表"><a href="#静态顺序表和动态顺序表" class="headerlink" title="静态顺序表和动态顺序表"></a>静态顺序表和动态顺序表</h1><ul>
+<li><p>静态顺序表：静态顺序表通过一个提前分配好了的数组进行存储数据，优点是不能很好评估分配的大小</p>
+</li>
+<li><p>动态顺序表：动态顺序表是通过动态分配数组的大小进行存储数据，优点是可以动态分配大小，缺点是在扩容过程中可能比较复杂</p>
+</li>
+</ul>
+<h1 id="动态顺序表"><a href="#动态顺序表" class="headerlink" title="动态顺序表"></a>动态顺序表</h1><h2 id="顺序表的数据结构定义"><a href="#顺序表的数据结构定义" class="headerlink" title="顺序表的数据结构定义"></a>顺序表的数据结构定义</h2><pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token keyword">typedef</span> <span class="token keyword">struct</span> <span class="token class-name">OrderLists</span> <span class="token punctuation">&#123;</span>
+	<span class="token keyword">int</span> <span class="token operator">*</span>datas<span class="token punctuation">;</span>
+	<span class="token keyword">int</span> maxsize<span class="token punctuation">;</span>
+	<span class="token keyword">int</span> size<span class="token punctuation">;</span>
 
-<h4 id="2-安装chromium"><a href="#2-安装chromium" class="headerlink" title="2.安装chromium"></a>2.安装chromium</h4><pre class="line-numbers language-go" data-language="go"><code class="language-go">playwright install chromium	<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<span class="token punctuation">&#125;</span>OrderList<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h3 id="3-自动化操作浏览器"><a href="#3-自动化操作浏览器" class="headerlink" title="3.自动化操作浏览器"></a>3.自动化操作浏览器</h3><pre class="line-numbers language-go" data-language="go"><code class="language-go"><span class="token keyword">func</span> <span class="token function">GetPWScreen</span><span class="token punctuation">(</span>url <span class="token builtin">string</span><span class="token punctuation">)</span> <span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token builtin">byte</span><span class="token punctuation">,</span> <span class="token builtin">error</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+<p>size代表当前顺序表已经存储的数据量，maxsize表示当前顺序表所能存储的最大数据，当size=maxsize时会进行扩容操作，datas是用来存储数据的动态数组，数组大小动态分配。</p>
+<h2 id="顺序表的初始化"><a href="#顺序表的初始化" class="headerlink" title="顺序表的初始化"></a>顺序表的初始化</h2><pre class="line-numbers language-c" data-language="c"><code class="language-c">
+<span class="token comment">// 初始化顺序表</span>
+<span class="token keyword">void</span> <span class="token function">initOrderList</span><span class="token punctuation">(</span>OrderList<span class="token operator">*</span> list<span class="token punctuation">,</span><span class="token keyword">int</span> maxsize<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+	list<span class="token operator">-></span>datas <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token keyword">int</span><span class="token operator">*</span><span class="token punctuation">)</span><span class="token function">malloc</span><span class="token punctuation">(</span>maxsize <span class="token operator">*</span> <span class="token keyword">sizeof</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	list<span class="token operator">-></span>maxsize <span class="token operator">=</span> maxsize<span class="token punctuation">;</span>
+	list<span class="token operator">-></span>size <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-	pw<span class="token punctuation">,</span> err <span class="token operator">:=</span> playwright<span class="token punctuation">.</span><span class="token function">Run</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-	<span class="token keyword">if</span> err <span class="token operator">!=</span> <span class="token boolean">nil</span> <span class="token punctuation">&#123;</span>
-		log<span class="token punctuation">.</span><span class="token function">Errorf</span><span class="token punctuation">(</span><span class="token string">"could not start playwright: %v"</span><span class="token punctuation">,</span> err<span class="token punctuation">)</span>
-		<span class="token keyword">return</span> <span class="token boolean">nil</span><span class="token punctuation">,</span> err
+<p>在初始化时定义一个预先分配的最大值，通过malloc函数进行分配内存，maxsize相应进行赋值，size分配为0</p>
+<h2 id="顺序表扩容"><a href="#顺序表扩容" class="headerlink" title="顺序表扩容"></a>顺序表扩容</h2><pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token comment">/// &lt;summary></span>
+<span class="token comment">/// 顺序表扩容，扩容为原来内容的两倍</span>
+<span class="token comment">/// &lt;/summary></span>
+<span class="token comment">/// &lt;param name="list">&lt;/param></span>
+<span class="token keyword">void</span> <span class="token function">expansion</span><span class="token punctuation">(</span>OrderList <span class="token operator">*</span>list<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token comment">// 申请两倍当前maxsize的内存</span>
+	<span class="token keyword">int</span><span class="token operator">*</span> new_data <span class="token operator">=</span> <span class="token function">malloc</span><span class="token punctuation">(</span><span class="token number">2</span> <span class="token operator">*</span> list<span class="token operator">-></span>maxsize <span class="token operator">*</span> <span class="token keyword">sizeof</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>new_data<span class="token punctuation">)</span>
+	<span class="token punctuation">&#123;</span>
+		<span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"申请内存失败\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token keyword">return</span><span class="token punctuation">;</span>
 	<span class="token punctuation">&#125;</span>
-	browser<span class="token punctuation">,</span> err <span class="token operator">:=</span> pw<span class="token punctuation">.</span>Chromium<span class="token punctuation">.</span><span class="token function">Launch</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-	<span class="token keyword">if</span> err <span class="token operator">!=</span> <span class="token boolean">nil</span> <span class="token punctuation">&#123;</span>
-		log<span class="token punctuation">.</span><span class="token function">Errorf</span><span class="token punctuation">(</span><span class="token string">"could not launch browser: %v"</span><span class="token punctuation">,</span> err<span class="token punctuation">)</span>
-		<span class="token keyword">return</span> <span class="token boolean">nil</span><span class="token punctuation">,</span> err
+    <span class="token comment">// 转移数据</span>
+	<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> list<span class="token operator">-></span>size<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span>
+	<span class="token punctuation">&#123;</span>
+		new_data<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> list<span class="token operator">-></span>datas<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
 	<span class="token punctuation">&#125;</span>
-
-	page<span class="token punctuation">,</span> err <span class="token operator">:=</span> browser<span class="token punctuation">.</span><span class="token function">NewPage</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-
-	<span class="token keyword">defer</span> <span class="token keyword">func</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-		page<span class="token punctuation">.</span><span class="token function">Close</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-		pw<span class="token punctuation">.</span><span class="token function">Stop</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-	<span class="token punctuation">&#125;</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-	<span class="token keyword">if</span> err <span class="token operator">!=</span> <span class="token boolean">nil</span> <span class="token punctuation">&#123;</span>
-		log<span class="token punctuation">.</span><span class="token function">Errorf</span><span class="token punctuation">(</span><span class="token string">"could not create page: %v"</span><span class="token punctuation">,</span> err<span class="token punctuation">)</span>
-		<span class="token keyword">return</span> <span class="token boolean">nil</span><span class="token punctuation">,</span> err
+    <span class="token comment">// 释放之前分配的内存</span>
+	<span class="token function">free</span><span class="token punctuation">(</span>list<span class="token operator">-></span>datas<span class="token punctuation">)</span><span class="token punctuation">;</span>
+	list<span class="token operator">-></span>datas <span class="token operator">=</span> new_data<span class="token punctuation">;</span>
+	list<span class="token operator">-></span>maxsize <span class="token operator">=</span> <span class="token number">2</span> <span class="token operator">*</span> list<span class="token operator">-></span>maxsize<span class="token punctuation">;</span>
+	<span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"顺序表已扩容，扩容后大小 ==》 %d\n"</span><span class="token punctuation">,</span> list<span class="token operator">-></span>maxsize<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>首先分配一个与当前maxsize两倍空间的一个数组，然后将之前数组中的值转移到新数组中来，然后释放之前的数组，同时将顺序表的指针指向新的数组</p>
+<h2 id="顺序表的插入"><a href="#顺序表的插入" class="headerlink" title="顺序表的插入"></a>顺序表的插入</h2><pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token comment">/// &lt;summary></span>
+<span class="token comment">/// 顺序表插入数据</span>
+<span class="token comment">/// &lt;/summary></span>
+<span class="token comment">/// &lt;param name="list">&lt;/param></span>
+<span class="token comment">/// &lt;param name="data">&lt;/param></span>
+<span class="token comment">/// &lt;param name="position">&lt;/param></span>
+<span class="token comment">/// &lt;returns>&lt;/returns></span>
+<span class="token keyword">int</span> <span class="token function">OrderListInsert</span><span class="token punctuation">(</span>OrderList <span class="token operator">*</span>list<span class="token punctuation">,</span><span class="token keyword">int</span> data<span class="token punctuation">,</span><span class="token keyword">int</span> position<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+	<span class="token keyword">if</span> <span class="token punctuation">(</span>list<span class="token operator">-></span>size <span class="token operator">==</span> list<span class="token operator">-></span>maxsize<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+		<span class="token function">expansion</span><span class="token punctuation">(</span>list<span class="token punctuation">)</span><span class="token punctuation">;</span>
 	<span class="token punctuation">&#125;</span>
-	<span class="token keyword">if</span> <span class="token boolean">_</span><span class="token punctuation">,</span> err <span class="token operator">=</span> page<span class="token punctuation">.</span><span class="token function">Goto</span><span class="token punctuation">(</span>url<span class="token punctuation">)</span><span class="token punctuation">;</span> err <span class="token operator">!=</span> <span class="token boolean">nil</span> <span class="token punctuation">&#123;</span>
-		log<span class="token punctuation">.</span><span class="token function">Fatalf</span><span class="token punctuation">(</span><span class="token string">"could not goto: %v"</span><span class="token punctuation">,</span> err<span class="token punctuation">)</span>
+	<span class="token keyword">if</span> <span class="token punctuation">(</span>position <span class="token operator">==</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+		list<span class="token operator">-></span>datas<span class="token punctuation">[</span>list<span class="token operator">-></span>size<span class="token punctuation">]</span> <span class="token operator">=</span> data<span class="token punctuation">;</span>
+		list<span class="token operator">-></span>size<span class="token operator">++</span><span class="token punctuation">;</span>
+		<span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
 	<span class="token punctuation">&#125;</span>
-	data<span class="token punctuation">,</span> err <span class="token operator">:=</span> page<span class="token punctuation">.</span><span class="token function">Screenshot</span><span class="token punctuation">(</span>playwright<span class="token punctuation">.</span>PageScreenshotOptions<span class="token punctuation">&#123;</span>
-		FullPage<span class="token punctuation">:</span> playwright<span class="token punctuation">.</span><span class="token function">Bool</span><span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
-	<span class="token punctuation">&#125;</span><span class="token punctuation">)</span>
-	<span class="token keyword">return</span> data<span class="token punctuation">,</span> err
+	<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> list<span class="token operator">-></span>size <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">;</span> i <span class="token operator">>=</span> position<span class="token punctuation">;</span> i<span class="token operator">--</span><span class="token punctuation">)</span>
+	<span class="token punctuation">&#123;</span>
+		list<span class="token operator">-></span>datas<span class="token punctuation">[</span>i <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> list<span class="token operator">-></span>datas<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
+	<span class="token punctuation">&#125;</span>
+	list<span class="token operator">-></span>datas<span class="token punctuation">[</span>position<span class="token punctuation">]</span> <span class="token operator">=</span> data<span class="token punctuation">;</span>
+	list<span class="token operator">-></span>size<span class="token operator">++</span><span class="token punctuation">;</span>
+	<span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>首先在插入之前判断当前是否需要扩容，然后判断position为-1时我们直接将数据插入的结尾，退出函数，如果数据需要插入到中间，那么我们将数组从后向前遍历，直到需要插入的位置，然后将数据依次向后移动一个位置，然后插入数据。</p>
+<h2 id="顺序表的删除"><a href="#顺序表的删除" class="headerlink" title="顺序表的删除"></a>顺序表的删除</h2><pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token keyword">int</span> <span class="token function">OrderDelete</span><span class="token punctuation">(</span>OrderList<span class="token operator">*</span> list<span class="token punctuation">,</span><span class="token keyword">int</span> position<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+	<span class="token keyword">if</span> <span class="token punctuation">(</span>position <span class="token operator">></span> list<span class="token operator">-></span>size <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+		<span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+	<span class="token punctuation">&#125;</span>
+	<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> position<span class="token punctuation">;</span> i <span class="token operator">&lt;=</span> list<span class="token operator">-></span>size<span class="token operator">-</span><span class="token number">2</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span>
+	<span class="token punctuation">&#123;</span>
+		list<span class="token operator">-></span>datas<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> list<span class="token operator">-></span>datas<span class="token punctuation">[</span>i<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+	<span class="token punctuation">&#125;</span>
+	list<span class="token operator">-></span>size<span class="token operator">--</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>顺序表的删除和插入同理，当然遍历方式从删除的位置向末尾遍历，直到结尾的前一个元素，然后依次把数据向前移动一位，就覆盖掉了需要删除的内容。</p>
+<h2 id="顺序表的修改"><a href="#顺序表的修改" class="headerlink" title="顺序表的修改"></a>顺序表的修改</h2><pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token comment">/// &lt;summary></span>
+<span class="token comment">/// 更新某个位置的数据</span>
+<span class="token comment">/// &lt;/summary></span>
+<span class="token comment">/// &lt;param name="list">&lt;/param></span>
+<span class="token comment">/// &lt;param name="data">&lt;/param></span>
+<span class="token comment">/// &lt;param name="position">&lt;/param></span>
+<span class="token comment">/// &lt;returns>&lt;/returns></span>
+<span class="token keyword">int</span> <span class="token function">OrderUpdate</span><span class="token punctuation">(</span>OrderList<span class="token operator">*</span> list<span class="token punctuation">,</span> <span class="token keyword">int</span> data<span class="token punctuation">,</span> <span class="token keyword">int</span> position<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+	<span class="token keyword">if</span> <span class="token punctuation">(</span>position <span class="token operator">></span> list<span class="token operator">-></span>size<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+		<span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+	<span class="token punctuation">&#125;</span>
+	list<span class="token operator">-></span>datas<span class="token punctuation">[</span>position<span class="token punctuation">]</span> <span class="token operator">=</span> data<span class="token punctuation">;</span>
+	<span class="token keyword">return</span> <span class="token number">1</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>顺序表的修改可以说没得难度，直接修改数组内内容就可以了</p>
+<h2 id="顺序表的查询"><a href="#顺序表的查询" class="headerlink" title="顺序表的查询"></a>顺序表的查询</h2><pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token comment">/// &lt;summary></span>
+<span class="token comment">/// 获取某个位置的数据</span>
+<span class="token comment">/// &lt;/summary></span>
+<span class="token comment">/// &lt;param name="list">&lt;/param></span>
+<span class="token comment">/// &lt;param name="position">&lt;/param></span>
+<span class="token comment">/// &lt;returns>&lt;/returns></span>
+<span class="token keyword">int</span> <span class="token function">OderGetData</span><span class="token punctuation">(</span>OrderList<span class="token operator">*</span> list<span class="token punctuation">,</span> <span class="token keyword">int</span> position<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+	<span class="token keyword">if</span> <span class="token punctuation">(</span>position <span class="token operator">></span> list<span class="token operator">-></span>size <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+		<span class="token keyword">return</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span>
+	<span class="token punctuation">&#125;</span>
+	<span class="token keyword">else</span>
+	<span class="token punctuation">&#123;</span>
+		<span class="token keyword">return</span> list<span class="token operator">-></span>datas<span class="token punctuation">[</span>position<span class="token punctuation">]</span><span class="token punctuation">;</span>
+	<span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>顺序表的查询直接返回对于位置的内容即可</p>
+<h2 id="顺序表的遍历"><a href="#顺序表的遍历" class="headerlink" title="顺序表的遍历"></a>顺序表的遍历</h2><pre class="line-numbers language-none"><code class="language-none">&#x2F;&#x2F;&#x2F; &lt;summary&gt;
+&#x2F;&#x2F;&#x2F; 遍历顺序表
+&#x2F;&#x2F;&#x2F; &lt;&#x2F;summary&gt;
+&#x2F;&#x2F;&#x2F; &lt;param name&#x3D;&quot;list&quot;&gt;&lt;&#x2F;param&gt;
+void OderForEach(OrderList* list) &#123;
+	for (int i &#x3D; 0; i &lt; list-&gt;size; i++)
+	&#123;
+		printf(&quot;%d &quot;, list-&gt;datas[i]);
+	&#125;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h2><pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+	OrderList list<span class="token punctuation">;</span>
+	<span class="token function">initOrderList</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>list<span class="token punctuation">,</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> <span class="token number">40</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span>
+	<span class="token punctuation">&#123;</span>
+		<span class="token function">OrderListInsert</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>list<span class="token punctuation">,</span> i<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">,</span> i<span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token punctuation">&#125;</span>
+	<span class="token function">OderForEach</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>list<span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> <span class="token number">20</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span>
+	<span class="token punctuation">&#123;</span>
+		<span class="token function">OrderDelete</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>list<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token punctuation">&#125;</span>
+	<span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"\n删除前20个元素\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token function">OderForEach</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>list<span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+<span class="token comment">/*
+顺序表已扩容，扩容后大小 ==》 20
+顺序表已扩容，扩容后大小 ==》 40
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40
+删除前20个元素
+21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40
+*/</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h4 id="4-遇到问题"><a href="#4-遇到问题" class="headerlink" title="4.遇到问题"></a>4.遇到问题</h4><p>在windows上一切都能运行</p>
-<p>在linux(ubuntu 20.4)上遇到问题提示</p>
-<pre class="line-numbers language-go" data-language="go"><code class="language-go">could not send message<span class="token punctuation">:</span> could not send message to server<span class="token punctuation">:</span> Protocol <span class="token builtin">error</span> <span class="token punctuation">(</span>Browser<span class="token punctuation">.</span>getVersion<span class="token punctuation">)</span><span class="token punctuation">:</span> Browser closed<span class="token punctuation">.</span>
-<span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span> Browser output<span class="token punctuation">:</span> <span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span>
-<span class="token operator">&lt;</span>launching<span class="token operator">></span> <span class="token operator">/</span>root<span class="token operator">/</span><span class="token punctuation">.</span>cache<span class="token operator">/</span>ms<span class="token operator">-</span>playwright<span class="token operator">/</span>chromium<span class="token operator">-</span><span class="token number">857950</span><span class="token operator">/</span>chrome<span class="token operator">-</span>linux<span class="token operator">/</span>chrome <span class="token operator">--</span>disable<span class="token operator">-</span>background<span class="token operator">-</span>networking <span class="token operator">--</span>enable<span class="token operator">-</span>features<span class="token operator">=</span>NetworkService<span class="token punctuation">,</span>NetworkServiceInProcess <span class="token operator">--</span>disable<span class="token operator">-</span>background<span class="token operator">-</span>timer<span class="token operator">-</span>throttling <span class="token operator">--</span>disable<span class="token operator">-</span>backgrounding<span class="token operator">-</span>occluded<span class="token operator">-</span>windows <span class="token operator">--</span>disable<span class="token operator">-</span>breakpad <span class="token operator">--</span>disable<span class="token operator">-</span>client<span class="token operator">-</span>side<span class="token operator">-</span>phishing<span class="token operator">-</span>detection <span class="token operator">--</span>disable<span class="token operator">-</span>component<span class="token operator">-</span>extensions<span class="token operator">-</span>with<span class="token operator">-</span>background<span class="token operator">-</span>pages <span class="token operator">--</span>disable<span class="token operator">-</span><span class="token keyword">default</span><span class="token operator">-</span>apps <span class="token operator">--</span>disable<span class="token operator">-</span>dev<span class="token operator">-</span>shm<span class="token operator">-</span>usage <span class="token operator">--</span>disable<span class="token operator">-</span>extensions <span class="token operator">--</span>disable<span class="token operator">-</span>features<span class="token operator">=</span>TranslateUI<span class="token punctuation">,</span>BlinkGenPropertyTrees<span class="token punctuation">,</span>ImprovedCookieControls<span class="token punctuation">,</span>SameSiteByDefaultCookies<span class="token punctuation">,</span>LazyFrameLoading <span class="token operator">--</span>disable<span class="token operator">-</span>hang<span class="token operator">-</span>monitor <span class="token operator">--</span>disable<span class="token operator">-</span>ipc<span class="token operator">-</span>flooding<span class="token operator">-</span>protection <span class="token operator">--</span>disable<span class="token operator">-</span>popup<span class="token operator">-</span>blocking <span class="token operator">--</span>disable<span class="token operator">-</span>prompt<span class="token operator">-</span>on<span class="token operator">-</span>repost <span class="token operator">--</span>disable<span class="token operator">-</span>renderer<span class="token operator">-</span>backgrounding <span class="token operator">--</span>disable<span class="token operator">-</span>sync <span class="token operator">--</span>force<span class="token operator">-</span>color<span class="token operator">-</span>profile<span class="token operator">=</span>srgb <span class="token operator">--</span>metrics<span class="token operator">-</span>recording<span class="token operator">-</span>only <span class="token operator">--</span>no<span class="token operator">-</span>first<span class="token operator">-</span>run <span class="token operator">--</span>enable<span class="token operator">-</span>automation <span class="token operator">--</span>password<span class="token operator">-</span>store<span class="token operator">=</span>basic <span class="token operator">--</span>use<span class="token operator">-</span>mock<span class="token operator">-</span>keychain <span class="token operator">--</span>user<span class="token operator">-</span>data<span class="token operator">-</span>dir<span class="token operator">=</span><span class="token operator">/</span>tmp<span class="token operator">/</span>playwright_chromiumdev_profile<span class="token operator">-</span>fc8kRc <span class="token operator">--</span>remote<span class="token operator">-</span>debugging<span class="token operator">-</span>pipe <span class="token operator">--</span>headless <span class="token operator">--</span>hide<span class="token operator">-</span>scrollbars <span class="token operator">--</span>mute<span class="token operator">-</span>audio <span class="token operator">--</span>blink<span class="token operator">-</span>settings<span class="token operator">=</span>primaryHoverType<span class="token operator">=</span><span class="token number">2</span><span class="token punctuation">,</span>availableHoverTypes<span class="token operator">=</span><span class="token number">2</span><span class="token punctuation">,</span>primaryPointerType<span class="token operator">=</span><span class="token number">4</span><span class="token punctuation">,</span>availablePointerTypes<span class="token operator">=</span><span class="token number">4</span> <span class="token operator">--</span>no<span class="token operator">-</span>sandbox <span class="token operator">--</span>no<span class="token operator">-</span>startup<span class="token operator">-</span>window
-<span class="token operator">&lt;</span>launched<span class="token operator">></span> pid<span class="token operator">=</span><span class="token number">250754</span>
-<span class="token punctuation">[</span>pid<span class="token operator">=</span><span class="token number">250754</span><span class="token punctuation">]</span><span class="token punctuation">[</span>err<span class="token punctuation">]</span> <span class="token operator">/</span>root<span class="token operator">/</span><span class="token punctuation">.</span>cache<span class="token operator">/</span>ms<span class="token operator">-</span>playwright<span class="token operator">/</span>chromium<span class="token operator">-</span><span class="token number">857950</span><span class="token operator">/</span>chrome<span class="token operator">-</span>linux<span class="token operator">/</span>chrome<span class="token punctuation">:</span> <span class="token builtin">error</span> while loading shared libraries<span class="token punctuation">:</span> libatk<span class="token operator">-</span><span class="token number">1.0</span><span class="token punctuation">.</span>so<span class="token punctuation">.</span><span class="token number">0</span><span class="token punctuation">:</span> cannot open shared object file<span class="token punctuation">:</span> No such file or directory
-<span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">=</span> logs <span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">=</span>
-<span class="token operator">&lt;</span>launching<span class="token operator">></span> <span class="token operator">/</span>root<span class="token operator">/</span><span class="token punctuation">.</span>cache<span class="token operator">/</span>ms<span class="token operator">-</span>playwright<span class="token operator">/</span>chromium<span class="token operator">-</span><span class="token number">857950</span><span class="token operator">/</span>chrome<span class="token operator">-</span>linux<span class="token operator">/</span>chrome <span class="token operator">--</span>disable<span class="token operator">-</span>background<span class="token operator">-</span>networking <span class="token operator">--</span>enable<span class="token operator">-</span>features<span class="token operator">=</span>NetworkService<span class="token punctuation">,</span>NetworkServiceInProcess <span class="token operator">--</span>disable<span class="token operator">-</span>background<span class="token operator">-</span>timer<span class="token operator">-</span>throttling <span class="token operator">--</span>disable<span class="token operator">-</span>backgrounding<span class="token operator">-</span>occluded<span class="token operator">-</span>windows <span class="token operator">--</span>disable<span class="token operator">-</span>breakpad <span class="token operator">--</span>disable<span class="token operator">-</span>client<span class="token operator">-</span>side<span class="token operator">-</span>phishing<span class="token operator">-</span>detection <span class="token operator">--</span>disable<span class="token operator">-</span>component<span class="token operator">-</span>extensions<span class="token operator">-</span>with<span class="token operator">-</span>background<span class="token operator">-</span>pages <span class="token operator">--</span>disable<span class="token operator">-</span><span class="token keyword">default</span><span class="token operator">-</span>apps <span class="token operator">--</span>disable<span class="token operator">-</span>dev<span class="token operator">-</span>shm<span class="token operator">-</span>usage <span class="token operator">--</span>disable<span class="token operator">-</span>extensions <span class="token operator">--</span>disable<span class="token operator">-</span>features<span class="token operator">=</span>TranslateUI<span class="token punctuation">,</span>BlinkGenPropertyTrees<span class="token punctuation">,</span>ImprovedCookieControls<span class="token punctuation">,</span>SameSiteByDefaultCookies<span class="token punctuation">,</span>LazyFrameLoading <span class="token operator">--</span>disable<span class="token operator">-</span>hang<span class="token operator">-</span>monitor <span class="token operator">--</span>disable<span class="token operator">-</span>ipc<span class="token operator">-</span>flooding<span class="token operator">-</span>protection <span class="token operator">--</span>disable<span class="token operator">-</span>popup<span class="token operator">-</span>blocking <span class="token operator">--</span>disable<span class="token operator">-</span>prompt<span class="token operator">-</span>on<span class="token operator">-</span>repost <span class="token operator">--</span>disable<span class="token operator">-</span>renderer<span class="token operator">-</span>backgrounding <span class="token operator">--</span>disable<span class="token operator">-</span>sync <span class="token operator">--</span>force<span class="token operator">-</span>color<span class="token operator">-</span>profile<span class="token operator">=</span>srgb <span class="token operator">--</span>metrics<span class="token operator">-</span>recording<span class="token operator">-</span>only <span class="token operator">--</span>no<span class="token operator">-</span>first<span class="token operator">-</span>run <span class="token operator">--</span>enable<span class="token operator">-</span>automation <span class="token operator">--</span>password<span class="token operator">-</span>store<span class="token operator">=</span>basic <span class="token operator">--</span>use<span class="token operator">-</span>mock<span class="token operator">-</span>keychain <span class="token operator">--</span>user<span class="token operator">-</span>data<span class="token operator">-</span>dir<span class="token operator">=</span><span class="token operator">/</span>tmp<span class="token operator">/</span>playwright_chromiumdev_profile<span class="token operator">-</span>fc8kRc <span class="token operator">--</span>remote<span class="token operator">-</span>debugging<span class="token operator">-</span>pipe <span class="token operator">--</span>headless <span class="token operator">--</span>hide<span class="token operator">-</span>scrollbars <span class="token operator">--</span>mute<span class="token operator">-</span>audio <span class="token operator">--</span>blink<span class="token operator">-</span>settings<span class="token operator">=</span>primaryHoverType<span class="token operator">=</span><span class="token number">2</span><span class="token punctuation">,</span>availableHoverTypes<span class="token operator">=</span><span class="token number">2</span><span class="token punctuation">,</span>primaryPointerType<span class="token operator">=</span><span class="token number">4</span><span class="token punctuation">,</span>availablePointerTypes<span class="token operator">=</span><span class="token number">4</span> <span class="token operator">--</span>no<span class="token operator">-</span>sandbox <span class="token operator">--</span>no<span class="token operator">-</span>startup<span class="token operator">-</span>window
-<span class="token operator">&lt;</span>launched<span class="token operator">></span> pid<span class="token operator">=</span><span class="token number">250754</span>
-<span class="token punctuation">[</span>pid<span class="token operator">=</span><span class="token number">250754</span><span class="token punctuation">]</span><span class="token punctuation">[</span>err<span class="token punctuation">]</span> <span class="token operator">/</span>root<span class="token operator">/</span><span class="token punctuation">.</span>cache<span class="token operator">/</span>ms<span class="token operator">-</span>playwright<span class="token operator">/</span>chromium<span class="token operator">-</span><span class="token number">857950</span><span class="token operator">/</span>chrome<span class="token operator">-</span>linux<span class="token operator">/</span>chrome<span class="token punctuation">:</span> <span class="token builtin">error</span> while loading shared libraries<span class="token punctuation">:</span> libatk<span class="token operator">-</span><span class="token number">1.0</span><span class="token punctuation">.</span>so<span class="token punctuation">.</span><span class="token number">0</span><span class="token punctuation">:</span> cannot open shared object file<span class="token punctuation">:</span> No such file or directory
-<span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span>
-Note<span class="token punctuation">:</span> use DEBUG<span class="token operator">=</span>pw<span class="token punctuation">:</span>api environment variable to capture Playwright logs<span class="token punctuation">.</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<p>找到重要语句</p>
-<pre class="line-numbers language-none"><code class="language-none">error while loading shared libraries: libatk-1.0.so.0: cannot open shared object file: No such file or directory<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<p>通过查询google</p>
-<p>解决办法为：</p>
-<pre class="line-numbers language-none"><code class="language-none">sudo apt install libcups2 libnss3-dev librust-atk-sys-dev libatk-bridge2.0-dev librust-gtk-sys-dev<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<p>安装对应依赖即可解决</p>
+<h1 id="引申"><a href="#引申" class="headerlink" title="引申"></a>引申</h1><p>顺序表可以引申出顺序队，顺序栈，只需要编写特定的方法即可</p>
 
                 
             </div>
@@ -427,7 +538,7 @@ Note<span class="token punctuation">:</span> use DEBUG<span class="token operato
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://shhy.xyz/2021/08/18/playwright-bao-cuo-que-shao-libatk-1-0-so-0-yi-chang-chu-li-md/">https://shhy.xyz/2021/08/18/playwright-bao-cuo-que-shao-libatk-1-0-so-0-yi-chang-chu-li-md/</a>
+                    <a href="https://shhy.xyz/2022/08/13/shu-ju-jie-gou/shu-ju-jie-gou-c-yu-yan-shun-xu-biao/">https://shhy.xyz/2022/08/13/shu-ju-jie-gou/shu-ju-jie-gou-c-yu-yan-shun-xu-biao/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -465,8 +576,8 @@ Note<span class="token punctuation">:</span> use DEBUG<span class="token operato
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/exception/">
-                                    <span class="chip bg-color">exception</span>
+                                <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-C%E8%AF%AD%E8%A8%80/">
+                                    <span class="chip bg-color">数据结构,C语言</span>
                                 </a>
                             
                         </div>
@@ -551,31 +662,31 @@ Note<span class="token punctuation">:</span> use DEBUG<span class="token operato
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2021/08/22/cong-ling-kai-shi-da-jian-yi-ge-zi-dong-hui-fu-qq-ji-qi-ren/">
+                <a href="/2022/12/07/bi-ye-lun-wen/bi-ye-lun-wen-3/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="从零开始搭建一个自动回复qq机器人">
+                        <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="毕业设计(3)">
                         
-                        <span class="card-title">从零开始搭建一个自动回复qq机器人</span>
+                        <span class="card-title">毕业设计(3)</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            只需简单几个步骤，即可搭建一个功能众多的qq机器人。
+                            
                         
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-08-22
+                            <i class="far fa-clock fa-fw icon-date"></i>2022-12-07
                         </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/bot/" class="post-category">
-                                    bot
+                            <a href="/categories/java-ssm/" class="post-category">
+                                    java,ssm
                                 </a>
                             
                             
@@ -585,12 +696,8 @@ Note<span class="token punctuation">:</span> use DEBUG<span class="token operato
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/bot/">
-                        <span class="chip bg-color">bot</span>
-                    </a>
-                    
-                    <a href="/tags/go/">
-                        <span class="chip bg-color">go</span>
+                    <a href="/tags/%E6%AF%95%E4%B8%9A%E8%AE%BE%E8%AE%A1/">
+                        <span class="chip bg-color">毕业设计</span>
                     </a>
                     
                 </div>
@@ -604,13 +711,13 @@ Note<span class="token punctuation">:</span> use DEBUG<span class="token operato
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2021/08/12/mo-ni-deng-lu-jiao-wu-xi-tong/">
+                <a href="/2022/05/08/shu-ju-jie-gou/yong-go-shi-xian-er-cha-shu/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="模拟登录教务系统">
+                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="用go实现二叉树">
                         
-                        <span class="card-title">模拟登录教务系统</span>
+                        <span class="card-title">用go实现二叉树</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -621,12 +728,16 @@ Note<span class="token punctuation">:</span> use DEBUG<span class="token operato
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-08-12
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-05-08
                             </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-user fa-fw"></i>
-                            huoxue1
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E4%BA%8C%E5%8F%89%E6%A0%91/" class="post-category">
+                                    数据结构, 二叉树
+                                </a>
+                            
                             
                         </span>
                     </div>
@@ -634,8 +745,8 @@ Note<span class="token punctuation">:</span> use DEBUG<span class="token operato
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/python/">
-                        <span class="chip bg-color">python</span>
+                    <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">
+                        <span class="chip bg-color">数据结构</span>
                     </a>
                     
                 </div>

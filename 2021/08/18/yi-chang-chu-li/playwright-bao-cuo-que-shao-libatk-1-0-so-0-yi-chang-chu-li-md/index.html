@@ -4,8 +4,10 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="数据结构-c语言-单链表, huoxue1&#39;s blog">
-    <meta name="description" content="">
+    <meta name="keywords" content="playwright报错缺少libatk-1.0.so.0:异常处理.md, huoxue1&#39;s blog">
+    <meta name="description" content="最近开发qq机器人插件时想通过playwright自动github的页面1. 安装go-playwrightgo get github.com/mxschmitt/playwright-go
+
+2.安装chromiumplaywright ">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -17,7 +19,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>数据结构-c语言-单链表 | huoxue1&#39;s blog</title>
+    <title>playwright报错缺少libatk-1.0.so.0:异常处理.md | huoxue1&#39;s blog</title>
     <link rel="icon" type="image/png" href="/favicon.png">
     
 
@@ -271,12 +273,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/10.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/18.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">数据结构-c语言-单链表</h1>
+                    <h1 class="description center-align post-title">playwright报错缺少libatk-1.0.so.0:异常处理.md</h1>
                 </div>
             </div>
         </div>
@@ -300,23 +302,14 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-c%E8%AF%AD%E8%A8%80/">
-                                <span class="chip bg-color">数据结构,c语言</span>
+                            <a href="/tags/exception/">
+                                <span class="chip bg-color">exception</span>
                             </a>
                         
                     </div>
                     
                 </div>
                 <div class="col s5 right-align">
-                    
-                    <div class="post-cate">
-                        <i class="fas fa-bookmark fa-fw icon-category"></i>
-                        
-                            <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-c%E8%AF%AD%E8%A8%80/" class="post-category">
-                                数据结构,c语言
-                            </a>
-                        
-                    </div>
                     
                 </div>
             </div>
@@ -325,7 +318,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2022-08-13
+                    2021-08-18
                 </div>
                 
 
@@ -349,7 +342,66 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                
+                <h3 id="最近开发qq机器人插件时想通过playwright自动github的页面"><a href="#最近开发qq机器人插件时想通过playwright自动github的页面" class="headerlink" title="最近开发qq机器人插件时想通过playwright自动github的页面"></a>最近开发qq机器人插件时想通过playwright自动github的页面</h3><h4 id="1-安装go-playwright"><a href="#1-安装go-playwright" class="headerlink" title="1. 安装go-playwright"></a>1. 安装go-playwright</h4><pre class="line-numbers language-go" data-language="go"><code class="language-go"><span class="token keyword">go</span> get github<span class="token punctuation">.</span>com<span class="token operator">/</span>mxschmitt<span class="token operator">/</span>playwright<span class="token operator">-</span><span class="token keyword">go</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h4 id="2-安装chromium"><a href="#2-安装chromium" class="headerlink" title="2.安装chromium"></a>2.安装chromium</h4><pre class="line-numbers language-go" data-language="go"><code class="language-go">playwright install chromium	<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h3 id="3-自动化操作浏览器"><a href="#3-自动化操作浏览器" class="headerlink" title="3.自动化操作浏览器"></a>3.自动化操作浏览器</h3><pre class="line-numbers language-go" data-language="go"><code class="language-go"><span class="token keyword">func</span> <span class="token function">GetPWScreen</span><span class="token punctuation">(</span>url <span class="token builtin">string</span><span class="token punctuation">)</span> <span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token builtin">byte</span><span class="token punctuation">,</span> <span class="token builtin">error</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+
+	pw<span class="token punctuation">,</span> err <span class="token operator">:=</span> playwright<span class="token punctuation">.</span><span class="token function">Run</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+	<span class="token keyword">if</span> err <span class="token operator">!=</span> <span class="token boolean">nil</span> <span class="token punctuation">&#123;</span>
+		log<span class="token punctuation">.</span><span class="token function">Errorf</span><span class="token punctuation">(</span><span class="token string">"could not start playwright: %v"</span><span class="token punctuation">,</span> err<span class="token punctuation">)</span>
+		<span class="token keyword">return</span> <span class="token boolean">nil</span><span class="token punctuation">,</span> err
+	<span class="token punctuation">&#125;</span>
+	browser<span class="token punctuation">,</span> err <span class="token operator">:=</span> pw<span class="token punctuation">.</span>Chromium<span class="token punctuation">.</span><span class="token function">Launch</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+	<span class="token keyword">if</span> err <span class="token operator">!=</span> <span class="token boolean">nil</span> <span class="token punctuation">&#123;</span>
+		log<span class="token punctuation">.</span><span class="token function">Errorf</span><span class="token punctuation">(</span><span class="token string">"could not launch browser: %v"</span><span class="token punctuation">,</span> err<span class="token punctuation">)</span>
+		<span class="token keyword">return</span> <span class="token boolean">nil</span><span class="token punctuation">,</span> err
+	<span class="token punctuation">&#125;</span>
+
+	page<span class="token punctuation">,</span> err <span class="token operator">:=</span> browser<span class="token punctuation">.</span><span class="token function">NewPage</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+	<span class="token keyword">defer</span> <span class="token keyword">func</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+		page<span class="token punctuation">.</span><span class="token function">Close</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+		pw<span class="token punctuation">.</span><span class="token function">Stop</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+	<span class="token punctuation">&#125;</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+	<span class="token keyword">if</span> err <span class="token operator">!=</span> <span class="token boolean">nil</span> <span class="token punctuation">&#123;</span>
+		log<span class="token punctuation">.</span><span class="token function">Errorf</span><span class="token punctuation">(</span><span class="token string">"could not create page: %v"</span><span class="token punctuation">,</span> err<span class="token punctuation">)</span>
+		<span class="token keyword">return</span> <span class="token boolean">nil</span><span class="token punctuation">,</span> err
+	<span class="token punctuation">&#125;</span>
+	<span class="token keyword">if</span> <span class="token boolean">_</span><span class="token punctuation">,</span> err <span class="token operator">=</span> page<span class="token punctuation">.</span><span class="token function">Goto</span><span class="token punctuation">(</span>url<span class="token punctuation">)</span><span class="token punctuation">;</span> err <span class="token operator">!=</span> <span class="token boolean">nil</span> <span class="token punctuation">&#123;</span>
+		log<span class="token punctuation">.</span><span class="token function">Fatalf</span><span class="token punctuation">(</span><span class="token string">"could not goto: %v"</span><span class="token punctuation">,</span> err<span class="token punctuation">)</span>
+	<span class="token punctuation">&#125;</span>
+	data<span class="token punctuation">,</span> err <span class="token operator">:=</span> page<span class="token punctuation">.</span><span class="token function">Screenshot</span><span class="token punctuation">(</span>playwright<span class="token punctuation">.</span>PageScreenshotOptions<span class="token punctuation">&#123;</span>
+		FullPage<span class="token punctuation">:</span> playwright<span class="token punctuation">.</span><span class="token function">Bool</span><span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+	<span class="token punctuation">&#125;</span><span class="token punctuation">)</span>
+	<span class="token keyword">return</span> data<span class="token punctuation">,</span> err
+
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h4 id="4-遇到问题"><a href="#4-遇到问题" class="headerlink" title="4.遇到问题"></a>4.遇到问题</h4><p>在windows上一切都能运行</p>
+<p>在linux(ubuntu 20.4)上遇到问题提示</p>
+<pre class="line-numbers language-go" data-language="go"><code class="language-go">could not send message<span class="token punctuation">:</span> could not send message to server<span class="token punctuation">:</span> Protocol <span class="token builtin">error</span> <span class="token punctuation">(</span>Browser<span class="token punctuation">.</span>getVersion<span class="token punctuation">)</span><span class="token punctuation">:</span> Browser closed<span class="token punctuation">.</span>
+<span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span> Browser output<span class="token punctuation">:</span> <span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span>
+<span class="token operator">&lt;</span>launching<span class="token operator">></span> <span class="token operator">/</span>root<span class="token operator">/</span><span class="token punctuation">.</span>cache<span class="token operator">/</span>ms<span class="token operator">-</span>playwright<span class="token operator">/</span>chromium<span class="token operator">-</span><span class="token number">857950</span><span class="token operator">/</span>chrome<span class="token operator">-</span>linux<span class="token operator">/</span>chrome <span class="token operator">--</span>disable<span class="token operator">-</span>background<span class="token operator">-</span>networking <span class="token operator">--</span>enable<span class="token operator">-</span>features<span class="token operator">=</span>NetworkService<span class="token punctuation">,</span>NetworkServiceInProcess <span class="token operator">--</span>disable<span class="token operator">-</span>background<span class="token operator">-</span>timer<span class="token operator">-</span>throttling <span class="token operator">--</span>disable<span class="token operator">-</span>backgrounding<span class="token operator">-</span>occluded<span class="token operator">-</span>windows <span class="token operator">--</span>disable<span class="token operator">-</span>breakpad <span class="token operator">--</span>disable<span class="token operator">-</span>client<span class="token operator">-</span>side<span class="token operator">-</span>phishing<span class="token operator">-</span>detection <span class="token operator">--</span>disable<span class="token operator">-</span>component<span class="token operator">-</span>extensions<span class="token operator">-</span>with<span class="token operator">-</span>background<span class="token operator">-</span>pages <span class="token operator">--</span>disable<span class="token operator">-</span><span class="token keyword">default</span><span class="token operator">-</span>apps <span class="token operator">--</span>disable<span class="token operator">-</span>dev<span class="token operator">-</span>shm<span class="token operator">-</span>usage <span class="token operator">--</span>disable<span class="token operator">-</span>extensions <span class="token operator">--</span>disable<span class="token operator">-</span>features<span class="token operator">=</span>TranslateUI<span class="token punctuation">,</span>BlinkGenPropertyTrees<span class="token punctuation">,</span>ImprovedCookieControls<span class="token punctuation">,</span>SameSiteByDefaultCookies<span class="token punctuation">,</span>LazyFrameLoading <span class="token operator">--</span>disable<span class="token operator">-</span>hang<span class="token operator">-</span>monitor <span class="token operator">--</span>disable<span class="token operator">-</span>ipc<span class="token operator">-</span>flooding<span class="token operator">-</span>protection <span class="token operator">--</span>disable<span class="token operator">-</span>popup<span class="token operator">-</span>blocking <span class="token operator">--</span>disable<span class="token operator">-</span>prompt<span class="token operator">-</span>on<span class="token operator">-</span>repost <span class="token operator">--</span>disable<span class="token operator">-</span>renderer<span class="token operator">-</span>backgrounding <span class="token operator">--</span>disable<span class="token operator">-</span>sync <span class="token operator">--</span>force<span class="token operator">-</span>color<span class="token operator">-</span>profile<span class="token operator">=</span>srgb <span class="token operator">--</span>metrics<span class="token operator">-</span>recording<span class="token operator">-</span>only <span class="token operator">--</span>no<span class="token operator">-</span>first<span class="token operator">-</span>run <span class="token operator">--</span>enable<span class="token operator">-</span>automation <span class="token operator">--</span>password<span class="token operator">-</span>store<span class="token operator">=</span>basic <span class="token operator">--</span>use<span class="token operator">-</span>mock<span class="token operator">-</span>keychain <span class="token operator">--</span>user<span class="token operator">-</span>data<span class="token operator">-</span>dir<span class="token operator">=</span><span class="token operator">/</span>tmp<span class="token operator">/</span>playwright_chromiumdev_profile<span class="token operator">-</span>fc8kRc <span class="token operator">--</span>remote<span class="token operator">-</span>debugging<span class="token operator">-</span>pipe <span class="token operator">--</span>headless <span class="token operator">--</span>hide<span class="token operator">-</span>scrollbars <span class="token operator">--</span>mute<span class="token operator">-</span>audio <span class="token operator">--</span>blink<span class="token operator">-</span>settings<span class="token operator">=</span>primaryHoverType<span class="token operator">=</span><span class="token number">2</span><span class="token punctuation">,</span>availableHoverTypes<span class="token operator">=</span><span class="token number">2</span><span class="token punctuation">,</span>primaryPointerType<span class="token operator">=</span><span class="token number">4</span><span class="token punctuation">,</span>availablePointerTypes<span class="token operator">=</span><span class="token number">4</span> <span class="token operator">--</span>no<span class="token operator">-</span>sandbox <span class="token operator">--</span>no<span class="token operator">-</span>startup<span class="token operator">-</span>window
+<span class="token operator">&lt;</span>launched<span class="token operator">></span> pid<span class="token operator">=</span><span class="token number">250754</span>
+<span class="token punctuation">[</span>pid<span class="token operator">=</span><span class="token number">250754</span><span class="token punctuation">]</span><span class="token punctuation">[</span>err<span class="token punctuation">]</span> <span class="token operator">/</span>root<span class="token operator">/</span><span class="token punctuation">.</span>cache<span class="token operator">/</span>ms<span class="token operator">-</span>playwright<span class="token operator">/</span>chromium<span class="token operator">-</span><span class="token number">857950</span><span class="token operator">/</span>chrome<span class="token operator">-</span>linux<span class="token operator">/</span>chrome<span class="token punctuation">:</span> <span class="token builtin">error</span> while loading shared libraries<span class="token punctuation">:</span> libatk<span class="token operator">-</span><span class="token number">1.0</span><span class="token punctuation">.</span>so<span class="token punctuation">.</span><span class="token number">0</span><span class="token punctuation">:</span> cannot open shared object file<span class="token punctuation">:</span> No such file or directory
+<span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">=</span> logs <span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">=</span>
+<span class="token operator">&lt;</span>launching<span class="token operator">></span> <span class="token operator">/</span>root<span class="token operator">/</span><span class="token punctuation">.</span>cache<span class="token operator">/</span>ms<span class="token operator">-</span>playwright<span class="token operator">/</span>chromium<span class="token operator">-</span><span class="token number">857950</span><span class="token operator">/</span>chrome<span class="token operator">-</span>linux<span class="token operator">/</span>chrome <span class="token operator">--</span>disable<span class="token operator">-</span>background<span class="token operator">-</span>networking <span class="token operator">--</span>enable<span class="token operator">-</span>features<span class="token operator">=</span>NetworkService<span class="token punctuation">,</span>NetworkServiceInProcess <span class="token operator">--</span>disable<span class="token operator">-</span>background<span class="token operator">-</span>timer<span class="token operator">-</span>throttling <span class="token operator">--</span>disable<span class="token operator">-</span>backgrounding<span class="token operator">-</span>occluded<span class="token operator">-</span>windows <span class="token operator">--</span>disable<span class="token operator">-</span>breakpad <span class="token operator">--</span>disable<span class="token operator">-</span>client<span class="token operator">-</span>side<span class="token operator">-</span>phishing<span class="token operator">-</span>detection <span class="token operator">--</span>disable<span class="token operator">-</span>component<span class="token operator">-</span>extensions<span class="token operator">-</span>with<span class="token operator">-</span>background<span class="token operator">-</span>pages <span class="token operator">--</span>disable<span class="token operator">-</span><span class="token keyword">default</span><span class="token operator">-</span>apps <span class="token operator">--</span>disable<span class="token operator">-</span>dev<span class="token operator">-</span>shm<span class="token operator">-</span>usage <span class="token operator">--</span>disable<span class="token operator">-</span>extensions <span class="token operator">--</span>disable<span class="token operator">-</span>features<span class="token operator">=</span>TranslateUI<span class="token punctuation">,</span>BlinkGenPropertyTrees<span class="token punctuation">,</span>ImprovedCookieControls<span class="token punctuation">,</span>SameSiteByDefaultCookies<span class="token punctuation">,</span>LazyFrameLoading <span class="token operator">--</span>disable<span class="token operator">-</span>hang<span class="token operator">-</span>monitor <span class="token operator">--</span>disable<span class="token operator">-</span>ipc<span class="token operator">-</span>flooding<span class="token operator">-</span>protection <span class="token operator">--</span>disable<span class="token operator">-</span>popup<span class="token operator">-</span>blocking <span class="token operator">--</span>disable<span class="token operator">-</span>prompt<span class="token operator">-</span>on<span class="token operator">-</span>repost <span class="token operator">--</span>disable<span class="token operator">-</span>renderer<span class="token operator">-</span>backgrounding <span class="token operator">--</span>disable<span class="token operator">-</span>sync <span class="token operator">--</span>force<span class="token operator">-</span>color<span class="token operator">-</span>profile<span class="token operator">=</span>srgb <span class="token operator">--</span>metrics<span class="token operator">-</span>recording<span class="token operator">-</span>only <span class="token operator">--</span>no<span class="token operator">-</span>first<span class="token operator">-</span>run <span class="token operator">--</span>enable<span class="token operator">-</span>automation <span class="token operator">--</span>password<span class="token operator">-</span>store<span class="token operator">=</span>basic <span class="token operator">--</span>use<span class="token operator">-</span>mock<span class="token operator">-</span>keychain <span class="token operator">--</span>user<span class="token operator">-</span>data<span class="token operator">-</span>dir<span class="token operator">=</span><span class="token operator">/</span>tmp<span class="token operator">/</span>playwright_chromiumdev_profile<span class="token operator">-</span>fc8kRc <span class="token operator">--</span>remote<span class="token operator">-</span>debugging<span class="token operator">-</span>pipe <span class="token operator">--</span>headless <span class="token operator">--</span>hide<span class="token operator">-</span>scrollbars <span class="token operator">--</span>mute<span class="token operator">-</span>audio <span class="token operator">--</span>blink<span class="token operator">-</span>settings<span class="token operator">=</span>primaryHoverType<span class="token operator">=</span><span class="token number">2</span><span class="token punctuation">,</span>availableHoverTypes<span class="token operator">=</span><span class="token number">2</span><span class="token punctuation">,</span>primaryPointerType<span class="token operator">=</span><span class="token number">4</span><span class="token punctuation">,</span>availablePointerTypes<span class="token operator">=</span><span class="token number">4</span> <span class="token operator">--</span>no<span class="token operator">-</span>sandbox <span class="token operator">--</span>no<span class="token operator">-</span>startup<span class="token operator">-</span>window
+<span class="token operator">&lt;</span>launched<span class="token operator">></span> pid<span class="token operator">=</span><span class="token number">250754</span>
+<span class="token punctuation">[</span>pid<span class="token operator">=</span><span class="token number">250754</span><span class="token punctuation">]</span><span class="token punctuation">[</span>err<span class="token punctuation">]</span> <span class="token operator">/</span>root<span class="token operator">/</span><span class="token punctuation">.</span>cache<span class="token operator">/</span>ms<span class="token operator">-</span>playwright<span class="token operator">/</span>chromium<span class="token operator">-</span><span class="token number">857950</span><span class="token operator">/</span>chrome<span class="token operator">-</span>linux<span class="token operator">/</span>chrome<span class="token punctuation">:</span> <span class="token builtin">error</span> while loading shared libraries<span class="token punctuation">:</span> libatk<span class="token operator">-</span><span class="token number">1.0</span><span class="token punctuation">.</span>so<span class="token punctuation">.</span><span class="token number">0</span><span class="token punctuation">:</span> cannot open shared object file<span class="token punctuation">:</span> No such file or directory
+<span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span>
+Note<span class="token punctuation">:</span> use DEBUG<span class="token operator">=</span>pw<span class="token punctuation">:</span>api environment variable to capture Playwright logs<span class="token punctuation">.</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>找到重要语句</p>
+<pre class="line-numbers language-none"><code class="language-none">error while loading shared libraries: libatk-1.0.so.0: cannot open shared object file: No such file or directory<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>通过查询google</p>
+<p>解决办法为：</p>
+<pre class="line-numbers language-none"><code class="language-none">sudo apt install libcups2 libnss3-dev librust-atk-sys-dev libatk-bridge2.0-dev librust-gtk-sys-dev<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>安装对应依赖即可解决</p>
+
                 
             </div>
             <hr/>
@@ -375,7 +427,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://shhy.xyz/2022/08/13/shu-ju-jie-gou-c-yu-yan-dan-lian-biao/">https://shhy.xyz/2022/08/13/shu-ju-jie-gou-c-yu-yan-dan-lian-biao/</a>
+                    <a href="https://shhy.xyz/2021/08/18/yi-chang-chu-li/playwright-bao-cuo-que-shao-libatk-1-0-so-0-yi-chang-chu-li-md/">https://shhy.xyz/2021/08/18/yi-chang-chu-li/playwright-bao-cuo-que-shao-libatk-1-0-so-0-yi-chang-chu-li-md/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -413,8 +465,8 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-c%E8%AF%AD%E8%A8%80/">
-                                    <span class="chip bg-color">数据结构,c语言</span>
+                                <a href="/tags/exception/">
+                                    <span class="chip bg-color">exception</span>
                                 </a>
                             
                         </div>
@@ -499,31 +551,31 @@
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2022/12/07/bi-ye-lun-wen/bi-ye-lun-wen-3/">
+                <a href="/2021/08/22/cong-ling-kai-shi-da-jian-yi-ge-zi-dong-hui-fu-qq-ji-qi-ren/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="毕业设计(3)">
+                        <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="从零开始搭建一个自动回复qq机器人">
                         
-                        <span class="card-title">毕业设计(3)</span>
+                        <span class="card-title">从零开始搭建一个自动回复qq机器人</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            
+                            只需简单几个步骤，即可搭建一个功能众多的qq机器人。
                         
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2022-12-07
+                            <i class="far fa-clock fa-fw icon-date"></i>2021-08-22
                         </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/java-ssm/" class="post-category">
-                                    java,ssm
+                            <a href="/categories/bot/" class="post-category">
+                                    bot
                                 </a>
                             
                             
@@ -533,8 +585,12 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E6%AF%95%E4%B8%9A%E8%AE%BE%E8%AE%A1/">
-                        <span class="chip bg-color">毕业设计</span>
+                    <a href="/tags/bot/">
+                        <span class="chip bg-color">bot</span>
+                    </a>
+                    
+                    <a href="/tags/go/">
+                        <span class="chip bg-color">go</span>
                     </a>
                     
                 </div>
@@ -548,13 +604,13 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2022/08/13/shu-ju-jie-gou-c-yu-yan-shun-xu-biao/">
+                <a href="/2021/08/12/mo-ni-deng-lu-jiao-wu-xi-tong/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="数据结构-c语言-顺序表">
+                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="模拟登录教务系统">
                         
-                        <span class="card-title">数据结构-c语言-顺序表</span>
+                        <span class="card-title">模拟登录教务系统</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -565,16 +621,12 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-08-13
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-08-12
                             </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-C%E8%AF%AD%E8%A8%80/" class="post-category">
-                                    数据结构,C语言
-                                </a>
-                            
+                            <i class="fas fa-user fa-fw"></i>
+                            huoxue1
                             
                         </span>
                     </div>
@@ -582,8 +634,8 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-C%E8%AF%AD%E8%A8%80/">
-                        <span class="chip bg-color">数据结构,C语言</span>
+                    <a href="/tags/python/">
+                        <span class="chip bg-color">python</span>
                     </a>
                     
                 </div>

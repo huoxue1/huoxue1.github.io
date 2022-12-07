@@ -4,13 +4,9 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="解决android运行&#39;Failed to find Build Tools revision 30.0.2&#39;的问题.md, huoxue1&#39;s blog">
-    <meta name="description" content="在某次运行的时候突然出现了该报错Failed to find Build Tools revision 30.0.2
-
-解决方法
-首先打开sdk manager
-
-点击sdk tools,查看第一个Android sdk build too">
+    <meta name="keywords" content="用go实现队列, huoxue1&#39;s blog">
+    <meta name="description" content="队列的定义队列，和栈一样，也是一种对数据的”存”和”取”有严格要求的线性存储结构，与栈结构不同的是，队列的两端都”开口”，要求数据只能从一端进，从另一端出。队列有两种存储方式，分别是顺序队和链队，今天实现的是链队。
+结构的定义队列需要两个指">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -22,7 +18,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>解决android运行&#39;Failed to find Build Tools revision 30.0.2&#39;的问题.md | huoxue1&#39;s blog</title>
+    <title>用go实现队列 | huoxue1&#39;s blog</title>
     <link rel="icon" type="image/png" href="/favicon.png">
     
 
@@ -276,12 +272,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/14.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/18.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">解决android运行&#39;Failed to find Build Tools revision 30.0.2&#39;的问题.md</h1>
+                    <h1 class="description center-align post-title">用go实现队列</h1>
                 </div>
             </div>
         </div>
@@ -305,12 +301,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/exception/">
-                                <span class="chip bg-color">exception</span>
-                            </a>
-                        
-                            <a href="/tags/android/">
-                                <span class="chip bg-color">android</span>
+                            <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">
+                                <span class="chip bg-color">数据结构</span>
                             </a>
                         
                     </div>
@@ -321,8 +313,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/exception/" class="post-category">
-                                exception
+                            <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" class="post-category">
+                                数据结构
                             </a>
                         
                     </div>
@@ -334,7 +326,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2021-10-29
+                    2022-01-09
                 </div>
                 
 
@@ -358,19 +350,106 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="在某次运行的时候突然出现了该报错"><a href="#在某次运行的时候突然出现了该报错" class="headerlink" title="在某次运行的时候突然出现了该报错"></a>在某次运行的时候突然出现了该报错</h2><pre class="line-numbers language-none"><code class="language-none">Failed to find Build Tools revision 30.0.2<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+                <h1 id="队列的定义"><a href="#队列的定义" class="headerlink" title="队列的定义"></a>队列的定义</h1><p>队列，和栈一样，也是一种对数据的”存”和”取”有严格要求的线性存储结构，与栈结构不同的是，队列的两端都”开口”，要求数据只能从一端进，从另一端出。队列有两种存储方式，分别是顺序队和链队，今天实现的是链队。</p>
+<h1 id="结构的定义"><a href="#结构的定义" class="headerlink" title="结构的定义"></a>结构的定义</h1><p>队列需要两个指针定位对头和队尾的位置，所以定义方式如下所示。</p>
+<pre class="line-numbers language-go" data-language="go"><code class="language-go"><span class="token comment">// 代表每一个节点</span>
+<span class="token keyword">type</span> node <span class="token keyword">struct</span> <span class="token punctuation">&#123;</span>
+	data <span class="token keyword">interface</span><span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span>
+	next <span class="token operator">*</span>node
+<span class="token punctuation">&#125;</span>
 
-<h2 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h2><ul>
-<li><h2 id="首先打开sdk-manager"><a href="#首先打开sdk-manager" class="headerlink" title="首先打开sdk manager"></a>首先打开sdk manager</h2><p><img src="https://gitee.com/aabbccddeeeff/img/raw/master//img/202110292058476.png"></p>
-</li>
-<li><h2 id="点击sdk-tools-查看第一个Android-sdk-build-tools是否下载，如果没有下载则选中进行下载，若下载了则记住版本号"><a href="#点击sdk-tools-查看第一个Android-sdk-build-tools是否下载，如果没有下载则选中进行下载，若下载了则记住版本号" class="headerlink" title="点击sdk tools,查看第一个Android sdk build tools是否下载，如果没有下载则选中进行下载，若下载了则记住版本号"></a>点击sdk tools,查看第一个Android sdk build tools是否下载，如果没有下载则选中进行下载，若下载了则记住版本号</h2><p><img src="https://gitee.com/aabbccddeeeff/img/raw/master//img/202110292101282.png"></p>
-</li>
-<li><h2 id="右键单击项目根目录，选择Open-module-setting"><a href="#右键单击项目根目录，选择Open-module-setting" class="headerlink" title="右键单击项目根目录，选择Open module setting"></a>右键单击项目根目录，选择Open module setting</h2><p><img src="https://gitee.com/aabbccddeeeff/img/raw/master//img/202110292054075.png"></p>
-</li>
-<li><h2 id="在如图地方，填上上面的版本号"><a href="#在如图地方，填上上面的版本号" class="headerlink" title="在如图地方，填上上面的版本号"></a>在如图地方，填上上面的版本号</h2><p><img src="https://gitee.com/aabbccddeeeff/img/raw/master//img/202110292104361.png"></p>
-</li>
-</ul>
-<h2 id="问题解决"><a href="#问题解决" class="headerlink" title="问题解决"></a>问题解决</h2>
+<span class="token keyword">type</span> queue <span class="token keyword">struct</span> <span class="token punctuation">&#123;</span>
+	<span class="token comment">// 头节点</span>
+	head <span class="token operator">*</span>node
+
+	<span class="token comment">// 队尾节点</span>
+	rear <span class="token operator">*</span>node
+
+	size <span class="token builtin">int</span>
+
+	sync<span class="token punctuation">.</span>Mutex
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h1 id="队列的相关操作"><a href="#队列的相关操作" class="headerlink" title="队列的相关操作"></a>队列的相关操作</h1><h2 id="初始化队列"><a href="#初始化队列" class="headerlink" title="初始化队列"></a>初始化队列</h2><pre class="line-numbers language-go" data-language="go"><code class="language-go"><span class="token keyword">func</span> <span class="token function">newQueue</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">*</span>queue <span class="token punctuation">&#123;</span>
+	q <span class="token operator">:=</span> <span class="token function">new</span><span class="token punctuation">(</span>queue<span class="token punctuation">)</span>
+	q<span class="token punctuation">.</span>head <span class="token operator">=</span> <span class="token boolean">nil</span>
+	q<span class="token punctuation">.</span>rear <span class="token operator">=</span> <span class="token boolean">nil</span>
+	q<span class="token punctuation">.</span>size <span class="token operator">=</span> <span class="token number">0</span>
+	<span class="token keyword">return</span> q
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>创建一个心得队列对象，同时将头指针和尾指针全部置为nil</p>
+<h2 id="入队"><a href="#入队" class="headerlink" title="入队"></a>入队</h2><pre class="line-numbers language-go" data-language="go"><code class="language-go"><span class="token comment">// Put 尾插法</span>
+<span class="token keyword">func</span> <span class="token punctuation">(</span>q <span class="token operator">*</span>queue<span class="token punctuation">)</span> <span class="token function">Put</span><span class="token punctuation">(</span>element <span class="token keyword">interface</span><span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span><span class="token punctuation">)</span>  <span class="token punctuation">&#123;</span>
+	n <span class="token operator">:=</span> <span class="token function">new</span><span class="token punctuation">(</span>node<span class="token punctuation">)</span>
+	n<span class="token punctuation">.</span>data <span class="token operator">=</span> element
+	q<span class="token punctuation">.</span><span class="token function">Lock</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+	<span class="token keyword">defer</span> q<span class="token punctuation">.</span><span class="token function">Unlock</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+	<span class="token keyword">if</span> q<span class="token punctuation">.</span>rear <span class="token operator">==</span> <span class="token boolean">nil</span> <span class="token punctuation">&#123;</span>
+		q<span class="token punctuation">.</span>head <span class="token operator">=</span> n
+		q<span class="token punctuation">.</span>rear <span class="token operator">=</span> n
+	<span class="token punctuation">&#125;</span><span class="token keyword">else</span> <span class="token punctuation">&#123;</span>
+		q<span class="token punctuation">.</span>rear<span class="token punctuation">.</span>next <span class="token operator">=</span> n
+		q<span class="token punctuation">.</span>rear <span class="token operator">=</span> n
+	<span class="token punctuation">&#125;</span>
+	q<span class="token punctuation">.</span>size <span class="token operator">++</span>
+<span class="token punctuation">&#125;</span>
+
+<span class="token comment">// PutHead 头插法，在队列头部插入一个元素</span>
+<span class="token keyword">func</span> <span class="token punctuation">(</span>q <span class="token operator">*</span>queue<span class="token punctuation">)</span> <span class="token function">PutHead</span><span class="token punctuation">(</span>element <span class="token keyword">interface</span><span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span><span class="token punctuation">)</span>  <span class="token punctuation">&#123;</span>
+	n <span class="token operator">:=</span> <span class="token function">new</span><span class="token punctuation">(</span>node<span class="token punctuation">)</span>
+	n<span class="token punctuation">.</span>data <span class="token operator">=</span> element
+	q<span class="token punctuation">.</span><span class="token function">Lock</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+	<span class="token keyword">defer</span> q<span class="token punctuation">.</span><span class="token function">Unlock</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+	<span class="token keyword">if</span> q<span class="token punctuation">.</span>head <span class="token operator">==</span> <span class="token boolean">nil</span> <span class="token punctuation">&#123;</span>
+		q<span class="token punctuation">.</span>head <span class="token operator">=</span> n
+		q<span class="token punctuation">.</span>rear <span class="token operator">=</span> n
+	<span class="token punctuation">&#125;</span><span class="token keyword">else</span> <span class="token punctuation">&#123;</span>
+		n<span class="token punctuation">.</span>next <span class="token operator">=</span> q<span class="token punctuation">.</span>head
+		q<span class="token punctuation">.</span>head <span class="token operator">=</span> n
+	<span class="token punctuation">&#125;</span>
+	q<span class="token punctuation">.</span>size <span class="token operator">++</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>入队分为两种方式，分别是头插法和尾插法，默认采用尾插法。</p>
+<p>尾插法入队，首先创建一个节点对象，判断队列此时是否为空，若为空则将头指针和尾指针都指向该节点，否则将尾指针的节点的指针域指向新创建的节点，然后将队列的尾指针指向该节点。</p>
+<h2 id="出队"><a href="#出队" class="headerlink" title="出队"></a>出队</h2><pre class="line-numbers language-go" data-language="go"><code class="language-go"><span class="token comment">// Get 获取并删除队列头部的元素</span>
+<span class="token keyword">func</span> <span class="token punctuation">(</span>q <span class="token operator">*</span>queue<span class="token punctuation">)</span> <span class="token function">Get</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">interface</span><span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span> <span class="token punctuation">&#123;</span>
+	<span class="token keyword">if</span> q<span class="token punctuation">.</span>head <span class="token operator">==</span> <span class="token boolean">nil</span> <span class="token punctuation">&#123;</span>
+		<span class="token keyword">return</span> <span class="token boolean">nil</span>
+	<span class="token punctuation">&#125;</span>
+	n <span class="token operator">:=</span> q<span class="token punctuation">.</span>head
+	q<span class="token punctuation">.</span><span class="token function">Lock</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+	<span class="token keyword">defer</span> q<span class="token punctuation">.</span><span class="token function">Unlock</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+	<span class="token comment">// 代表队列中仅一个元素</span>
+	<span class="token keyword">if</span> n<span class="token punctuation">.</span>next <span class="token operator">==</span> <span class="token boolean">nil</span> <span class="token punctuation">&#123;</span>
+		q<span class="token punctuation">.</span>head <span class="token operator">=</span> <span class="token boolean">nil</span>
+		q<span class="token punctuation">.</span>rear <span class="token operator">=</span> <span class="token boolean">nil</span>
+
+	<span class="token punctuation">&#125;</span><span class="token keyword">else</span> <span class="token punctuation">&#123;</span>
+		q<span class="token punctuation">.</span>head <span class="token operator">=</span> n<span class="token punctuation">.</span>next
+	<span class="token punctuation">&#125;</span>
+	q<span class="token punctuation">.</span>size<span class="token operator">--</span>
+	<span class="token keyword">return</span> n<span class="token punctuation">.</span>data
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>出队默认从对头取出元素，首先判断队列是否存在元素，若不存在则返回nil，若存在，则将头节点赋值，然后判断队列中是否只存在一个元素，若只存在一个元素则将头尾节点都置为nil，否则将头节点置为该节点的下一个节点。</p>
+<h2 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h2><pre class="line-numbers language-go" data-language="go"><code class="language-go">
+<span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+	q <span class="token operator">:=</span> <span class="token function">newQueue</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+	q<span class="token punctuation">.</span><span class="token function">Put</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
+	q<span class="token punctuation">.</span><span class="token function">Put</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span>
+	fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span>q<span class="token punctuation">.</span><span class="token function">Get</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+	fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span>q<span class="token punctuation">.</span><span class="token function">Get</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+	fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span><span class="token string">"队列中剩余元素个数"</span><span class="token punctuation">,</span>q<span class="token punctuation">.</span>size<span class="token punctuation">)</span>
+<span class="token punctuation">&#125;</span>
+
+<span class="token comment">// 1</span>
+<span class="token comment">// 2</span>
+<span class="token comment">// 队列中剩余元素个数 0</span>
+
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="个人博客https-vtsqr-xyz"><a href="#个人博客https-vtsqr-xyz" class="headerlink" title="个人博客https://vtsqr.xyz"></a>个人博客<a target="_blank" rel="noopener" href="https://vtsqr.xyz/">https://vtsqr.xyz</a></h2>
                 
             </div>
             <hr/>
@@ -396,7 +475,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://shhy.xyz/2021/10/29/jie-jue-android-yun-xing-failed-to-find-build-tools-revision-30.0.2-de-wen-ti/">https://shhy.xyz/2021/10/29/jie-jue-android-yun-xing-failed-to-find-build-tools-revision-30.0.2-de-wen-ti/</a>
+                    <a href="https://shhy.xyz/2022/01/09/shu-ju-jie-gou/yong-go-shi-xian-dui-lie/">https://shhy.xyz/2022/01/09/shu-ju-jie-gou/yong-go-shi-xian-dui-lie/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -434,12 +513,8 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/exception/">
-                                    <span class="chip bg-color">exception</span>
-                                </a>
-                            
-                                <a href="/tags/android/">
-                                    <span class="chip bg-color">android</span>
+                                <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">
+                                    <span class="chip bg-color">数据结构</span>
                                 </a>
                             
                         </div>
@@ -524,13 +599,13 @@
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2021/12/28/cong-ling-kai-shi-da-jian-yi-ge-qun-guan-ji-qi-ren/">
+                <a href="/2022/03/25/vi-de-ji-chu-shi-yong/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="从零开始搭建一个群管机器人">
+                        <img src="/medias/featureimages/16.jpg" class="responsive-img" alt="vi的基础使用">
                         
-                        <span class="card-title">从零开始搭建一个群管机器人</span>
+                        <span class="card-title">vi的基础使用</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -541,14 +616,14 @@
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-12-28
+                            <i class="far fa-clock fa-fw icon-date"></i>2022-03-25
                         </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/bot-go/" class="post-category">
-                                    bot,go
+                            <a href="/categories/linux/" class="post-category">
+                                    linux
                                 </a>
                             
                             
@@ -558,8 +633,8 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/bot/">
-                        <span class="chip bg-color">bot</span>
+                    <a href="/tags/linux/">
+                        <span class="chip bg-color">linux</span>
                     </a>
                     
                 </div>
@@ -573,31 +648,31 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2021/08/22/cong-ling-kai-shi-da-jian-yi-ge-zi-dong-hui-fu-qq-ji-qi-ren/">
+                <a href="/2022/01/09/shu-ju-jie-gou/shi-yong-go-shi-xian-lian-zhan/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="从零开始搭建一个自动回复qq机器人">
+                        <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="使用go实现链栈">
                         
-                        <span class="card-title">从零开始搭建一个自动回复qq机器人</span>
+                        <span class="card-title">使用go实现链栈</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            只需简单几个步骤，即可搭建一个功能众多的qq机器人。
+                            
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-08-22
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-01-09
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/bot/" class="post-category">
-                                    bot
+                            <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" class="post-category">
+                                    数据结构
                                 </a>
                             
                             
@@ -607,12 +682,8 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/bot/">
-                        <span class="chip bg-color">bot</span>
-                    </a>
-                    
-                    <a href="/tags/go/">
-                        <span class="chip bg-color">go</span>
+                    <a href="/tags/go-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E9%93%BE%E6%A0%88/">
+                        <span class="chip bg-color">go,数据结构,链栈</span>
                     </a>
                     
                 </div>
