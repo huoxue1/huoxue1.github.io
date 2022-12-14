@@ -5,10 +5,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="毕业设计(4), huoxue1&#39;s blog">
-    <meta name="description" content="十、管理登录逻辑后端实现    管理员账号的账号密码从配置文件中读写
-@RestController
-@PropertySource(&#34;classpath:config/config.properties&#34;)
-@RequestMapping">
+    <meta name="description" content="登录实现">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -461,13 +458,12 @@
     <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">afterCompletion</span><span class="token punctuation">(</span><span class="token class-name">HttpServletRequest</span> request<span class="token punctuation">,</span> <span class="token class-name">HttpServletResponse</span> response<span class="token punctuation">,</span> <span class="token class-name">Object</span> handler<span class="token punctuation">,</span> <span class="token class-name">Exception</span> ex<span class="token punctuation">)</span> <span class="token keyword">throws</span> <span class="token class-name">Exception</span> <span class="token punctuation">&#123;</span>
 
     <span class="token punctuation">&#125;</span>
-<span class="token punctuation">&#125;</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>调用jwt解析前端携带的token,检测账号密码是否正确，如果正确则返回 <strong>true</strong>,否则抛出异常错误。</p>
 <h2 id="十一、前端基本配置"><a href="#十一、前端基本配置" class="headerlink" title="十一、前端基本配置"></a>十一、前端基本配置</h2><p>项目前端采用 <strong>react+ant design</strong>编写,语言使用 <strong>typescript</strong> ，开发工具使用 <strong>webstorm</strong> 。</p>
 <p>首先使用webstorm创建react项目，使用typescript模板，然后添加依赖</p>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">yarn add antd
+<h3 id="添加依赖"><a href="#添加依赖" class="headerlink" title="添加依赖"></a>添加依赖</h3><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">yarn add antd
 yarn add axios
 yarn add react-router-dom
 
@@ -475,7 +471,7 @@ yarn add react-router-dom
 yarn add http-proxy-middleware -D<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>因为在项目开发过程中，需要解决跨域的问题，所以我们使用开发依赖 <strong>http-proxy-middleware</strong>，将前端的接口转发到本地开发地址。</p>
-<p><strong>setupProxy.js</strong></p>
+<h3 id="解决本地调试跨域"><a href="#解决本地调试跨域" class="headerlink" title="解决本地调试跨域"></a>解决本地调试跨域</h3><p><strong>setupProxy.js</strong></p>
 <pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">const</span> <span class="token punctuation">&#123;</span> createProxyMiddleware <span class="token punctuation">&#125;</span> <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'http-proxy-middleware'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
  module<span class="token punctuation">.</span><span class="token function-variable function">exports</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">app</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
     app<span class="token punctuation">.</span><span class="token function">use</span><span class="token punctuation">(</span><span class="token string">"/api"</span><span class="token punctuation">,</span><span class="token function">createProxyMiddleware</span><span class="token punctuation">(</span><span class="token punctuation">&#123;</span>
@@ -487,10 +483,8 @@ yarn add http-proxy-middleware -D<span aria-hidden="true" class="line-numbers-ro
     <span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
  <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-
-
 <p>配置项目前端路由，在index.tsx中添加 <strong>HashRouter</strong>节点</p>
-<p><strong>index.tsx</strong></p>
+<h3 id="配置根路由"><a href="#配置根路由" class="headerlink" title="配置根路由"></a>配置根路由</h3><p><strong>index.tsx</strong></p>
 <pre class="line-numbers language-typescript" data-language="typescript"><code class="language-typescript"><span class="token keyword">import</span> React <span class="token keyword">from</span> <span class="token string">'react'</span><span class="token punctuation">;</span>
 <span class="token keyword">import</span> ReactDOM <span class="token keyword">from</span> <span class="token string">'react-dom/client'</span><span class="token punctuation">;</span>
 <span class="token keyword">import</span> <span class="token string">'./index.css'</span><span class="token punctuation">;</span>
@@ -508,14 +502,10 @@ root<span class="token punctuation">.</span><span class="token function">render<
       <span class="token operator">&lt;</span><span class="token operator">/</span>HashRouter<span class="token operator">></span>
   <span class="token operator">&lt;</span><span class="token operator">/</span>React<span class="token punctuation">.</span>StrictMode<span class="token operator">></span>
 <span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token function">reportWebVitals</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-
+<span class="token function">reportWebVitals</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>在App.tsx中添加基本页面，因为使用类组件开发，类组件中无法使用hooks等回调，所以将App组件使用WithRouter进行包装一下。</p>
-<p><strong>App.tsx</strong></p>
+<h3 id="配置主页面"><a href="#配置主页面" class="headerlink" title="配置主页面"></a>配置主页面</h3><p><strong>App.tsx</strong></p>
 <pre class="line-numbers language-typescript" data-language="typescript"><code class="language-typescript"><span class="token keyword">import</span> React<span class="token punctuation">,</span> <span class="token punctuation">&#123;</span>Component<span class="token punctuation">&#125;</span> <span class="token keyword">from</span> <span class="token string">'react'</span><span class="token punctuation">;</span>
 <span class="token keyword">import</span> <span class="token string">'./App.css'</span><span class="token punctuation">;</span>
 <span class="token keyword">import</span> <span class="token punctuation">&#123;</span>
@@ -564,13 +554,11 @@ root<span class="token punctuation">.</span><span class="token function">render<
         <span class="token operator">&lt;</span><span class="token operator">/</span><span class="token operator">></span>
     <span class="token punctuation">&#125;</span>
 <span class="token punctuation">&#125;</span>
-<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token function">withRouter</span><span class="token punctuation">(</span>App<span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token function">withRouter</span><span class="token punctuation">(</span>App<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <h2 id="十一、前端登录页面实现"><a href="#十一、前端登录页面实现" class="headerlink" title="十一、前端登录页面实现"></a>十一、前端登录页面实现</h2><p>首先封装axios，封装axios的接口为工具类</p>
 <p>后端返回的json将其封装为 <strong>IResponseData</strong></p>
-<p><strong>request.ts</strong></p>
+<h3 id="封装axios"><a href="#封装axios" class="headerlink" title="封装axios"></a>封装axios</h3><p><strong>request.ts</strong></p>
 <pre class="line-numbers language-typescript" data-language="typescript"><code class="language-typescript"><span class="token keyword">import</span> axios<span class="token punctuation">,</span> <span class="token punctuation">&#123;</span>AxiosInstance<span class="token punctuation">,</span> AxiosRequestConfig<span class="token punctuation">,</span> AxiosResponse<span class="token punctuation">&#125;</span> <span class="token keyword">from</span> <span class="token string">"axios"</span><span class="token punctuation">;</span>
 <span class="token keyword">import</span> <span class="token punctuation">&#123;</span>message<span class="token punctuation">&#125;</span> <span class="token keyword">from</span> <span class="token string">"antd"</span><span class="token punctuation">;</span>
 
@@ -633,13 +621,10 @@ root<span class="token punctuation">.</span><span class="token function">render<
     data<span class="token operator">:</span><span class="token constant">T</span><span class="token punctuation">;</span>
     code<span class="token operator">:</span> <span class="token builtin">number</span><span class="token punctuation">;</span>
     error<span class="token operator">?</span><span class="token operator">:</span><span class="token builtin">string</span>
-<span class="token punctuation">&#125;</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>封装调用后端api的接口为一个类</p>
-<p><strong>api.ts</strong></p>
+<h3 id="封装接口"><a href="#封装接口" class="headerlink" title="封装接口"></a>封装接口</h3><p><strong>api.ts</strong></p>
 <pre class="line-numbers language-typescript" data-language="typescript"><code class="language-typescript"><span class="token keyword">import</span> Http<span class="token punctuation">,</span> <span class="token punctuation">&#123;</span>IResponseData<span class="token punctuation">&#125;</span> <span class="token keyword">from</span> <span class="token string">"./request"</span><span class="token punctuation">;</span>
 <span class="token keyword">import</span> <span class="token punctuation">&#123;</span>
     AdminClass<span class="token punctuation">,</span>
@@ -671,14 +656,10 @@ root<span class="token punctuation">.</span><span class="token function">render<
     <span class="token punctuation">&#125;</span>
 <span class="token punctuation">&#125;</span>
 
-<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token keyword">new</span> <span class="token class-name">Api</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token keyword">new</span> <span class="token class-name">Api</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>登录页面组件采用Layout进行管理，在header组件中添加页面标题，在content组件中添加Form表单。</p>
-<pre class="line-numbers language-typescript" data-language="typescript"><code class="language-typescript"><span class="token keyword">import</span> <span class="token punctuation">&#123;</span>Component<span class="token punctuation">&#125;</span> <span class="token keyword">from</span> <span class="token string">"react"</span><span class="token punctuation">;</span>
+<h3 id="登录主页面"><a href="#登录主页面" class="headerlink" title="登录主页面"></a>登录主页面</h3><pre class="line-numbers language-typescript" data-language="typescript"><code class="language-typescript"><span class="token keyword">import</span> <span class="token punctuation">&#123;</span>Component<span class="token punctuation">&#125;</span> <span class="token keyword">from</span> <span class="token string">"react"</span><span class="token punctuation">;</span>
 <span class="token keyword">import</span> <span class="token punctuation">&#123;</span>PageProps<span class="token punctuation">&#125;</span> <span class="token keyword">from</span> <span class="token string">"../models/props"</span><span class="token punctuation">;</span>
 <span class="token keyword">import</span> <span class="token punctuation">&#123;</span>Button<span class="token punctuation">,</span> Checkbox<span class="token punctuation">,</span> Form<span class="token punctuation">,</span> Input<span class="token punctuation">,</span> Layout<span class="token punctuation">,</span> Select<span class="token punctuation">&#125;</span> <span class="token keyword">from</span> <span class="token string">"antd"</span><span class="token punctuation">;</span>
 
@@ -711,7 +692,7 @@ root<span class="token punctuation">.</span><span class="token function">render<
 <span class="token punctuation">]</span>
 
 <span class="token keyword">class</span> <span class="token class-name">LoginPage</span> <span class="token keyword">extends</span> <span class="token class-name">Component<span class="token operator">&lt;</span>PageProps<span class="token punctuation">,</span> <span class="token builtin">any</span><span class="token operator">></span></span><span class="token punctuation">&#123;</span>
-    
+
 
     <span class="token function-variable function">onSubmit</span> <span class="token operator">=</span> <span class="token punctuation">(</span>value<span class="token operator">:</span><span class="token builtin">any</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span>
         api<span class="token punctuation">.</span><span class="token function">login</span><span class="token punctuation">(</span>value<span class="token punctuation">.</span>type<span class="token punctuation">,</span>value<span class="token punctuation">.</span>phone<span class="token punctuation">,</span>value<span class="token punctuation">.</span>password<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span>resp <span class="token operator">=></span> <span class="token punctuation">&#123;</span>
@@ -740,7 +721,7 @@ root<span class="token punctuation">.</span><span class="token function">render<
                             <span class="token operator">&lt;</span>img width<span class="token operator">=</span><span class="token punctuation">&#123;</span><span class="token string">"100%"</span><span class="token punctuation">&#125;</span> height<span class="token operator">=</span><span class="token punctuation">&#123;</span><span class="token string">"100%"</span><span class="token punctuation">&#125;</span> src<span class="token operator">=</span><span class="token punctuation">&#123;</span>loginImg<span class="token punctuation">&#125;</span> alt<span class="token operator">=</span><span class="token string">"图片"</span><span class="token operator">/</span><span class="token operator">></span>
                         <span class="token operator">&lt;</span><span class="token operator">/</span>Col<span class="token operator">></span>
                         <span class="token operator">&lt;</span>Col span<span class="token operator">=</span><span class="token punctuation">&#123;</span><span class="token number">6</span><span class="token punctuation">&#125;</span><span class="token operator">></span>
-                            <span class="token operator">&lt;</span>h1 style<span class="token operator">=</span><span class="token punctuation">&#123;</span><span class="token punctuation">&#123;</span>textAlign<span class="token operator">:</span><span class="token string">"center"</span><span class="token punctuation">,</span>fontSize<span class="token operator">:</span><span class="token string">"30px"</span><span class="token punctuation">,</span>paddingLeft<span class="token operator">:</span><span class="token string">"70px"</span><span class="token punctuation">&#125;</span><span class="token punctuation">&#125;</span><span class="token operator">></span>登<span class="token operator">&amp;</span>nbsp<span class="token punctuation">;</span><span class="token operator">&amp;</span>nbsp<span class="token punctuation">;</span><span class="token operator">&amp;</span>nbsp<span class="token punctuation">;</span><span class="token operator">&amp;</span>nbsp<span class="token punctuation">;</span><span class="token operator">&amp;</span>nbsp<span class="token punctuation">;</span><span class="token operator">&amp;</span>nbsp<span class="token punctuation">;</span>录<span class="token operator">&lt;</span><span class="token operator">/</span>h1<span class="token operator">></span>
+                            <span class="token operator">&lt;</span>h1 style<span class="token operator">=</span><span class="token punctuation">&#123;</span><span class="token punctuation">&#123;</span>textAlign<span class="token operator">:</span><span class="token string">"center"</span><span class="token punctuation">,</span>fontSize<span class="token operator">:</span><span class="token string">"30px"</span><span class="token punctuation">,</span>paddingLeft<span class="token operator">:</span><span class="token string">"70px"</span><span class="token punctuation">&#125;</span><span class="token punctuation">&#125;</span><span class="token operator">></span>登      录<span class="token operator">&lt;</span><span class="token operator">/</span>h1<span class="token operator">></span>
                             <span class="token operator">&lt;</span>div style<span class="token operator">=</span><span class="token punctuation">&#123;</span><span class="token punctuation">&#123;</span>height<span class="token operator">:</span><span class="token string">"5%"</span><span class="token punctuation">&#125;</span><span class="token punctuation">&#125;</span><span class="token operator">/</span><span class="token operator">></span>
                             <span class="token operator">&lt;</span>Form
                                 name<span class="token operator">=</span><span class="token string">"basic"</span>
@@ -780,7 +761,7 @@ root<span class="token punctuation">.</span><span class="token function">render<
 
                                 <span class="token operator">&lt;</span>Form<span class="token punctuation">.</span>Item wrapperCol<span class="token operator">=</span><span class="token punctuation">&#123;</span><span class="token punctuation">&#123;</span> offset<span class="token operator">:</span> <span class="token number">13</span><span class="token punctuation">,</span> span<span class="token operator">:</span> <span class="token number">16</span> <span class="token punctuation">&#125;</span><span class="token punctuation">&#125;</span><span class="token operator">></span>
                                     <span class="token operator">&lt;</span>Button size<span class="token operator">=</span><span class="token punctuation">&#123;</span><span class="token string">"large"</span><span class="token punctuation">&#125;</span>  type<span class="token operator">=</span><span class="token string">"primary"</span> htmlType<span class="token operator">=</span><span class="token string">"submit"</span><span class="token operator">></span>
-                                        登<span class="token operator">&amp;</span>nbsp<span class="token punctuation">;</span><span class="token operator">&amp;</span>nbsp<span class="token punctuation">;</span><span class="token operator">&amp;</span>nbsp<span class="token punctuation">;</span><span class="token operator">&amp;</span>nbsp<span class="token punctuation">;</span><span class="token operator">&amp;</span>nbsp<span class="token punctuation">;</span>录
+                                        登     录
                                     <span class="token operator">&lt;</span><span class="token operator">/</span>Button<span class="token operator">></span>
                                 <span class="token operator">&lt;</span><span class="token operator">/</span>Form<span class="token punctuation">.</span>Item<span class="token operator">></span>
                             <span class="token operator">&lt;</span><span class="token operator">/</span>Form<span class="token operator">></span>
@@ -798,11 +779,7 @@ root<span class="token punctuation">.</span><span class="token function">render<
 <span class="token punctuation">&#125;</span>
 
 
-<span class="token keyword">export</span> <span class="token keyword">default</span> LoginPage
-
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-
+<span class="token keyword">export</span> <span class="token keyword">default</span> LoginPage<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
                 
             </div>
@@ -949,41 +926,43 @@ root<span class="token punctuation">.</span><span class="token function">render<
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2022/12/07/bi-ye-lun-wen/bi-ye-lun-wen-3/">
+                <a href="/2022/12/07/bi-ye-lun-wen/bi-ye-lun-wen-4/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="毕业设计(3)">
+                        <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="毕业设计(4)">
                         
-                        <span class="card-title">毕业设计(3)</span>
+                        <span class="card-title">毕业设计(4)</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            
+                            登录实现
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2022-12-07
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-12-07
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/java-ssm/" class="post-category">
-                                    java,ssm
+                            <a href="/categories/java-ssm-ant-design/" class="post-category">
+                                    java,ssm,ant design
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -1002,31 +981,31 @@ root<span class="token punctuation">.</span><span class="token function">render<
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2022/08/13/shu-ju-jie-gou/shu-ju-jie-gou-c-yu-yan-shun-xu-biao/">
+                <a href="/2022/12/07/bi-ye-lun-wen/bi-ye-lun-wen-3/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="数据结构-c语言-顺序表">
+                        <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="毕业设计(3)">
                         
-                        <span class="card-title">数据结构-c语言-顺序表</span>
+                        <span class="card-title">毕业设计(3)</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            
+                            基本工具类创建
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-08-13
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-12-07
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-C%E8%AF%AD%E8%A8%80/" class="post-category">
-                                    数据结构,C语言
+                            <a href="/categories/java-ssm/" class="post-category">
+                                    java,ssm
                                 </a>
                             
                             
@@ -1036,8 +1015,8 @@ root<span class="token punctuation">.</span><span class="token function">render<
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-C%E8%AF%AD%E8%A8%80/">
-                        <span class="chip bg-color">数据结构,C语言</span>
+                    <a href="/tags/%E6%AF%95%E4%B8%9A%E8%AE%BE%E8%AE%A1/">
+                        <span class="chip bg-color">毕业设计</span>
                     </a>
                     
                 </div>
