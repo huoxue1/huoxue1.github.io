@@ -4,8 +4,17 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="从零开始搭建一个自动回复qq机器人, huoxue1&#39;s blog">
-    <meta name="description" content="只需简单几个步骤，即可搭建一个功能众多的qq机器人。">
+    <meta name="keywords" content="java文件操作, huoxue1&#39;s blog">
+    <meta name="description" content="java文件操作1. 文件字符流​    reader 
+​     writer
++ *write()*
++ *append()*
++ *flush()*
++ *close()*
+
+​            
+
+文件字符输入流FileRe">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -17,7 +26,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>从零开始搭建一个自动回复qq机器人 | huoxue1&#39;s blog</title>
+    <title>java文件操作 | huoxue1&#39;s blog</title>
     <link rel="icon" type="image/png" href="/favicon.png">
     
 
@@ -271,12 +280,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/13.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/16.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">从零开始搭建一个自动回复qq机器人</h1>
+                    <h1 class="description center-align post-title">java文件操作</h1>
                 </div>
             </div>
         </div>
@@ -300,12 +309,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/bot/">
-                                <span class="chip bg-color">bot</span>
-                            </a>
-                        
-                            <a href="/tags/go/">
-                                <span class="chip bg-color">go</span>
+                            <a href="/tags/java/">
+                                <span class="chip bg-color">java</span>
                             </a>
                         
                     </div>
@@ -316,8 +321,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/bot/" class="post-category">
-                                bot
+                            <a href="/categories/%E6%AF%95%E4%B8%9A%E8%AE%BE%E8%AE%A1/" class="post-category">
+                                毕业设计
                             </a>
                         
                     </div>
@@ -329,7 +334,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2021-08-22
+                    2022-12-07
                 </div>
                 
 
@@ -353,40 +358,28 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="1-下载leafBotPlugin"><a href="#1-下载leafBotPlugin" class="headerlink" title="1. 下载leafBotPlugin"></a>1. 下载leafBotPlugin</h2><ul>
-<li><h4 id="打开leafBotPlugin"><a href="#打开leafBotPlugin" class="headerlink" title="打开leafBotPlugin"></a>打开<a target="_blank" rel="noopener" href="https://github.com/huoxue1/leafBotPlugin/releases">leafBotPlugin</a></h4></li>
-<li><h4 id="选择最新的版本，下载leafBotPlugin-windows-amd64-exe"><a href="#选择最新的版本，下载leafBotPlugin-windows-amd64-exe" class="headerlink" title="选择最新的版本，下载leafBotPlugin_windows_amd64.exe"></a>选择最新的版本，下载leafBotPlugin_windows_amd64.exe</h4></li>
-<li><h4 id="选择一个合适的文件夹放置该文件"><a href="#选择一个合适的文件夹放置该文件" class="headerlink" title="选择一个合适的文件夹放置该文件"></a>选择一个合适的文件夹放置该文件</h4></li>
-<li><h4 id="双击打开leafBotPlugin-windows-amd64-exe-在黑窗口中输入自己的机器人qq号"><a href="#双击打开leafBotPlugin-windows-amd64-exe-在黑窗口中输入自己的机器人qq号" class="headerlink" title="双击打开leafBotPlugin_windows_amd64.exe,在黑窗口中输入自己的机器人qq号"></a>双击打开leafBotPlugin_windows_amd64.exe,在黑窗口中输入自己的机器人qq号</h4></li>
-<li><h4 id="会在当前目录的config目录下生成两个文件，分别是congfig-json和config-yml"><a href="#会在当前目录的config目录下生成两个文件，分别是congfig-json和config-yml" class="headerlink" title="会在当前目录的config目录下生成两个文件，分别是congfig.json和config.yml"></a>会在当前目录的config目录下生成两个文件，分别是congfig.json和config.yml</h4></li>
-</ul>
-<h2 id="2-下载go-cqhttp"><a href="#2-下载go-cqhttp" class="headerlink" title="2. 下载go-cqhttp"></a>2. 下载go-cqhttp</h2><ul>
-<li><h4 id="打开go-cqhttp"><a href="#打开go-cqhttp" class="headerlink" title="打开go-cqhttp"></a>打开<a target="_blank" rel="noopener" href="https://github.com/Mrs4s/go-cqhttp/releases">go-cqhttp</a></h4></li>
-<li><h4 id="选择最新版本，下载go-cqhttp-windows-amd64-exe，将其重命名为go-cqhttp-exe"><a href="#选择最新版本，下载go-cqhttp-windows-amd64-exe，将其重命名为go-cqhttp-exe" class="headerlink" title="选择最新版本，下载go-cqhttp_windows_amd64.exe，将其重命名为go-cqhttp.exe"></a>选择最新版本，下载go-cqhttp_windows_amd64.exe，将其重命名为go-cqhttp.exe</h4></li>
-<li><h4 id="选择一个空文件夹放置文件，将刚才生成的config-yml移动到当前文件夹"><a href="#选择一个空文件夹放置文件，将刚才生成的config-yml移动到当前文件夹" class="headerlink" title="选择一个空文件夹放置文件，将刚才生成的config,yml移动到当前文件夹"></a>选择一个空文件夹放置文件，将刚才生成的config,yml移动到当前文件夹</h4></li>
-<li><h4 id="创建一个文本文件，输入以下内容"><a href="#创建一个文本文件，输入以下内容" class="headerlink" title="创建一个文本文件，输入以下内容"></a>创建一个文本文件，输入以下内容</h4></li>
-<li><pre><code>./go-cqhttp.exe
-<pre class="line-numbers language-none"><code class="language-none">
-+ #### 将其重命名为start.bat，双击打开文件，待其出现验证码后使用手机qq进行扫码登录
-
-+ #### 此时继续打开leafBotPlugin_windows_amd64.exe
-
-## 3. 验证
-
-##### 使用qq向机器人qq发送
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-/echo 123
-<pre class="line-numbers language-none"><code class="language-none">
-###### 如果机器人回复
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-123
+                <h1 id="java文件操作"><a href="#java文件操作" class="headerlink" title="java文件操作"></a>java文件操作</h1><h3 id="1-文件字符流"><a href="#1-文件字符流" class="headerlink" title="1. 文件字符流"></a>1. 文件字符流</h3><p>​    reader </p>
+<p>​     <strong>writer</strong></p>
+<pre><code>+ *write()*
++ *append()*
++ *flush()*
++ *close()*
 </code></pre>
+<p>​            </p>
+<ul>
+<li><h3 id="文件字符输入流"><a href="#文件字符输入流" class="headerlink" title="文件字符输入流"></a>文件字符输入流</h3><p>FileReader</p>
+</li>
+<li><h3 id="文件字符输出流"><a href="#文件字符输出流" class="headerlink" title="文件字符输出流"></a>文件字符输出流</h3><p>FileWriter</p>
 </li>
 </ul>
-<h6 id="证明机器人搭建成功"><a href="#证明机器人搭建成功" class="headerlink" title="证明机器人搭建成功"></a>证明机器人搭建成功</h6><h2 id="4-更多命令"><a href="#4-更多命令" class="headerlink" title="4.更多命令"></a>4.更多命令</h2><p><a target="_blank" rel="noopener" href="https://vtsqr.xyz/leafBotPlugin/Features">机器人帮助</a></p>
-<p>需要更多功能欢迎联系邮箱：<a href="mailto:&#x33;&#x33;&#52;&#51;&#55;&#56;&#48;&#51;&#55;&#54;&#64;&#113;&#x71;&#x2e;&#99;&#x6f;&#109;">&#x33;&#x33;&#52;&#51;&#55;&#56;&#48;&#51;&#55;&#54;&#64;&#113;&#x71;&#x2e;&#99;&#x6f;&#109;</a></p>
-<p>或直接在github提交issue</p>
-<p><a target="_blank" rel="noopener" href="https://github.com/huoxue1/leafBotPlugin">https://github.com/huoxue1/leafBotPlugin</a></p>
+<h3 id="2-文件文件字节流"><a href="#2-文件文件字节流" class="headerlink" title="2. 文件文件字节流"></a>2. 文件文件字节流</h3><p>inputstream   </p>
+<p>outputstream</p>
+<ul>
+<li><h4 id="文件字节输入流"><a href="#文件字节输入流" class="headerlink" title="文件字节输入流"></a>文件字节输入流</h4><p>​    FileInputStream</p>
+</li>
+<li><h4 id="文件字节输出流"><a href="#文件字节输出流" class="headerlink" title="文件字节输出流"></a>文件字节输出流</h4><p>​    FileOutputStream</p>
+</li>
+</ul>
 
                 
             </div>
@@ -413,7 +406,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://shhy.xyz/2021/08/22/cong-ling-kai-shi-da-jian-yi-ge-zi-dong-hui-fu-qq-ji-qi-ren/">https://shhy.xyz/2021/08/22/cong-ling-kai-shi-da-jian-yi-ge-zi-dong-hui-fu-qq-ji-qi-ren/</a>
+                    <a href="https://shhy.xyz/2022/12/07/java-xiang-guan/java-wen-jian-cao-zuo/">https://shhy.xyz/2022/12/07/java-xiang-guan/java-wen-jian-cao-zuo/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -451,12 +444,8 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/bot/">
-                                    <span class="chip bg-color">bot</span>
-                                </a>
-                            
-                                <a href="/tags/go/">
-                                    <span class="chip bg-color">go</span>
+                                <a href="/tags/java/">
+                                    <span class="chip bg-color">java</span>
                                 </a>
                             
                         </div>
@@ -541,31 +530,31 @@
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2021/10/29/yi-chang-chu-li/jie-jue-android-yun-xing-failed-to-find-build-tools-revision-30.0.2-de-wen-ti/">
+                <a href="/2022/12/10/bi-ye-lun-wen/bi-ye-lun-wen-3/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="解决android运行&#39;Failed to find Build Tools revision 30.0.2&#39;的问题.md">
+                        <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="毕业设计(3)">
                         
-                        <span class="card-title">解决android运行&#39;Failed to find Build Tools revision 30.0.2&#39;的问题.md</span>
+                        <span class="card-title">毕业设计(3)</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            
+                            基本工具类创建
                         
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-10-29
+                            <i class="far fa-clock fa-fw icon-date"></i>2022-12-10
                         </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/exception/" class="post-category">
-                                    exception
+                            <a href="/categories/%E6%AF%95%E4%B8%9A%E8%AE%BE%E8%AE%A1/" class="post-category">
+                                    毕业设计
                                 </a>
                             
                             
@@ -575,12 +564,24 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/exception/">
-                        <span class="chip bg-color">exception</span>
+                    <a href="/tags/java/">
+                        <span class="chip bg-color">java</span>
                     </a>
                     
-                    <a href="/tags/android/">
-                        <span class="chip bg-color">android</span>
+                    <a href="/tags/ssm/">
+                        <span class="chip bg-color">ssm</span>
+                    </a>
+                    
+                    <a href="/tags/react/">
+                        <span class="chip bg-color">react</span>
+                    </a>
+                    
+                    <a href="/tags/ant-design/">
+                        <span class="chip bg-color">ant design</span>
+                    </a>
+                    
+                    <a href="/tags/typescript/">
+                        <span class="chip bg-color">typescript</span>
                     </a>
                     
                 </div>
@@ -594,29 +595,33 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2021/08/18/yi-chang-chu-li/playwright-bao-cuo-que-shao-libatk-1-0-so-0-yi-chang-chu-li-md/">
+                <a href="/2022/12/07/bi-ye-lun-wen/bi-ye-lun-wen-2/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="playwright报错缺少libatk-1.0.so.0:异常处理.md">
+                        <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="毕业设计(2)">
                         
-                        <span class="card-title">playwright报错缺少libatk-1.0.so.0:异常处理.md</span>
+                        <span class="card-title">毕业设计(2)</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            
+                            数据库配置何整合ssm框架
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-08-18
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-12-07
                             </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-user fa-fw"></i>
-                            huoxue1
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E6%AF%95%E4%B8%9A%E8%AE%BE%E8%AE%A1/" class="post-category">
+                                    毕业设计
+                                </a>
+                            
                             
                         </span>
                     </div>
@@ -624,8 +629,24 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/exception/">
-                        <span class="chip bg-color">exception</span>
+                    <a href="/tags/java/">
+                        <span class="chip bg-color">java</span>
+                    </a>
+                    
+                    <a href="/tags/ssm/">
+                        <span class="chip bg-color">ssm</span>
+                    </a>
+                    
+                    <a href="/tags/react/">
+                        <span class="chip bg-color">react</span>
+                    </a>
+                    
+                    <a href="/tags/ant-design/">
+                        <span class="chip bg-color">ant design</span>
+                    </a>
+                    
+                    <a href="/tags/typescript/">
+                        <span class="chip bg-color">typescript</span>
                     </a>
                     
                 </div>
