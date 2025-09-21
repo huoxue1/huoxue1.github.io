@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html 
+	lang="zh">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		
+<link rel="stylesheet" href="/css/layout.css">
+
+		
+		<title> 用go实现二叉树 -  火雪的个人博客</title>
+		<!-- <link rel="stylesheet" href="https://unpkg.com/mdui@1.0.2/dist/css/mdui.min.css" /> -->
+		<!-- <script src="https://unpkg.com/mdui@1.0.2/dist/js/mdui.min.js"></script> -->
+		
+<link rel="stylesheet" href="/lib/mdui/mdui.min.css">
+
+		
+<script src="/lib/mdui/mdui.min.js"></script>
+
+		<!-- lazyload -->
+		
+<script src="/lib/lazysizes.js"></script>
+
+		<!-- smooth-scrolling -->
+		
+<script src="/lib/smooth-scrolling.js"></script>
+
+		<!-- highlight -->
+		
+<link rel="stylesheet" href="/lib/highlight/atom-one-dark.min.css">
+
+		
+<script src="/lib/highlight/highlight.min.js"></script>
+
+		<!-- 预置 kiraicon -->
+		
+<link rel="stylesheet" href="/lib/iconfont/iconfont.css">
+
+		
+		<link
+			rel="shortcut icon"
+			href="https://kira.host/assets/Pictures/Others/116359b4ccf19917.jpg"
+			type="image/png"
+		/>
+		
+<link rel="stylesheet" href="/deps/css/APlayer.min.css">
+
+		
+		
+<script src="/deps/js/APlayer.min.js"></script>
+<script src="/deps/js/Meting.min.js"></script>
+
+	<meta name="generator" content="Hexo 8.0.0"></head>
+
+	<body>
+		<div
+			class="kira-background"
+			style="background-image: url('https://kira.host/assets/Pictures/Others/-f0d5cc34c6e5aa7_compressed.jpg')"
+		></div>
+		<div class="kira-header">
+    <a
+        class="kira-drawer-button mdui-ripple"
+        title="导航栏"
+        onclick="document.querySelector('.kira-sidebar-modal').classList.add('show');document.querySelector('.kira-sidebar#sidebar').classList.add('show');"
+    >
+        <i class="kirafont icon-menu"></i>
+    </a>
+    <a href="/" title="火雪的个人博客">
+        <img
+			src="https://kira.host/assets/Pictures/Others/20220922230447.jpg"
+			alt="John Doe"
+		/>
+    </a>
+</div>
+		<div class="kira-body">
+			<div class="kira-sidebar" id="sidebar">
+	<div class="kira-avatar mdui-ripple">
+		<a target="_blank" rel="noopener" href="https://kira.host/assets/Pictures/Others/20220922230447.jpg" title="John Doe">
+			<img
+				src="https://kira.host/assets/Pictures/Others/20220922230447.jpg"
+				alt="John Doe"
+			/>
+		</a>
+	</div>
+	<div class="kira-count">
+		<div><span>文章</span>25</div>
+		<div><span>标签</span>20</div>
+		<div><span>分类</span>11</div>
+	</div>
+	<div class="kira-list">
+		
+		<a
+			class="kira-list-item mdui-ripple false"
+			href="/"
+			title="回到首页"
+		>
+			<i
+				class="kirafont
+					
+						icon-home
+					"
+			></i>
+			<div class="kira-list-item-content">
+				回到首页
+			</div>
+		</a>
+		
+	</div>
+	<aside id="kira-sidebar">
+		
+			<div class="kira-widget-wrap">
+	<div class="kira-widget kira-social">
+		
+			<a
+				class="mdui-ripple"
+				href="https://github.com/huoxue1"
+				target="_blank"
+				mdui-tooltip="{content: 'GitHub'}"
+				style="color: rgb(25, 23, 23); background-color: rgba(25, 23, 23, .15);"
+			>
+				<i
+					class="kirafont
+					
+						icon-github
+					"
+				></i>
+			</a>
+		
+	</div>
+</div>
+
+		
+			
+  <div class="kira-widget-wrap">
+    <h3 class="kira-widget-title">分类</h3>
+    <div class="kira-widget">
+      <ul class="category-list">
+        
+        
+
+        
+          <li class="category-list-item">
+            <a class="category-list-link" href="/categories/bot/">
+              bot
+            </a>
+            <span class="category-list-count">2</span>
+          </li>
+        
+          <li class="category-list-item">
+            <a class="category-list-link" href="/categories/bot-go/">
+              bot,go
+            </a>
+            <span class="category-list-count">1</span>
+          </li>
+        
+          <li class="category-list-item">
+            <a class="category-list-link" href="/categories/default/">
+              default
+            </a>
+            <span class="category-list-count">1</span>
+          </li>
+        
+          <li class="category-list-item">
+            <a class="category-list-link" href="/categories/exception/">
+              exception
+            </a>
+            <span class="category-list-count">1</span>
+          </li>
+        
+          <li class="category-list-item">
+            <a class="category-list-link" href="/categories/linux/">
+              linux
+            </a>
+            <span class="category-list-count">3</span>
+          </li>
+        
+          <li class="category-list-item">
+            <a class="category-list-link" href="/categories/异常处理/">
+              异常处理
+            </a>
+            <span class="category-list-count">1</span>
+          </li>
+        
+          <li class="category-list-item">
+            <a class="category-list-link" href="/categories/数据结构/">
+              数据结构
+            </a>
+            <span class="category-list-count">2</span>
+          </li>
+        
+          <li class="category-list-item">
+            <a class="category-list-link" href="/categories/数据结构-二叉树/">
+              数据结构, 二叉树
+            </a>
+            <span class="category-list-count">1</span>
+          </li>
+        
+          <li class="category-list-item">
+            <a class="category-list-link" href="/categories/数据结构-C语言/">
+              数据结构,C语言
+            </a>
+            <span class="category-list-count">1</span>
+          </li>
+        
+          <li class="category-list-item">
+            <a class="category-list-link" href="/categories/毕业设计/">
+              毕业设计
+            </a>
+            <span class="category-list-count">7</span>
+          </li>
+        
+          <li class="category-list-item">
+            <a class="category-list-link" href="/categories/笔记/">
+              笔记
+            </a>
+            <span class="category-list-count">1</span>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+		
+			
+	<div class="kira-widget-wrap">
+		<div id="randomtagcloud" class="kira-widget tagcloud kira-rainbow">
+			<a href="/tags/android/" style="font-size: 10px;">android</a> <a href="/tags/ant-design/" style="font-size: 17.5px;">ant design</a> <a href="/tags/bot/" style="font-size: 12.5px;">bot</a> <a href="/tags/bot-go/" style="font-size: 10px;">bot,go</a> <a href="/tags/exception/" style="font-size: 15px;">exception</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/go/" style="font-size: 10px;">go</a> <a href="/tags/go-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E9%93%BE%E6%A0%88/" style="font-size: 10px;">go,数据结构,链栈</a> <a href="/tags/java/" style="font-size: 20px;">java</a> <a href="/tags/linux/" style="font-size: 15px;">linux</a> <a href="/tags/office/" style="font-size: 10px;">office</a> <a href="/tags/postgres/" style="font-size: 10px;">postgres</a> <a href="/tags/python/" style="font-size: 10px;">python</a> <a href="/tags/react/" style="font-size: 17.5px;">react</a> <a href="/tags/spring-mvc/" style="font-size: 10px;">spring mvc</a> <a href="/tags/ssm/" style="font-size: 17.5px;">ssm</a> <a href="/tags/typescript/" style="font-size: 17.5px;">typescript</a> <a href="/tags/undertow/" style="font-size: 10px;">undertow</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 12.5px;">数据结构</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-C%E8%AF%AD%E8%A8%80/" style="font-size: 10px;">数据结构,C语言</a>
+		</div>
+		
+			<script>
+				const maxTagCounts = parseInt(5);
+				const tagsLength = parseInt(20);
+				let tagsArr = [];
+				for(let i = 0; i < tagsLength; i++){
+					tagsArr.push(i);
+				}
+				tagsArr.sort(function (l, r) {
+					return Math.random() > 0.5 ? -1 : 1;
+				});
+				tagsArr = tagsArr.slice(0, maxTagCounts < tagsLength ? tagsLength - maxTagCounts : 0);
+				const tagCloudContainer = document.querySelector('#randomtagcloud');
+				for(let tagIdx = 0; tagIdx < tagsArr.length; tagIdx++){
+					tagCloudContainer.children[tagsArr[tagIdx]].style.display = 'none';
+				}
+			</script>
+		
+	</div>
+
+
+		
+			
+	<div class="kira-widget-wrap">
+		<h3 class="kira-widget-title">
+			文章归档
+		</h3>
+		<div class="kira-widget">
+			<ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/">2025</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/">2023</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/">2022</a><span class="archive-list-count">14</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/">2021</a><span class="archive-list-count">8</span></li></ul>
+		</div>
+	</div>
+
+
+		
+	</aside>
+	<div class="kira-copyright">
+		&copy; 2025
+		<a href="/">John Doe</a>
+		Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> &
+		<a href="https://github.com/ch1ny/kira-hexo/" target="_blank">Kira-Hexo</a>
+		<br />
+		
+		
+	</div>
+</div>
+<div
+	class="kira-sidebar-modal"
+	id="sidebar-modal"
+	onclick="(function(self) {
+		self.classList.remove('show');
+		document.querySelector('.kira-sidebar.show#sidebar').classList.remove('show');
+	})(this)"
+></div>
+			<div class="kira-content">
+				<div id="kira-top-header"></div>
+				<div class="kira-main-content">
+					
+<link rel="stylesheet" href="/css/kira-image.css">
+
+
+<script src="/js/kira-image.js"></script>
+
+<div class="kira-image">
+    <div class="kira-image-modal">
+        <div class="kira-image-header">
+            <div class="kira-image-counter"></div>
+            <div class="kira-image-title"></div>
+            <div class="kira-image-operation">
+                <div class="kira-image-operation-button" id="kira-image-operation-button-zoom">
+                    <i class="kirafont icon-zoom-in"></i>
+                </div>
+                <div class="kira-image-operation-button" id="kira-image-operation-button-close">
+                    <i class="kirafont icon-close"></i>
+                </div>
+            </div>
+        </div>
+        <div class="kira-image-container">
+            <div class="kira-image-prev-button-panel">
+                <div class="kira-image-exchange-button">
+                    <i class="kirafont icon-left"></i>
+                </div>
+            </div>
+            <div class="kira-image-list">
+                <div class="kira-image-prev">
+                    <img />
+                </div>
+                <div class="kira-image-now">
+                    <img />
+                </div>
+                <div class="kira-image-next">
+                    <img />
+                </div>
+            </div>
+            <div class="kira-image-next-button-panel">
+                <div class="kira-image-exchange-button">
+                    <i class="kirafont icon-right"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+	
+<link rel="stylesheet" href="/css/kira-code-copy.css">
+
+	
+<script src="/js/kira-code-copy.js"></script>
+
+
+<div class="kira-post">
+	<article>
+		
+		<div
+			class="kira-post-cover"
+			style="padding-bottom: '56.25%'"
+		>
+			<img
+				data-src="https://kira.host/assets/Pictures/Others/-f0d5cc34c6e5aa7_compressed.jpg"
+				data-sizes="auto"
+				alt="用go实现二叉树"
+				class="lazyload kira-post-cover-image disabled-kira-image"
+			/>
+			<h1>用go实现二叉树</h1>
+		</div>
+		
+		<div class="kira-post-meta kira-rainbow" style="margin:10px 0!important;">
+			<a><i class="kirafont icon-calendar-fill"></i>2022年05月08日</a>
+			<a><i class="kirafont icon-edit-fill"></i>2k 字</a>
+			<a><i class="kirafont icon-time-circle-fill"></i>大概 9 分钟</a>
+		</div>
+		<h1 id="用go实现二叉树"><a href="#用go实现二叉树" class="headerlink" title="用go实现二叉树"></a>用go实现二叉树</h1><blockquote>
+<p>二叉查找树（Binary Search Tree，简称BST）是一棵二叉树，它的左子节点的值比父节点的值要小，<br>右节点的值要比父节点的值大。它的高度决定了它的查找效率。在理想的情况下，二叉查找树增删查改的时间复杂度为O(logN)<br>(其中N为节点数），最坏的情况下为O(N)。当它的高度为logN+1时，我们就说二叉查找树是平衡的。</p>
+</blockquote>
+<h2 id="二叉树的构成"><a href="#二叉树的构成" class="headerlink" title="二叉树的构成"></a>二叉树的构成</h2><p>因为二叉树的节点需要可比较，所以定义了一个接口，包含了比较大小的方法和是否相等的方法</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><code class="hljs go"><br><span class="hljs-comment">// 实现该接口则代表可比较</span><br><span class="hljs-keyword">type</span> compare <span class="hljs-keyword">interface</span> &#123;<br>	<span class="hljs-comment">// 如果大于返回true,否则返回false</span><br>	compare(data <span class="hljs-keyword">interface</span>&#123;&#125;) <span class="hljs-type">bool</span><br>	<span class="hljs-comment">// 判断是否相等</span><br>	equals(data <span class="hljs-keyword">interface</span>&#123;&#125;) <span class="hljs-type">bool</span><br>&#125;<br><br><span class="hljs-comment">// 二叉树节点</span><br><span class="hljs-keyword">type</span> BST <span class="hljs-keyword">struct</span> &#123;<br>	<span class="hljs-comment">// 节点值</span><br>	data      compare<br>	<span class="hljs-comment">// 左节点</span><br>	LeftNode  *BST<br>	<span class="hljs-comment">// 右节点</span><br>	RightNode *BST<br>&#125;<br><br><span class="hljs-comment">// 节点值得结构体，实现了compare接口</span><br><span class="hljs-keyword">type</span> data <span class="hljs-keyword">struct</span> &#123;<br>    key   <span class="hljs-type">int</span><br>    value <span class="hljs-keyword">interface</span>&#123;&#125;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-params">(d *data)</span></span> equals(d1 <span class="hljs-keyword">interface</span>&#123;&#125;) <span class="hljs-type">bool</span> &#123;<br>    <span class="hljs-keyword">if</span> d.key == d1.(*data).key &#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span><br>    &#125;<br>        <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span><br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-params">(d *data)</span></span> compare(d1 <span class="hljs-keyword">interface</span>&#123;&#125;) <span class="hljs-type">bool</span> &#123;<br>    <span class="hljs-keyword">if</span> d.key &gt; d1.(*data).key &#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span><br>    &#125;<br>        <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span><br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="二叉树的插入"><a href="#二叉树的插入" class="headerlink" title="二叉树的插入"></a>二叉树的插入</h2><p>二叉树的插入非常简单，先判断根节点是否为空，为空则直接作为根节点，<br>若不为空则找到需要插入位置的父节点，从根节点开始比较，小于则向左子节点靠近，<br>大于则靠近右子节点，找到插入位置的父节点后，再进行比较插入就行。</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-comment">// insert 插入</span><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-params">(b *BST)</span></span> insert(content compare) &#123;<br>	<span class="hljs-keyword">var</span> parent *BST<br>	temp := b<br>	<span class="hljs-comment">// 先判断根节点是否为空</span><br>	<span class="hljs-keyword">if</span> temp.data == <span class="hljs-literal">nil</span> &#123;<br>		temp.data = content<br>		<span class="hljs-keyword">return</span><br>	&#125;<br>	<span class="hljs-comment">// 循环遍历找到父节点</span><br>	<span class="hljs-keyword">for</span> <span class="hljs-literal">true</span> &#123;<br>		<span class="hljs-comment">// 当节点为null时，</span><br>		<span class="hljs-keyword">if</span> temp == <span class="hljs-literal">nil</span> &#123;<br>			<span class="hljs-keyword">break</span><br>		&#125;<br>		parent = temp<br>		<span class="hljs-comment">// 如果当前节点值小于插入的值，则跳向左子节点</span><br>		<span class="hljs-keyword">if</span> temp.data.compare(content) &#123;<br>			temp = temp.LeftNode<br>		&#125; <span class="hljs-keyword">else</span> &#123;<br>			temp = temp.RightNode<br>		&#125;<br>	&#125;<br>    <span class="hljs-comment">// 比较值，进行插入赋值</span><br>	<span class="hljs-keyword">if</span> parent.data.compare(content) &#123;<br>		parent.LeftNode = &amp;BST&#123;<br>			data:      content,<br>			LeftNode:  <span class="hljs-literal">nil</span>,<br>			RightNode: <span class="hljs-literal">nil</span>,<br>		&#125;<br>	&#125; <span class="hljs-keyword">else</span> &#123;<br>		parent.RightNode = &amp;BST&#123;<br>			data:      content,<br>			LeftNode:  <span class="hljs-literal">nil</span>,<br>			RightNode: <span class="hljs-literal">nil</span>,<br>		&#125;<br>	&#125;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span> &#123;<br>    bst := NewBST()<br>    bst.insert(&amp;data&#123;<br>    key:   <span class="hljs-number">3</span>,<br>    value: <span class="hljs-string">&quot;123&quot;</span>,<br>    &#125;)<br>    <br>    bst.insert(&amp;data&#123;<br>    key:   <span class="hljs-number">2</span>,<br>    value: <span class="hljs-string">&quot;234&quot;</span>,<br>    &#125;)<br>    bst.insert(&amp;data&#123;<br>    key:   <span class="hljs-number">1</span>,<br>    value: <span class="hljs-string">&quot;345&quot;</span>,<br>    &#125;)<br>    bst.insert(&amp;data&#123;<br>    key:   <span class="hljs-number">4</span>,<br>    value: <span class="hljs-string">&quot;456&quot;</span>,<br>    &#125;)<br>    fmt.Println(bst)<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>通过goland断点调试查看插入结果<img src="https://s2.loli.net/2022/05/08/byvcQHTRGjgAEJ5.png"></p>
+<h2 id="二叉树节点查询"><a href="#二叉树节点查询" class="headerlink" title="二叉树节点查询"></a>二叉树节点查询</h2><p>二叉树查询只需要依次比较大小进行判断就能找到需要的值</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-comment">// 查询</span><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-params">(b *BST)</span></span> query(node compare) compare &#123;<br>	temp := b<br>	<span class="hljs-keyword">for</span> <span class="hljs-literal">true</span> &#123;<br>		<span class="hljs-comment">// 判断节点是否为空</span><br>		<span class="hljs-keyword">if</span> temp == <span class="hljs-literal">nil</span> &#123;<br>			<span class="hljs-keyword">return</span> <span class="hljs-literal">nil</span><br>		&#125;<br>		<span class="hljs-comment">// 判断节点的值是否匹配</span><br>		<span class="hljs-keyword">if</span> temp.data.equals(node) &#123;<br>			<span class="hljs-keyword">return</span> temp.data<br>		&#125;<br>        <span class="hljs-comment">// 根据节点值得大小移动当前位置</span><br>		<span class="hljs-keyword">if</span> temp.data.compare(node) &#123;<br>			temp = temp.LeftNode<br>		&#125; <span class="hljs-keyword">else</span> &#123;<br>			temp = temp.RightNode<br>		&#125;<br>	&#125;<br>	<span class="hljs-keyword">return</span> <span class="hljs-literal">nil</span><br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span> &#123;<br>        bst := NewBST()<br>        bst.insert(&amp;data&#123;<br>            key:   <span class="hljs-number">3</span>,<br>            value: <span class="hljs-string">&quot;123&quot;</span>,<br>        &#125;)<br>        <br>        bst.insert(&amp;data&#123;<br>            key:   <span class="hljs-number">2</span>,<br>            value: <span class="hljs-string">&quot;234&quot;</span>,<br>        &#125;)<br>        bst.insert(&amp;data&#123;<br>            key:   <span class="hljs-number">1</span>,<br>            value: <span class="hljs-string">&quot;345&quot;</span>,<br>        &#125;)<br>        bst.insert(&amp;data&#123;<br>            key:   <span class="hljs-number">4</span>,<br>            value: <span class="hljs-string">&quot;456&quot;</span>,<br>        &#125;)<br>        <span class="hljs-comment">// &amp;&#123;4 456&#125;</span><br>        fmt.Println(bst.query(&amp;data&#123;key: <span class="hljs-number">4</span>&#125;))<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="二叉树更新"><a href="#二叉树更新" class="headerlink" title="二叉树更新"></a>二叉树更新</h2><p>更新二叉树节点得值和插入类似，依次遍历找到节点更新即可</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-params">(b *BST)</span></span> update(node compare) <span class="hljs-type">error</span> &#123;<br>	temp := b<br>	<span class="hljs-keyword">for</span> <span class="hljs-literal">true</span> &#123;<br>		<span class="hljs-keyword">if</span> temp == <span class="hljs-literal">nil</span> &#123;<br>			<span class="hljs-keyword">return</span> errors.New(<span class="hljs-string">&quot;not found&quot;</span>)<br>		&#125;<br>		<span class="hljs-keyword">if</span> temp.data.equals(node) &#123;<br>			temp.data = node<br>			<span class="hljs-keyword">return</span> <span class="hljs-literal">nil</span><br>		&#125;<br><br>		<span class="hljs-keyword">if</span> temp.data.compare(node) &#123;<br>			temp = temp.LeftNode<br>		&#125; <span class="hljs-keyword">else</span> &#123;<br>			temp = temp.RightNode<br>		&#125;<br>	&#125;<br>	<span class="hljs-keyword">return</span> <span class="hljs-literal">nil</span><br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="节点遍历"><a href="#节点遍历" class="headerlink" title="节点遍历"></a>节点遍历</h2><p>节点遍历分为三种方式，分别为前序遍历，中序遍历，后续遍历</p>
+<ul>
+<li><h3 id="前序遍历"><a href="#前序遍历" class="headerlink" title="前序遍历"></a>前序遍历</h3>  前序遍历访问顺序为当前节点，左节点，右节点<br>  我们通过递归的方式进行遍历<br><img src="https://s2.loli.net/2022/05/08/F3Sds8P9KWaRoIp.png"><br>该二叉树我们通过前序遍历的顺序为<strong>3 2 4 7 6 9</strong></li>
+</ul>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs go">    <span class="hljs-comment">// 前序遍历</span><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-params">(b *BST)</span></span> frontItem(slice []compare) []compare &#123;<br>        <span class="hljs-keyword">if</span> b.data == <span class="hljs-literal">nil</span> &#123;<br>            <span class="hljs-keyword">return</span> <span class="hljs-literal">nil</span><br>        &#125;<br>        slice = <span class="hljs-built_in">append</span>(slice, b.data)<br>        <span class="hljs-keyword">if</span> b.LeftNode != <span class="hljs-literal">nil</span> &#123;<br>            slice = b.LeftNode.frontItem(slice)<br>        &#125;<br>        <span class="hljs-keyword">if</span> b.RightNode != <span class="hljs-literal">nil</span> &#123;<br>            slice = b.RightNode.frontItem(slice)<br>        &#125;<br>        <span class="hljs-keyword">return</span> slice<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><h3 id="中序遍历"><a href="#中序遍历" class="headerlink" title="中序遍历"></a>中序遍历</h3>中序遍历访问顺序为当左子节点，当前节点，右子节点<br>前面的二叉树我们通过中序遍历的顺序为<strong>2 3 4 7 6 9</strong></li>
+</ul>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-comment">// 中序遍历</span><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-params">(b *BST)</span></span> midItem(slice []compare) []compare &#123;<br>	<span class="hljs-keyword">if</span> b.data == <span class="hljs-literal">nil</span> &#123;<br>		<span class="hljs-keyword">return</span> <span class="hljs-literal">nil</span><br>	&#125;<br>	<span class="hljs-keyword">if</span> b.LeftNode != <span class="hljs-literal">nil</span> &#123;<br>		slice = b.LeftNode.frontItem(slice)<br>	&#125;<br>	slice = <span class="hljs-built_in">append</span>(slice, b.data)<br>	<span class="hljs-keyword">if</span> b.RightNode != <span class="hljs-literal">nil</span> &#123;<br>		slice = b.RightNode.frontItem(slice)<br>	&#125;<br>	<span class="hljs-keyword">return</span> slice<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><h3 id="后序遍历"><a href="#后序遍历" class="headerlink" title="后序遍历"></a>后序遍历</h3>  后序遍历访问顺序为左节点，右节点，当前节点<br>  前面二叉树我们通过后续遍历访问顺序为<strong>2 6 9 7 4 3</strong></li>
+</ul>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-comment">// 后序遍历</span><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-params">(b *BST)</span></span> rearItem(slice []compare) []compare &#123;<br>	<span class="hljs-keyword">if</span> b.data == <span class="hljs-literal">nil</span> &#123;<br>		<span class="hljs-keyword">return</span> <span class="hljs-literal">nil</span><br>	&#125;<br>	<span class="hljs-keyword">if</span> b.LeftNode != <span class="hljs-literal">nil</span> &#123;<br>		slice = b.LeftNode.rearItem(slice)<br>	&#125;<br>	<span class="hljs-keyword">if</span> b.RightNode != <span class="hljs-literal">nil</span> &#123;<br>		slice = b.RightNode.rearItem(slice)<br>	&#125;<br>	slice = <span class="hljs-built_in">append</span>(slice, b.data)<br>	<span class="hljs-keyword">return</span> slice<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="二叉树删除"><a href="#二叉树删除" class="headerlink" title="二叉树删除"></a>二叉树删除</h2><p>二叉树得删除分为三种情况</p>
+<ul>
+<li><p>节点左右子节点都为空</p>
+<p>  该情况只需要将该节点从父节点的指向删除即可</p>
+</li>
+<li><p>节点的子节点有一个为空</p>
+<p>  该情况需要将该节点的唯一子节点根据大小连接向该节点的父节点<br>  从该二叉树中删除节点6，只需要将节点7的左子节点指向5即可<br><img src="https://s2.loli.net/2022/05/08/YrqLx5f6Gk2KeRH.png"></p>
+</li>
+<li><p>节点的左右子节点都存在</p>
+<p>  该情况需要进行节点交换，需要先获取到当前节点的右子节点的中序遍历的第一个节点，然后交换两个节点的值，如果该右子节点的前序遍历<br>  首节点存在右子节点，则继续获取并交换，知道将该节点交换到叶子节点。</p>
+<p><img src="https://s2.loli.net/2022/05/08/25dGitWVH7Zh38x.png"></p>
+<p>  若将该二叉树的节点7删除，先需要获取右子节点的中序遍历守节点，因为节点9不存在左子节点，所以该节点就为9，我们就将节点9与节点7<br>  进行交换，因为仍不为叶子节点，所以继续获取，将节点11与节点7交换，最终交换结果为：<br><img src="https://s2.loli.net/2022/05/08/m72bcweH8vX4z5h.png"><br>  我们直接将该叶子节点删除即可</p>
+</li>
+</ul>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-comment">// 删除节点</span><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-params">(b *BST)</span></span> <span class="hljs-built_in">delete</span>(node compare) <span class="hljs-type">error</span> &#123;<br>	temp := b<br>	<span class="hljs-keyword">if</span> temp == <span class="hljs-literal">nil</span> &#123;<br>		<span class="hljs-keyword">return</span> errors.New(<span class="hljs-string">&quot;root&quot;</span>)<br>	&#125;<br>	isRoot := <span class="hljs-literal">false</span><br>	<span class="hljs-keyword">var</span> parent *BST<br>	<span class="hljs-comment">// 获取要删除节点的位置和父节点位置</span><br>	<span class="hljs-keyword">for</span> <span class="hljs-literal">true</span> &#123;<br>        <span class="hljs-comment">// 判断节点是否为根节点</span><br>		<span class="hljs-keyword">if</span> b.data.equals(node) &#123;<br>			isRoot = <span class="hljs-literal">true</span><br>			<span class="hljs-keyword">break</span><br>		&#125;<br>        <span class="hljs-comment">// 判断节点的值的大小</span><br>		<span class="hljs-keyword">if</span> temp.data.compare(node) &#123;<br>			<span class="hljs-keyword">if</span> temp.LeftNode == <span class="hljs-literal">nil</span> &#123;<br>				<span class="hljs-keyword">return</span> errors.New(<span class="hljs-string">&quot;not found&quot;</span>)<br>			&#125;<br>			<span class="hljs-keyword">if</span> temp.LeftNode.data.equals(node) &#123;<br>				parent = temp<br>				temp = temp.LeftNode<br>				<span class="hljs-keyword">break</span><br>			&#125; <span class="hljs-keyword">else</span> &#123;<br>				temp = temp.LeftNode<br>			&#125;<br>		&#125; <span class="hljs-keyword">else</span> &#123;<br>			<span class="hljs-keyword">if</span> temp.RightNode == <span class="hljs-literal">nil</span> &#123;<br>				<span class="hljs-keyword">return</span> errors.New(<span class="hljs-string">&quot;not found&quot;</span>)<br>			&#125;<br>			<span class="hljs-keyword">if</span> temp.RightNode.data.equals(node) &#123;<br>				parent = temp<br>				temp = temp.RightNode<br>				<span class="hljs-keyword">break</span><br>			&#125; <span class="hljs-keyword">else</span> &#123;<br>				temp = temp.RightNode<br>			&#125;<br>		&#125;<br>	&#125;<br><br>	<span class="hljs-comment">// case1: 删除节点即无左节点也无右节点</span><br>	<span class="hljs-keyword">if</span> temp.LeftNode == <span class="hljs-literal">nil</span> &amp;&amp; temp.RightNode == <span class="hljs-literal">nil</span> &#123;<br>		<span class="hljs-keyword">if</span> parent.data.compare(node) &#123;<br>			parent.LeftNode = <span class="hljs-literal">nil</span><br>		&#125; <span class="hljs-keyword">else</span> &#123;<br>			parent.RightNode = <span class="hljs-literal">nil</span><br>		&#125;<br>		<span class="hljs-keyword">return</span> <span class="hljs-literal">nil</span><br><br>		<span class="hljs-comment">// case2: 删除节点有左节点无右节点</span><br>	&#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> temp.LeftNode != <span class="hljs-literal">nil</span> &amp;&amp; temp.RightNode == <span class="hljs-literal">nil</span> &#123;<br><br>		<span class="hljs-keyword">if</span> isRoot &#123;<br>			b.data = temp.LeftNode.data<br>			b.LeftNode = temp.LeftNode.LeftNode<br>			b.RightNode = temp.LeftNode.RightNode<br>			<span class="hljs-keyword">return</span> <span class="hljs-literal">nil</span><br>		&#125;<br><br>		<span class="hljs-keyword">if</span> parent.LeftNode == temp &#123;<br>			parent.LeftNode = temp.LeftNode<br>		&#125; <span class="hljs-keyword">else</span> &#123;<br>			parent.RightNode = temp.LeftNode<br>		&#125;<br>		<span class="hljs-keyword">return</span> <span class="hljs-literal">nil</span><br><br>		<span class="hljs-comment">// case3: 删除节点有右节点无左节点</span><br>	&#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> temp.LeftNode == <span class="hljs-literal">nil</span> &amp;&amp; temp.RightNode != <span class="hljs-literal">nil</span> &#123;<br>		<span class="hljs-keyword">if</span> isRoot &#123;<br>			b.data = temp.RightNode.data<br>			b.LeftNode = temp.RightNode.LeftNode<br>			b.RightNode = temp.RightNode.RightNode<br>			<span class="hljs-keyword">return</span> <span class="hljs-literal">nil</span><br>		&#125;<br>		<span class="hljs-keyword">if</span> parent.LeftNode == temp &#123;<br>			parent.LeftNode = temp.RightNode<br>		&#125; <span class="hljs-keyword">else</span> &#123;<br>			parent.RightNode = temp.RightNode<br>		&#125;<br>		<span class="hljs-keyword">return</span> <span class="hljs-literal">nil</span><br><br>		<span class="hljs-comment">// case3: 删除节点有右节点有左节点</span><br>	&#125; <span class="hljs-keyword">else</span> &#123;<br>		<span class="hljs-keyword">for</span> temp.RightNode != <span class="hljs-literal">nil</span> &#123;<br>			firstMidNode := temp.RightNode.firstMidNode()<br>			firstMidNode.data, temp.data = temp.data, firstMidNode.data<br>			temp = firstMidNode<br>		&#125;<br>		<span class="hljs-keyword">return</span> b.<span class="hljs-built_in">delete</span>(node)<br>	&#125;<br>&#125;<br><br><span class="hljs-comment">// 获取中序遍历第一个节点</span><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-params">(b *BST)</span></span> firstMidNode() *BST &#123;<br>    temp := b<br>    <span class="hljs-keyword">for</span> <span class="hljs-literal">true</span> &#123;<br>        <span class="hljs-keyword">if</span> temp.LeftNode == <span class="hljs-literal">nil</span> &#123;<br>        <span class="hljs-keyword">return</span> temp<br>    &#125;<br>        temp = temp.LeftNode<br>    &#125;<br>    <span class="hljs-keyword">return</span> <span class="hljs-literal">nil</span><br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="个人博客-https-shhy-xyz"><a href="#个人博客-https-shhy-xyz" class="headerlink" title="个人博客 https://shhy.xyz"></a>个人博客 <a target="_blank" rel="noopener" href="https://shhy.xyz/">https://shhy.xyz</a></h2>
+	</article>
+
+	 
+    <div class="kira-post-copyright">
+        <strong>本文作者：</strong>John Doe<br>
+        <strong>本文链接：</strong><a href="http://example.com/2022/05/08/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E7%94%A8go%E5%AE%9E%E7%8E%B0%E4%BA%8C%E5%8F%89%E6%A0%91/" title="http:&#x2F;&#x2F;example.com&#x2F;2022&#x2F;05&#x2F;08&#x2F;数据结构&#x2F;用go实现二叉树&#x2F;" target="_blank" rel="noopener">http:&#x2F;&#x2F;example.com&#x2F;2022&#x2F;05&#x2F;08&#x2F;数据结构&#x2F;用go实现二叉树&#x2F;</a><br>
+        
+            <strong>版权声明：</strong>本文采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/cn/deed.zh" target="_blank">CC BY-NC-SA 3.0 CN</a> 协议进行许可
+        
+    </div>
+
+  
+	<div class="kira-post-nav">
+		<nav class="post-nav">
+			                      
+			<!-- 先找到与当前文字相同的目录 -->
+			   
+			<!-- 在找到当前文章所在的 index -->
+			                              
+		</nav>
+	</div>
+	
+	<div class="kira-post-meta kira-rainbow">
+		
+			<a class="kirafont icon-container-fill -link" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E4%BA%8C%E5%8F%89%E6%A0%91/">数据结构, 二叉树</a>
+		
+		
+			<a class="kirafont icon-tag-fill -none-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag">数据结构</a>
+		
+	</div>
+	
+	<div class="kira-post-footer">
+		
+
+		
+	</div>
+	
+</div>
+
+				</div>
+			</div>
+			<div class="kira-right-column">
+	<a onclick="document.querySelector('#kira-top-header').scrollIntoView({behavior: 'smooth'});" class="kira-backtotop" aria-label="回到顶部" title="回到顶部">
+		<button class="mdui-fab mdui-ripple">
+			<i class="kirafont icon-caret-up"></i>
+		</button>
+	</a>
+</div>
+
+		</div>
+	</body>
+</html>

@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html 
+	lang="zh">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		
+<link rel="stylesheet" href="/css/layout.css">
+
+		
+		<title> leafbot源码解读 -  火雪的个人博客</title>
+		<!-- <link rel="stylesheet" href="https://unpkg.com/mdui@1.0.2/dist/css/mdui.min.css" /> -->
+		<!-- <script src="https://unpkg.com/mdui@1.0.2/dist/js/mdui.min.js"></script> -->
+		
+<link rel="stylesheet" href="/lib/mdui/mdui.min.css">
+
+		
+<script src="/lib/mdui/mdui.min.js"></script>
+
+		<!-- lazyload -->
+		
+<script src="/lib/lazysizes.js"></script>
+
+		<!-- smooth-scrolling -->
+		
+<script src="/lib/smooth-scrolling.js"></script>
+
+		<!-- highlight -->
+		
+<link rel="stylesheet" href="/lib/highlight/atom-one-dark.min.css">
+
+		
+<script src="/lib/highlight/highlight.min.js"></script>
+
+		<!-- 预置 kiraicon -->
+		
+<link rel="stylesheet" href="/lib/iconfont/iconfont.css">
+
+		
+		<link
+			rel="shortcut icon"
+			href="https://kira.host/assets/Pictures/Others/116359b4ccf19917.jpg"
+			type="image/png"
+		/>
+		
+<link rel="stylesheet" href="/deps/css/APlayer.min.css">
+
+		
+		
+<script src="/deps/js/APlayer.min.js"></script>
+<script src="/deps/js/Meting.min.js"></script>
+
+	<meta name="generator" content="Hexo 8.0.0"></head>
+
+	<body>
+		<div
+			class="kira-background"
+			style="background-image: url('https://kira.host/assets/Pictures/Others/-f0d5cc34c6e5aa7_compressed.jpg')"
+		></div>
+		<div class="kira-header">
+    <a
+        class="kira-drawer-button mdui-ripple"
+        title="导航栏"
+        onclick="document.querySelector('.kira-sidebar-modal').classList.add('show');document.querySelector('.kira-sidebar#sidebar').classList.add('show');"
+    >
+        <i class="kirafont icon-menu"></i>
+    </a>
+    <a href="/" title="火雪的个人博客">
+        <img
+			src="https://kira.host/assets/Pictures/Others/20220922230447.jpg"
+			alt="John Doe"
+		/>
+    </a>
+</div>
+		<div class="kira-body">
+			<div class="kira-sidebar" id="sidebar">
+	<div class="kira-avatar mdui-ripple">
+		<a target="_blank" rel="noopener" href="https://kira.host/assets/Pictures/Others/20220922230447.jpg" title="John Doe">
+			<img
+				src="https://kira.host/assets/Pictures/Others/20220922230447.jpg"
+				alt="John Doe"
+			/>
+		</a>
+	</div>
+	<div class="kira-count">
+		<div><span>文章</span>25</div>
+		<div><span>标签</span>20</div>
+		<div><span>分类</span>11</div>
+	</div>
+	<div class="kira-list">
+		
+		<a
+			class="kira-list-item mdui-ripple false"
+			href="/"
+			title="回到首页"
+		>
+			<i
+				class="kirafont
+					
+						icon-home
+					"
+			></i>
+			<div class="kira-list-item-content">
+				回到首页
+			</div>
+		</a>
+		
+	</div>
+	<aside id="kira-sidebar">
+		
+			<div class="kira-widget-wrap">
+	<div class="kira-widget kira-social">
+		
+			<a
+				class="mdui-ripple"
+				href="https://github.com/huoxue1"
+				target="_blank"
+				mdui-tooltip="{content: 'GitHub'}"
+				style="color: rgb(25, 23, 23); background-color: rgba(25, 23, 23, .15);"
+			>
+				<i
+					class="kirafont
+					
+						icon-github
+					"
+				></i>
+			</a>
+		
+	</div>
+</div>
+
+		
+			
+  <div class="kira-widget-wrap">
+    <h3 class="kira-widget-title">分类</h3>
+    <div class="kira-widget">
+      <ul class="category-list">
+        
+        
+
+        
+          <li class="category-list-item">
+            <a class="category-list-link" href="/categories/bot/">
+              bot
+            </a>
+            <span class="category-list-count">2</span>
+          </li>
+        
+          <li class="category-list-item">
+            <a class="category-list-link" href="/categories/bot-go/">
+              bot,go
+            </a>
+            <span class="category-list-count">1</span>
+          </li>
+        
+          <li class="category-list-item">
+            <a class="category-list-link" href="/categories/default/">
+              default
+            </a>
+            <span class="category-list-count">1</span>
+          </li>
+        
+          <li class="category-list-item">
+            <a class="category-list-link" href="/categories/exception/">
+              exception
+            </a>
+            <span class="category-list-count">1</span>
+          </li>
+        
+          <li class="category-list-item">
+            <a class="category-list-link" href="/categories/linux/">
+              linux
+            </a>
+            <span class="category-list-count">3</span>
+          </li>
+        
+          <li class="category-list-item">
+            <a class="category-list-link" href="/categories/异常处理/">
+              异常处理
+            </a>
+            <span class="category-list-count">1</span>
+          </li>
+        
+          <li class="category-list-item">
+            <a class="category-list-link" href="/categories/数据结构/">
+              数据结构
+            </a>
+            <span class="category-list-count">2</span>
+          </li>
+        
+          <li class="category-list-item">
+            <a class="category-list-link" href="/categories/数据结构-二叉树/">
+              数据结构, 二叉树
+            </a>
+            <span class="category-list-count">1</span>
+          </li>
+        
+          <li class="category-list-item">
+            <a class="category-list-link" href="/categories/数据结构-C语言/">
+              数据结构,C语言
+            </a>
+            <span class="category-list-count">1</span>
+          </li>
+        
+          <li class="category-list-item">
+            <a class="category-list-link" href="/categories/毕业设计/">
+              毕业设计
+            </a>
+            <span class="category-list-count">7</span>
+          </li>
+        
+          <li class="category-list-item">
+            <a class="category-list-link" href="/categories/笔记/">
+              笔记
+            </a>
+            <span class="category-list-count">1</span>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+		
+			
+	<div class="kira-widget-wrap">
+		<div id="randomtagcloud" class="kira-widget tagcloud kira-rainbow">
+			<a href="/tags/android/" style="font-size: 10px;">android</a> <a href="/tags/ant-design/" style="font-size: 17.5px;">ant design</a> <a href="/tags/bot/" style="font-size: 12.5px;">bot</a> <a href="/tags/bot-go/" style="font-size: 10px;">bot,go</a> <a href="/tags/exception/" style="font-size: 15px;">exception</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/go/" style="font-size: 10px;">go</a> <a href="/tags/go-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E9%93%BE%E6%A0%88/" style="font-size: 10px;">go,数据结构,链栈</a> <a href="/tags/java/" style="font-size: 20px;">java</a> <a href="/tags/linux/" style="font-size: 15px;">linux</a> <a href="/tags/office/" style="font-size: 10px;">office</a> <a href="/tags/postgres/" style="font-size: 10px;">postgres</a> <a href="/tags/python/" style="font-size: 10px;">python</a> <a href="/tags/react/" style="font-size: 17.5px;">react</a> <a href="/tags/spring-mvc/" style="font-size: 10px;">spring mvc</a> <a href="/tags/ssm/" style="font-size: 17.5px;">ssm</a> <a href="/tags/typescript/" style="font-size: 17.5px;">typescript</a> <a href="/tags/undertow/" style="font-size: 10px;">undertow</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 12.5px;">数据结构</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-C%E8%AF%AD%E8%A8%80/" style="font-size: 10px;">数据结构,C语言</a>
+		</div>
+		
+			<script>
+				const maxTagCounts = parseInt(5);
+				const tagsLength = parseInt(20);
+				let tagsArr = [];
+				for(let i = 0; i < tagsLength; i++){
+					tagsArr.push(i);
+				}
+				tagsArr.sort(function (l, r) {
+					return Math.random() > 0.5 ? -1 : 1;
+				});
+				tagsArr = tagsArr.slice(0, maxTagCounts < tagsLength ? tagsLength - maxTagCounts : 0);
+				const tagCloudContainer = document.querySelector('#randomtagcloud');
+				for(let tagIdx = 0; tagIdx < tagsArr.length; tagIdx++){
+					tagCloudContainer.children[tagsArr[tagIdx]].style.display = 'none';
+				}
+			</script>
+		
+	</div>
+
+
+		
+			
+	<div class="kira-widget-wrap">
+		<h3 class="kira-widget-title">
+			文章归档
+		</h3>
+		<div class="kira-widget">
+			<ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/">2025</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/">2023</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/">2022</a><span class="archive-list-count">14</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/">2021</a><span class="archive-list-count">8</span></li></ul>
+		</div>
+	</div>
+
+
+		
+	</aside>
+	<div class="kira-copyright">
+		&copy; 2025
+		<a href="/">John Doe</a>
+		Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> &
+		<a href="https://github.com/ch1ny/kira-hexo/" target="_blank">Kira-Hexo</a>
+		<br />
+		
+		
+	</div>
+</div>
+<div
+	class="kira-sidebar-modal"
+	id="sidebar-modal"
+	onclick="(function(self) {
+		self.classList.remove('show');
+		document.querySelector('.kira-sidebar.show#sidebar').classList.remove('show');
+	})(this)"
+></div>
+			<div class="kira-content">
+				<div id="kira-top-header"></div>
+				<div class="kira-main-content">
+					
+<link rel="stylesheet" href="/css/kira-image.css">
+
+
+<script src="/js/kira-image.js"></script>
+
+<div class="kira-image">
+    <div class="kira-image-modal">
+        <div class="kira-image-header">
+            <div class="kira-image-counter"></div>
+            <div class="kira-image-title"></div>
+            <div class="kira-image-operation">
+                <div class="kira-image-operation-button" id="kira-image-operation-button-zoom">
+                    <i class="kirafont icon-zoom-in"></i>
+                </div>
+                <div class="kira-image-operation-button" id="kira-image-operation-button-close">
+                    <i class="kirafont icon-close"></i>
+                </div>
+            </div>
+        </div>
+        <div class="kira-image-container">
+            <div class="kira-image-prev-button-panel">
+                <div class="kira-image-exchange-button">
+                    <i class="kirafont icon-left"></i>
+                </div>
+            </div>
+            <div class="kira-image-list">
+                <div class="kira-image-prev">
+                    <img />
+                </div>
+                <div class="kira-image-now">
+                    <img />
+                </div>
+                <div class="kira-image-next">
+                    <img />
+                </div>
+            </div>
+            <div class="kira-image-next-button-panel">
+                <div class="kira-image-exchange-button">
+                    <i class="kirafont icon-right"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+	
+<link rel="stylesheet" href="/css/kira-code-copy.css">
+
+	
+<script src="/js/kira-code-copy.js"></script>
+
+
+<div class="kira-post">
+	<article>
+		
+		<div
+			class="kira-post-cover"
+			style="padding-bottom: '56.25%'"
+		>
+			<img
+				data-src="https://kira.host/assets/Pictures/Others/-f0d5cc34c6e5aa7_compressed.jpg"
+				data-sizes="auto"
+				alt="leafbot源码解读"
+				class="lazyload kira-post-cover-image disabled-kira-image"
+			/>
+			<h1>leafbot源码解读</h1>
+		</div>
+		
+		<div class="kira-post-meta kira-rainbow" style="margin:10px 0!important;">
+			<a><i class="kirafont icon-calendar-fill"></i>2021年12月31日</a>
+			<a><i class="kirafont icon-edit-fill"></i>2k 字</a>
+			<a><i class="kirafont icon-time-circle-fill"></i>大概 10 分钟</a>
+		</div>
+		<h1 id="leafbot简介"><a href="#leafbot简介" class="headerlink" title="leafbot简介"></a>leafbot简介</h1><ul>
+<li><h3 id="leafbot是一个go语言实现的onebot11sdk实现之一，是一个免费的开源的go语言库，具有开发简单，持续维护等优点-可对接遵循onebot标准的实现，主要对接go-cqhttp"><a href="#leafbot是一个go语言实现的onebot11sdk实现之一，是一个免费的开源的go语言库，具有开发简单，持续维护等优点-可对接遵循onebot标准的实现，主要对接go-cqhttp" class="headerlink" title="leafbot是一个go语言实现的onebot11sdk实现之一，是一个免费的开源的go语言库，具有开发简单，持续维护等优点,可对接遵循onebot标准的实现，主要对接go-cqhttp"></a>leafbot是一个go语言实现的<a target="_blank" rel="noopener" href="https://github.com/botuniverse/onebot-11">onebot11</a>sdk实现之一，是一个免费的开源的go语言库，具有开发简单，持续维护等优点,可对接遵循onebot标准的实现，主要对接<a target="_blank" rel="noopener" href="https://github.com/Mrs4s/go-cqhttp">go-cqhttp</a></h3></li>
+<li><h3 id="leafbot的github仓库地址为-http-github-con-huoxue1-leafbot"><a href="#leafbot的github仓库地址为-http-github-con-huoxue1-leafbot" class="headerlink" title="leafbot的github仓库地址为:http://github.con/huoxue1/leafbot"></a>leafbot的github仓库地址为:<a target="_blank" rel="noopener" href="http://github.con/huoxue1/leafbot">http://github.con/huoxue1/leafbot</a></h3></li>
+<li><h3 id="leafbot文档地址为：https-vtsqr-xyz-leafbot-dist"><a href="#leafbot文档地址为：https-vtsqr-xyz-leafbot-dist" class="headerlink" title="leafbot文档地址为：https://vtsqr.xyz/leafbot/dist/"></a>leafbot文档地址为：<a target="_blank" rel="noopener" href="https://vtsqr.xyz/leafbot/dist/">https://vtsqr.xyz/leafbot/dist/</a></h3></li>
+</ul>
+<h1 id="driver介绍"><a href="#driver介绍" class="headerlink" title="driver介绍"></a>driver介绍</h1><p>driver为和onebot端的通信抽象层实现，目前内置了四种driver，分别对应了go-cqhttp的三种通信模式，还有一个直接连接go-cqhttp进行内置启动,driver包含在形目的driver文件夹下面，每一个driver需要实现如下接口。</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-keyword">type</span> Driver <span class="hljs-keyword">interface</span> &#123;<br>    <span class="hljs-comment">// Run</span><br>    <span class="hljs-comment">// @Description: 运行该驱动的接口，该接口应该为阻塞式运行</span><br>    <span class="hljs-comment">//</span><br>    Run()<br>    <span class="hljs-comment">// GetEvent</span><br>    <span class="hljs-comment">// @Description: 返回一个chan，该chan为事件传递的chan</span><br>    <span class="hljs-comment">// @return chan</span><br>    <span class="hljs-comment">//</span><br>    GetEvent() <span class="hljs-keyword">chan</span> []<span class="hljs-type">byte</span><br>    <span class="hljs-comment">// 当一个bot连接时的回调</span><br>    OnConnect(<span class="hljs-function"><span class="hljs-keyword">func</span><span class="hljs-params">(selfId <span class="hljs-type">int64</span>, host <span class="hljs-type">string</span>, clientRole <span class="hljs-type">string</span>)</span></span>)<br>    <span class="hljs-comment">// 当bot断开连接时的回调</span><br>    OnDisConnect(<span class="hljs-function"><span class="hljs-keyword">func</span><span class="hljs-params">(selfId <span class="hljs-type">int64</span>)</span></span>)<br><br>    <span class="hljs-comment">// GetBot</span><br>    <span class="hljs-comment">// @Description: 获取一个实现了APi接口的bot</span><br>    <span class="hljs-comment">// @param int64 bot的id</span><br>    <span class="hljs-comment">// @return interface&#123;&#125;</span><br>    <span class="hljs-comment">//</span><br>    GetBot(<span class="hljs-type">int64</span>) <span class="hljs-keyword">interface</span>&#123;&#125;<br>    <span class="hljs-comment">// GetBots</span><br>    <span class="hljs-comment">// @Description: 获取所有bot</span><br>    <span class="hljs-comment">// @return map[int64]interface&#123;&#125;</span><br>    <span class="hljs-comment">//</span><br>    GetBots() <span class="hljs-keyword">map</span>[<span class="hljs-type">int64</span>]<span class="hljs-keyword">interface</span>&#123;&#125;<br>    <span class="hljs-comment">// 给驱动设置一些运行信息，例如运行地址以及端口之类的</span><br>    SetConfig(config <span class="hljs-keyword">map</span>[<span class="hljs-type">string</span>]<span class="hljs-keyword">interface</span>&#123;&#125;)<br>    <span class="hljs-comment">// 给驱动添加一个webhook监听，主要用于cqhttp_http_driver</span><br>    AddWebHook(selfID <span class="hljs-type">int64</span>, postHost <span class="hljs-type">string</span>, postPort <span class="hljs-type">int</span>)<br>    <span class="hljs-comment">// 给driver设置token，用于onebot端的鉴权</span><br>    SetToken(token <span class="hljs-type">string</span>)<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><h2 id="cqhttp-http-driver"><a href="#cqhttp-http-driver" class="headerlink" title="cqhttp_http_driver"></a>cqhttp_http_driver</h2></li>
+</ul>
+<p>该驱动对应go-cqhttp的http连接方式，需要在配置文件中配置listen_address和listen_port，分别为leafbot的监听地址，还需要配置对应的webhook，对应了go-cqhttp端的监听地址。</p>
+<p>driver通过实现了http包中的handler接口，即实现了ServerHttp方法，在ServerHttp方法中监听来自cqhttp的上报消息，并在在run方法中注册bot对象，每一个bot对象记录了自己上报端的接口地址和自己的selfId,bot通过调用Do方法进行api的调用</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><code class="hljs go"><br><br><span class="hljs-comment">// 实现了ServerHttp方法</span><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-params">(d *Driver)</span></span> ServeHTTP(writer http.ResponseWriter, request *http.Request) &#123;<br>    data, err := io.ReadAll(request.Body)<br>    <span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> &#123;<br>        <span class="hljs-keyword">return</span><br>    &#125;<br><br>    d.eventChan &lt;- data<br>    writer.WriteHeader(<span class="hljs-number">200</span>)<br>&#125;<br><br><br><span class="hljs-comment">// 注册Bot对象</span><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-params">(d *Driver)</span></span> Run() &#123;<br>    log.Infoln(<span class="hljs-string">&quot;Load the cqhttp_http_driver successful&quot;</span>)<br>    <span class="hljs-keyword">for</span> _, s := <span class="hljs-keyword">range</span> d.webHook &#123;<br>        b := <span class="hljs-built_in">new</span>(Bot)<br>        b.selfID = s.selfID<br>        b.postHost = s.postHost<br>        b.postPort = s.postPort<br>        b.responses = sync.Map&#123;&#125;<br>        b.disConnectHandle = d.disConnectHandle<br>        b.client = gout.NewWithOpt()<br>        b.token = d.token<br>        d.bots.Store(s.selfID, b)<br>    &#125;<br>    log.Infoln(<span class="hljs-string">&quot;Load the cqhttp_http_driver successful&quot;</span>)<br>    log.Infoln(fmt.Sprintf(<span class="hljs-string">&quot;the cqhttp_http_driver listening in %v:%v&quot;</span>, d.listenHost, d.listenPort))<br>    <span class="hljs-keyword">if</span> err := http.ListenAndServe(fmt.Sprintf(<span class="hljs-string">&quot;%v:%v&quot;</span>, d.listenHost, d.listenPort), d); err != <span class="hljs-literal">nil</span> &#123;<br>        log.Errorln(<span class="hljs-string">&quot;监听webhook失败&quot;</span> + err.Error())<br>    &#125;<br>&#125;<br><br><br><span class="hljs-comment">// 进行Api的调用</span><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-params">(b *Bot)</span></span> Do(i <span class="hljs-keyword">interface</span>&#123;&#125;) &#123;<br>    <span class="hljs-keyword">type</span> userAPi <span class="hljs-keyword">struct</span> &#123;<br>        Action <span class="hljs-type">string</span>      <span class="hljs-string">`json:&quot;action&quot;`</span><br>        Params <span class="hljs-keyword">interface</span>&#123;&#125; <span class="hljs-string">`json:&quot;params&quot;`</span><br>        Echo   <span class="hljs-type">string</span>      <span class="hljs-string">`json:&quot;echo&quot;`</span><br>    &#125;<br>    data := i.(userAPi)<br>    <span class="hljs-keyword">var</span> resp []<span class="hljs-type">byte</span><br>    err := b.client.POST(fmt.Sprintf(<span class="hljs-string">&quot;http://%v:%v/%v&quot;</span>, b.postHost, b.postPort, data.Action)).<br>        SetHeader(gout.H&#123;<span class="hljs-string">&quot;Authorization&quot;</span>: <span class="hljs-string">&quot;Bearer &quot;</span> + b.token&#125;).<br>        SetJSON(data.Params).<br>        BindBody(&amp;resp).Do()<br>    <span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> &#123;<br>        log.Errorln(<span class="hljs-string">&quot;调用api出现错误&quot;</span>, err.Error())<br>        <span class="hljs-keyword">return</span><br>    &#125;<br>    b.responses.Store(data.Echo, resp)<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><h2 id="cqhttp-positive-driver"><a href="#cqhttp-positive-driver" class="headerlink" title="cqhttp_positive_driver"></a>cqhttp_positive_driver</h2><p>  该驱动对应了go-cqhttp的正向websocket连接方式，即go-cqhttp为服务的，leafbot为客户端，只需要在配置文件中配置<strong>host</strong>和<strong>port</strong>即可，对应了go-cqhttp的正向ws监听地址。</p>
+<p>  该驱动通过直接在Run方法中主动连接onebot端进行通信，然后再连接成功后从请求头中获取到bot的SelfId。并且创建Bot对象，bot对象中持有ws的conn连接对象，可以通过该对象主动进行Api调用。</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-params">(d *Driver)</span></span> Run() &#123;<br>  u := url.URL&#123;Scheme: <span class="hljs-string">&quot;ws&quot;</span>, Host: d.address + <span class="hljs-string">&quot;:&quot;</span> + strconv.Itoa(d.port)&#125;<br>  header := http.Header&#123;&#125;<br>  header.Add(<span class="hljs-string">&quot;Authorization&quot;</span>, <span class="hljs-string">&quot;Bearer &quot;</span>+d.token)<br>  conn, _, err := websocket.DefaultDialer.Dial(u.String(), header) <span class="hljs-comment">//nolint:bodyclose</span><br>  <span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> &#123;<br>      <span class="hljs-keyword">return</span><br>  &#125;<br>  log.Infoln(<span class="hljs-string">&quot;Load the cqhttp_positive_driver successful&quot;</span>)<br>  _, data, err := conn.ReadMessage()<br>  <span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> &#123;<br>      <span class="hljs-keyword">return</span><br>  &#125;<br>  selfId := gjson.GetBytes(data, <span class="hljs-string">&quot;self_id&quot;</span>).Int()<br>  role := <span class="hljs-string">&quot;&quot;</span><br>  host := d.address<br><br>  b := <span class="hljs-built_in">new</span>(Bot)<br>  b.conn = conn<br>  b.selfId = selfId<br>  b.responses = sync.Map&#123;&#125;<br><br>  _, ok := d.bots.Load(selfId)<br>  <span class="hljs-keyword">if</span> ok &#123;<br>      d.bots.LoadOrStore(selfId, b)<br>  &#125; <span class="hljs-keyword">else</span> &#123;<br>      d.bots.Store(selfId, b)<br>  &#125;<br><br>  d.connectHandle(selfId, host, role)<br>  b.disConnectHandle = d.disConnectHandle<br>  log.Infoln(fmt.Sprintf(<span class="hljs-string">&quot;the bot %v is connected&quot;</span>, selfId))<br>  <span class="hljs-keyword">go</span> <span class="hljs-function"><span class="hljs-keyword">func</span><span class="hljs-params">()</span></span> &#123;<br>      <span class="hljs-keyword">defer</span> <span class="hljs-function"><span class="hljs-keyword">func</span><span class="hljs-params">()</span></span> &#123;<br>          i := <span class="hljs-built_in">recover</span>()<br>          <span class="hljs-keyword">if</span> i != <span class="hljs-literal">nil</span> &#123;<br>              log.Errorln(<span class="hljs-string">&quot;ws链接读取出现错误&quot;</span>)<br>              log.Errorln(i)<br>              d.disConnectHandle(selfId)<br>          &#125;<br>      &#125;()<br>      <span class="hljs-keyword">for</span> &#123;<br>          _, data, err := conn.ReadMessage()<br>          <span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> &#123;<br>              b.wsClose()<br>          &#125;<br><br>          echo := gjson.GetBytes(data, <span class="hljs-string">&quot;echo&quot;</span>)<br>          <span class="hljs-keyword">if</span> echo.Exists() &#123;<br>              b.responses.Store(echo.String(), data)<br>          &#125; <span class="hljs-keyword">else</span> &#123;<br>              d.eventChan &lt;- data<br>          &#125;<br>      &#125;<br>  &#125;()<br>&#125;<br><br></code></pre></td></tr></table></figure></li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><code class="hljs plaintext"><br>+ ## cqhttp_reverse_driver<br><br>    该驱动对应了cqhttp的反向websocket连接方式，需要配置host和port即可，该驱动leafbot作为服务器，onebot端主动连接leafbot，所以可以实现同时连接多个onebot实现。<br><br>    驱动通过实现http包中的handler接口，再SeverHttp方法中，升级http协议为websocket协议，然后再升级成功后从header中获取selfId，然后创建Bot对象，bot对象分别持有websocket连接对象，可以通过对象赖调用对应的Onebot的api.<br><br>```go<br>func (d *Driver) ServeHTTP(writer http.ResponseWriter, request *http.Request) &#123;<br>    selfID, err := strconv.ParseInt(request.Header.Get(&quot;X-Self-ID&quot;), 10, 64)<br>    role := request.Header.Get(&quot;X-Client-Role&quot;)<br>    host := request.Header.Get(&quot;Host&quot;)<br>    if d.token != &quot;&quot; &#123;<br>        get := request.Header.Get(&quot;Authorization&quot;)<br>        auth := strings.Split(get, &quot; &quot;)<br>        if auth[0] != &quot;Bearer&quot; || auth[1] != d.token &#123;<br>            log.Errorln(&quot;the token is not current!&quot;)<br>            return<br>        &#125;<br>    &#125;<br>    conn, err := upgrade.Upgrade(writer, request, nil)<br>    if err != nil &#123;<br>        return<br>    &#125;<br>    b := new(Bot)<br>    b.conn = conn<br>    b.selfId = selfID<br>    b.responses = sync.Map&#123;&#125;<br>    _, ok := d.bots.Load(selfID)<br>    if ok &#123;<br>        d.bots.LoadOrStore(selfID, b)<br>    &#125; else &#123;<br>        d.bots.Store(selfID, b)<br>    &#125;<br>    b.disConnectHandle = d.disConnectHandle<br>    log.Infoln(fmt.Sprintf(&quot;the bot %v is connected&quot;, selfID))<br>    // 执行链接回调<br>    go d.connectHandle(selfID, host, role)<br>    go func() &#123;<br>        defer func() &#123;<br>            err := recover()<br>            if err != nil &#123;<br>                b.wsClose()<br>                log.Errorln(&quot;ws链接读取出现错误&quot;)<br>                log.Errorln(err)<br>            &#125;<br>        &#125;()<br>        for &#123;<br>            _, data, err := conn.ReadMessage()<br>            if err != nil &#123;<br>                b.wsClose()<br>            &#125;<br><br>            echo := gjson.GetBytes(data, &quot;echo&quot;)<br>            if echo.Exists() &#123;<br>                b.responses.Store(echo.String(), data)<br>            &#125; else &#123;<br>                d.eventChan &lt;- data<br>            &#125;<br>        &#125;<br>    &#125;()<br>&#125;<br><br></code></pre></td></tr></table></figure>
+
+<h2 id="cqhttp-default-driver"><a href="#cqhttp-default-driver" class="headerlink" title="cqhttp_default_driver"></a>cqhttp_default_driver</h2><p>该驱动为leafbot最新版本添加的驱动，通过调用go-cqhttp的registerServer对象，直接实现内置go-cqhttp来实现铜线，驱动在run方法中调用了gocq.Main()方法，并且注册了一个默认的服务，注册了一个事件回调，使用该驱动控制台同时会输出go-cqhttp的日志和leafbot日志。并且leafbot一些日志配置会被go-cqhttp所覆盖。</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs go"><br><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-params">(d *Driver)</span></span> Run() &#123;<br>    servers.RegisterCustom(<span class="hljs-string">&quot;leafBot&quot;</span>, <span class="hljs-function"><span class="hljs-keyword">func</span><span class="hljs-params">(bot *coolq.CQBot)</span></span> &#123;<br>        b := <span class="hljs-built_in">new</span>(Bot)<br>        b.CQBot = bot<br>        b.call = api.NewCaller(bot)<br>        d.bot = b<br>        bot.OnEventPush(<span class="hljs-function"><span class="hljs-keyword">func</span><span class="hljs-params">(e *coolq.Event)</span></span> &#123;<br>            data := e.JSONString()<br>            result := gjson.Parse(data)<br>            <span class="hljs-keyword">if</span> result.Get(<span class="hljs-string">&quot;message&quot;</span>).Exists() &#123;<br>                m := message.ParseMessageFromString(result.Get(<span class="hljs-string">&quot;message&quot;</span>).String())<br>                data, _ = sjson.Set(data, <span class="hljs-string">&quot;message&quot;</span>, m)<br>            &#125;<br>            d.EventChan &lt;- []<span class="hljs-type">byte</span>(data)<br>        &#125;)<br>    &#125;)<br>    gocq.Main()<br>&#125;<br><br></code></pre></td></tr></table></figure>
+
+<h1 id="Plugin介绍"><a href="#Plugin介绍" class="headerlink" title="Plugin介绍"></a>Plugin介绍</h1><p>leafbot使用命令模式进行运作，先注册插件，然后去回调插件中的方法，其中一个插件包含多个Matcher，一个Matcher为最小的执行者。</p>
+<p>Plugin结构体中存储了当前插件的插件名、插件帮助以及插件所包含的Matcher，可以通过NewPlugin(name string)方法进行注册一个插件，插件实现了多个注册Matcher的方法。</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-comment">// Plugin所实现的方法</span><br>basePlugin <span class="hljs-keyword">interface</span> &#123;<br>    OnCommand(command <span class="hljs-type">string</span>, options ...Option) Matcher<br>    OnMessage(messageType <span class="hljs-type">string</span>, options ...Option) Matcher<br>    OnRequest(requestType <span class="hljs-type">string</span>, options ...Option) Matcher<br>    OnNotice(noticeType <span class="hljs-type">string</span>, options ...Option) Matcher<br>    OnMeta(options ...Option) Matcher<br>    OnRegex(regexMatcher <span class="hljs-type">string</span>, options ...Option) Matcher<br><br>    OnStart(start <span class="hljs-type">string</span>, options ...Option) Matcher<br>    OnEnd(end <span class="hljs-type">string</span>, options ...Option) Matcher<br>    OnFullMatch(content <span class="hljs-type">string</span>, options ...Option) Matcher<br>    OnFullMatchGroup(content <span class="hljs-type">string</span>, options ...Option) Matcher<br><br>    OnConnect(options ...Option) Matcher<br>    OnDisConnect(options ...Option) Matcher<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<pre><code>    其中Matcher接口为如下内容,Matcher接口为为Matcher添加内容
+</code></pre>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs go">Matcher <span class="hljs-keyword">interface</span> &#123;<br>    MatcherSet<br>    Enabled() <span class="hljs-type">bool</span><br>    GetHandler() Action<br>    GetRules() []Rule<br>    GetWeight() <span class="hljs-type">int</span><br>    IsBlock() <span class="hljs-type">bool</span><br>    GetDisAbleGroup() []<span class="hljs-type">int64</span><br>    GetType() <span class="hljs-type">string</span><br>    GetPluginType() <span class="hljs-type">string</span><br>&#125;<br><br>MatcherSet <span class="hljs-keyword">interface</span> &#123;<br>    AddRule(rule Rule) Matcher<br>    SetWeight(weight <span class="hljs-type">int</span>) Matcher<br>    SetBlock(block <span class="hljs-type">bool</span>) Matcher<br>    SetAllies(allies []<span class="hljs-type">string</span>) Matcher<br><br>    Handle(action Action)<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<pre><code>    注册一个最小插件的示例为:
+</code></pre>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs go"><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">init</span><span class="hljs-params">()</span></span> &#123;<br>    plugin := leafbot.NewPlugin(<span class="hljs-string">&quot;测试&quot;</span>)<br>    plugin.OnCommand(<span class="hljs-string">&quot;测试&quot;</span>, leafbot.Option&#123;<br>        Weight: <span class="hljs-number">0</span>,<br>        Block:  <span class="hljs-literal">false</span>,<br>        Allies: <span class="hljs-literal">nil</span>,<br>        Rules: []leafbot.Rule&#123;<span class="hljs-function"><span class="hljs-keyword">func</span><span class="hljs-params">(ctx *leafbot.Context)</span></span> <span class="hljs-type">bool</span> &#123;<br>            <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span><br>        &#125;&#125;,<br>    &#125;).Handle(<span class="hljs-function"><span class="hljs-keyword">func</span><span class="hljs-params">(ctx *leafbot.Context)</span></span> &#123;<br>        ctx.Send(message.Text(<span class="hljs-string">&quot;123&quot;</span>))<br>    &#125;)<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<pre><code>    该插件会匹配命令测试，并且会回应123
+</code></pre>
+<h1 id="更多"><a href="#更多" class="headerlink" title="更多"></a>更多</h1><h2 id="了解更多leafbot内容，请查看leafbot文档"><a href="#了解更多leafbot内容，请查看leafbot文档" class="headerlink" title="了解更多leafbot内容，请查看leafbot文档"></a>了解更多leafbot内容，请查看leafbot<a target="_blank" rel="noopener" href="https://vtsqr.xyz/leafbot/dist/">文档</a></h2>
+	</article>
+
+	 
+    <div class="kira-post-copyright">
+        <strong>本文作者：</strong>John Doe<br>
+        <strong>本文链接：</strong><a href="http://example.com/2021/12/31/leafbot%E6%BA%90%E7%A0%81%E8%A7%A3%E8%AF%BB/" title="http:&#x2F;&#x2F;example.com&#x2F;2021&#x2F;12&#x2F;31&#x2F;leafbot源码解读&#x2F;" target="_blank" rel="noopener">http:&#x2F;&#x2F;example.com&#x2F;2021&#x2F;12&#x2F;31&#x2F;leafbot源码解读&#x2F;</a><br>
+        
+            <strong>版权声明：</strong>本文采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/cn/deed.zh" target="_blank">CC BY-NC-SA 3.0 CN</a> 协议进行许可
+        
+    </div>
+
+  
+	<div class="kira-post-nav">
+		<nav class="post-nav">
+			                          
+			<!-- 先找到与当前文字相同的目录 -->
+			      
+			<!-- 在找到当前文章所在的 index -->
+			    
+			<!-- 上一篇文章 -->
+			<div class="old">
+				<span>上一章</span>
+				<a href="/2021/08/22/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E6%90%AD%E5%BB%BA%E4%B8%80%E4%B8%AA%E8%87%AA%E5%8A%A8%E5%9B%9E%E5%A4%8Dqq%E6%9C%BA%E5%99%A8%E4%BA%BA/"> 从零开始搭建一个自动回复qq机器人</a>
+			</div>
+			                          
+		</nav>
+	</div>
+	
+	<div class="kira-post-meta kira-rainbow">
+		
+			<a class="kirafont icon-container-fill -link" href="/categories/bot/">bot</a>
+		
+		
+			<a class="kirafont icon-tag-fill -none-link" href="/tags/bot-go/" rel="tag">bot,go</a>
+		
+	</div>
+	
+	<div class="kira-post-footer">
+		
+
+		
+	</div>
+	
+</div>
+
+				</div>
+			</div>
+			<div class="kira-right-column">
+	<a onclick="document.querySelector('#kira-top-header').scrollIntoView({behavior: 'smooth'});" class="kira-backtotop" aria-label="回到顶部" title="回到顶部">
+		<button class="mdui-fab mdui-ripple">
+			<i class="kirafont icon-caret-up"></i>
+		</button>
+	</a>
+</div>
+
+		</div>
+	</body>
+</html>

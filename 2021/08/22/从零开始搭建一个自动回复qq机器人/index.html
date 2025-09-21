@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html 
+	lang="zh">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		
+<link rel="stylesheet" href="/css/layout.css">
+
+		
+		<title> 从零开始搭建一个自动回复qq机器人 -  火雪的个人博客</title>
+		<!-- <link rel="stylesheet" href="https://unpkg.com/mdui@1.0.2/dist/css/mdui.min.css" /> -->
+		<!-- <script src="https://unpkg.com/mdui@1.0.2/dist/js/mdui.min.js"></script> -->
+		
+<link rel="stylesheet" href="/lib/mdui/mdui.min.css">
+
+		
+<script src="/lib/mdui/mdui.min.js"></script>
+
+		<!-- lazyload -->
+		
+<script src="/lib/lazysizes.js"></script>
+
+		<!-- smooth-scrolling -->
+		
+<script src="/lib/smooth-scrolling.js"></script>
+
+		<!-- highlight -->
+		
+<link rel="stylesheet" href="/lib/highlight/atom-one-dark.min.css">
+
+		
+<script src="/lib/highlight/highlight.min.js"></script>
+
+		<!-- 预置 kiraicon -->
+		
+<link rel="stylesheet" href="/lib/iconfont/iconfont.css">
+
+		
+		<link
+			rel="shortcut icon"
+			href="https://kira.host/assets/Pictures/Others/116359b4ccf19917.jpg"
+			type="image/png"
+		/>
+		
+<link rel="stylesheet" href="/deps/css/APlayer.min.css">
+
+		
+		
+<script src="/deps/js/APlayer.min.js"></script>
+<script src="/deps/js/Meting.min.js"></script>
+
+	<meta name="generator" content="Hexo 8.0.0"></head>
+
+	<body>
+		<div
+			class="kira-background"
+			style="background-image: url('https://kira.host/assets/Pictures/Others/-f0d5cc34c6e5aa7_compressed.jpg')"
+		></div>
+		<div class="kira-header">
+    <a
+        class="kira-drawer-button mdui-ripple"
+        title="导航栏"
+        onclick="document.querySelector('.kira-sidebar-modal').classList.add('show');document.querySelector('.kira-sidebar#sidebar').classList.add('show');"
+    >
+        <i class="kirafont icon-menu"></i>
+    </a>
+    <a href="/" title="火雪的个人博客">
+        <img
+			src="https://kira.host/assets/Pictures/Others/20220922230447.jpg"
+			alt="John Doe"
+		/>
+    </a>
+</div>
+		<div class="kira-body">
+			<div class="kira-sidebar" id="sidebar">
+	<div class="kira-avatar mdui-ripple">
+		<a target="_blank" rel="noopener" href="https://kira.host/assets/Pictures/Others/20220922230447.jpg" title="John Doe">
+			<img
+				src="https://kira.host/assets/Pictures/Others/20220922230447.jpg"
+				alt="John Doe"
+			/>
+		</a>
+	</div>
+	<div class="kira-count">
+		<div><span>文章</span>25</div>
+		<div><span>标签</span>20</div>
+		<div><span>分类</span>11</div>
+	</div>
+	<div class="kira-list">
+		
+		<a
+			class="kira-list-item mdui-ripple false"
+			href="/"
+			title="回到首页"
+		>
+			<i
+				class="kirafont
+					
+						icon-home
+					"
+			></i>
+			<div class="kira-list-item-content">
+				回到首页
+			</div>
+		</a>
+		
+	</div>
+	<aside id="kira-sidebar">
+		
+			<div class="kira-widget-wrap">
+	<div class="kira-widget kira-social">
+		
+			<a
+				class="mdui-ripple"
+				href="https://github.com/huoxue1"
+				target="_blank"
+				mdui-tooltip="{content: 'GitHub'}"
+				style="color: rgb(25, 23, 23); background-color: rgba(25, 23, 23, .15);"
+			>
+				<i
+					class="kirafont
+					
+						icon-github
+					"
+				></i>
+			</a>
+		
+	</div>
+</div>
+
+		
+			
+  <div class="kira-widget-wrap">
+    <h3 class="kira-widget-title">分类</h3>
+    <div class="kira-widget">
+      <ul class="category-list">
+        
+        
+
+        
+          <li class="category-list-item">
+            <a class="category-list-link" href="/categories/bot/">
+              bot
+            </a>
+            <span class="category-list-count">2</span>
+          </li>
+        
+          <li class="category-list-item">
+            <a class="category-list-link" href="/categories/bot-go/">
+              bot,go
+            </a>
+            <span class="category-list-count">1</span>
+          </li>
+        
+          <li class="category-list-item">
+            <a class="category-list-link" href="/categories/default/">
+              default
+            </a>
+            <span class="category-list-count">1</span>
+          </li>
+        
+          <li class="category-list-item">
+            <a class="category-list-link" href="/categories/exception/">
+              exception
+            </a>
+            <span class="category-list-count">1</span>
+          </li>
+        
+          <li class="category-list-item">
+            <a class="category-list-link" href="/categories/linux/">
+              linux
+            </a>
+            <span class="category-list-count">3</span>
+          </li>
+        
+          <li class="category-list-item">
+            <a class="category-list-link" href="/categories/异常处理/">
+              异常处理
+            </a>
+            <span class="category-list-count">1</span>
+          </li>
+        
+          <li class="category-list-item">
+            <a class="category-list-link" href="/categories/数据结构/">
+              数据结构
+            </a>
+            <span class="category-list-count">2</span>
+          </li>
+        
+          <li class="category-list-item">
+            <a class="category-list-link" href="/categories/数据结构-二叉树/">
+              数据结构, 二叉树
+            </a>
+            <span class="category-list-count">1</span>
+          </li>
+        
+          <li class="category-list-item">
+            <a class="category-list-link" href="/categories/数据结构-C语言/">
+              数据结构,C语言
+            </a>
+            <span class="category-list-count">1</span>
+          </li>
+        
+          <li class="category-list-item">
+            <a class="category-list-link" href="/categories/毕业设计/">
+              毕业设计
+            </a>
+            <span class="category-list-count">7</span>
+          </li>
+        
+          <li class="category-list-item">
+            <a class="category-list-link" href="/categories/笔记/">
+              笔记
+            </a>
+            <span class="category-list-count">1</span>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+		
+			
+	<div class="kira-widget-wrap">
+		<div id="randomtagcloud" class="kira-widget tagcloud kira-rainbow">
+			<a href="/tags/android/" style="font-size: 10px;">android</a> <a href="/tags/ant-design/" style="font-size: 17.5px;">ant design</a> <a href="/tags/bot/" style="font-size: 12.5px;">bot</a> <a href="/tags/bot-go/" style="font-size: 10px;">bot,go</a> <a href="/tags/exception/" style="font-size: 15px;">exception</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/go/" style="font-size: 10px;">go</a> <a href="/tags/go-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E9%93%BE%E6%A0%88/" style="font-size: 10px;">go,数据结构,链栈</a> <a href="/tags/java/" style="font-size: 20px;">java</a> <a href="/tags/linux/" style="font-size: 15px;">linux</a> <a href="/tags/office/" style="font-size: 10px;">office</a> <a href="/tags/postgres/" style="font-size: 10px;">postgres</a> <a href="/tags/python/" style="font-size: 10px;">python</a> <a href="/tags/react/" style="font-size: 17.5px;">react</a> <a href="/tags/spring-mvc/" style="font-size: 10px;">spring mvc</a> <a href="/tags/ssm/" style="font-size: 17.5px;">ssm</a> <a href="/tags/typescript/" style="font-size: 17.5px;">typescript</a> <a href="/tags/undertow/" style="font-size: 10px;">undertow</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 12.5px;">数据结构</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-C%E8%AF%AD%E8%A8%80/" style="font-size: 10px;">数据结构,C语言</a>
+		</div>
+		
+			<script>
+				const maxTagCounts = parseInt(5);
+				const tagsLength = parseInt(20);
+				let tagsArr = [];
+				for(let i = 0; i < tagsLength; i++){
+					tagsArr.push(i);
+				}
+				tagsArr.sort(function (l, r) {
+					return Math.random() > 0.5 ? -1 : 1;
+				});
+				tagsArr = tagsArr.slice(0, maxTagCounts < tagsLength ? tagsLength - maxTagCounts : 0);
+				const tagCloudContainer = document.querySelector('#randomtagcloud');
+				for(let tagIdx = 0; tagIdx < tagsArr.length; tagIdx++){
+					tagCloudContainer.children[tagsArr[tagIdx]].style.display = 'none';
+				}
+			</script>
+		
+	</div>
+
+
+		
+			
+	<div class="kira-widget-wrap">
+		<h3 class="kira-widget-title">
+			文章归档
+		</h3>
+		<div class="kira-widget">
+			<ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/">2025</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/">2023</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/">2022</a><span class="archive-list-count">14</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/">2021</a><span class="archive-list-count">8</span></li></ul>
+		</div>
+	</div>
+
+
+		
+	</aside>
+	<div class="kira-copyright">
+		&copy; 2025
+		<a href="/">John Doe</a>
+		Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> &
+		<a href="https://github.com/ch1ny/kira-hexo/" target="_blank">Kira-Hexo</a>
+		<br />
+		
+		
+	</div>
+</div>
+<div
+	class="kira-sidebar-modal"
+	id="sidebar-modal"
+	onclick="(function(self) {
+		self.classList.remove('show');
+		document.querySelector('.kira-sidebar.show#sidebar').classList.remove('show');
+	})(this)"
+></div>
+			<div class="kira-content">
+				<div id="kira-top-header"></div>
+				<div class="kira-main-content">
+					
+<link rel="stylesheet" href="/css/kira-image.css">
+
+
+<script src="/js/kira-image.js"></script>
+
+<div class="kira-image">
+    <div class="kira-image-modal">
+        <div class="kira-image-header">
+            <div class="kira-image-counter"></div>
+            <div class="kira-image-title"></div>
+            <div class="kira-image-operation">
+                <div class="kira-image-operation-button" id="kira-image-operation-button-zoom">
+                    <i class="kirafont icon-zoom-in"></i>
+                </div>
+                <div class="kira-image-operation-button" id="kira-image-operation-button-close">
+                    <i class="kirafont icon-close"></i>
+                </div>
+            </div>
+        </div>
+        <div class="kira-image-container">
+            <div class="kira-image-prev-button-panel">
+                <div class="kira-image-exchange-button">
+                    <i class="kirafont icon-left"></i>
+                </div>
+            </div>
+            <div class="kira-image-list">
+                <div class="kira-image-prev">
+                    <img />
+                </div>
+                <div class="kira-image-now">
+                    <img />
+                </div>
+                <div class="kira-image-next">
+                    <img />
+                </div>
+            </div>
+            <div class="kira-image-next-button-panel">
+                <div class="kira-image-exchange-button">
+                    <i class="kirafont icon-right"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+	
+<link rel="stylesheet" href="/css/kira-code-copy.css">
+
+	
+<script src="/js/kira-code-copy.js"></script>
+
+
+<div class="kira-post">
+	<article>
+		
+		<div
+			class="kira-post-cover"
+			style="padding-bottom: '56.25%'"
+		>
+			<img
+				data-src="https://kira.host/assets/Pictures/Others/-f0d5cc34c6e5aa7_compressed.jpg"
+				data-sizes="auto"
+				alt="从零开始搭建一个自动回复qq机器人"
+				class="lazyload kira-post-cover-image disabled-kira-image"
+			/>
+			<h1>从零开始搭建一个自动回复qq机器人</h1>
+		</div>
+		
+		<div class="kira-post-meta kira-rainbow" style="margin:10px 0!important;">
+			<a><i class="kirafont icon-calendar-fill"></i>2021年08月22日</a>
+			<a><i class="kirafont icon-edit-fill"></i>262 字</a>
+			<a><i class="kirafont icon-time-circle-fill"></i>大概 1 分钟</a>
+		</div>
+		<h2 id="1-下载leafBotPlugin"><a href="#1-下载leafBotPlugin" class="headerlink" title="1. 下载leafBotPlugin"></a>1. 下载leafBotPlugin</h2><ul>
+<li><h4 id="打开leafBotPlugin"><a href="#打开leafBotPlugin" class="headerlink" title="打开leafBotPlugin"></a>打开<a target="_blank" rel="noopener" href="https://github.com/huoxue1/leafBotPlugin/releases">leafBotPlugin</a></h4></li>
+<li><h4 id="选择最新的版本，下载leafBotPlugin-windows-amd64-exe"><a href="#选择最新的版本，下载leafBotPlugin-windows-amd64-exe" class="headerlink" title="选择最新的版本，下载leafBotPlugin_windows_amd64.exe"></a>选择最新的版本，下载leafBotPlugin_windows_amd64.exe</h4></li>
+<li><h4 id="选择一个合适的文件夹放置该文件"><a href="#选择一个合适的文件夹放置该文件" class="headerlink" title="选择一个合适的文件夹放置该文件"></a>选择一个合适的文件夹放置该文件</h4></li>
+<li><h4 id="双击打开leafBotPlugin-windows-amd64-exe-在黑窗口中输入自己的机器人qq号"><a href="#双击打开leafBotPlugin-windows-amd64-exe-在黑窗口中输入自己的机器人qq号" class="headerlink" title="双击打开leafBotPlugin_windows_amd64.exe,在黑窗口中输入自己的机器人qq号"></a>双击打开leafBotPlugin_windows_amd64.exe,在黑窗口中输入自己的机器人qq号</h4></li>
+<li><h4 id="会在当前目录的config目录下生成两个文件，分别是congfig-json和config-yml"><a href="#会在当前目录的config目录下生成两个文件，分别是congfig-json和config-yml" class="headerlink" title="会在当前目录的config目录下生成两个文件，分别是congfig.json和config.yml"></a>会在当前目录的config目录下生成两个文件，分别是congfig.json和config.yml</h4></li>
+</ul>
+<h2 id="2-下载go-cqhttp"><a href="#2-下载go-cqhttp" class="headerlink" title="2. 下载go-cqhttp"></a>2. 下载go-cqhttp</h2><ul>
+<li><h4 id="打开go-cqhttp"><a href="#打开go-cqhttp" class="headerlink" title="打开go-cqhttp"></a>打开<a target="_blank" rel="noopener" href="https://github.com/Mrs4s/go-cqhttp/releases">go-cqhttp</a></h4></li>
+<li><h4 id="选择最新版本，下载go-cqhttp-windows-amd64-exe，将其重命名为go-cqhttp-exe"><a href="#选择最新版本，下载go-cqhttp-windows-amd64-exe，将其重命名为go-cqhttp-exe" class="headerlink" title="选择最新版本，下载go-cqhttp_windows_amd64.exe，将其重命名为go-cqhttp.exe"></a>选择最新版本，下载go-cqhttp_windows_amd64.exe，将其重命名为go-cqhttp.exe</h4></li>
+<li><h4 id="选择一个空文件夹放置文件，将刚才生成的config-yml移动到当前文件夹"><a href="#选择一个空文件夹放置文件，将刚才生成的config-yml移动到当前文件夹" class="headerlink" title="选择一个空文件夹放置文件，将刚才生成的config,yml移动到当前文件夹"></a>选择一个空文件夹放置文件，将刚才生成的config,yml移动到当前文件夹</h4></li>
+<li><h4 id="创建一个文本文件，输入以下内容"><a href="#创建一个文本文件，输入以下内容" class="headerlink" title="创建一个文本文件，输入以下内容"></a>创建一个文本文件，输入以下内容</h4></li>
+<li><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">./go-cqhttp.exe<br></code></pre></td></tr></table></figure>
+</li>
+<li><h4 id="将其重命名为start-bat，双击打开文件，待其出现验证码后使用手机qq进行扫码登录"><a href="#将其重命名为start-bat，双击打开文件，待其出现验证码后使用手机qq进行扫码登录" class="headerlink" title="将其重命名为start.bat，双击打开文件，待其出现验证码后使用手机qq进行扫码登录"></a>将其重命名为start.bat，双击打开文件，待其出现验证码后使用手机qq进行扫码登录</h4></li>
+<li><h4 id="此时继续打开leafBotPlugin-windows-amd64-exe"><a href="#此时继续打开leafBotPlugin-windows-amd64-exe" class="headerlink" title="此时继续打开leafBotPlugin_windows_amd64.exe"></a>此时继续打开leafBotPlugin_windows_amd64.exe</h4></li>
+</ul>
+<h2 id="3-验证"><a href="#3-验证" class="headerlink" title="3. 验证"></a>3. 验证</h2><h5 id="使用qq向机器人qq发送"><a href="#使用qq向机器人qq发送" class="headerlink" title="使用qq向机器人qq发送"></a>使用qq向机器人qq发送</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">/echo 123<br></code></pre></td></tr></table></figure>
+
+<h6 id="如果机器人回复"><a href="#如果机器人回复" class="headerlink" title="如果机器人回复"></a>如果机器人回复</h6><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">123<br></code></pre></td></tr></table></figure>
+
+<h6 id="证明机器人搭建成功"><a href="#证明机器人搭建成功" class="headerlink" title="证明机器人搭建成功"></a>证明机器人搭建成功</h6><h2 id="4-更多命令"><a href="#4-更多命令" class="headerlink" title="4.更多命令"></a>4.更多命令</h2><p><a target="_blank" rel="noopener" href="https://vtsqr.xyz/leafBotPlugin/Features">机器人帮助</a></p>
+<p>需要更多功能欢迎联系邮箱：<a href="mailto:&#x33;&#x33;&#52;&#x33;&#55;&#x38;&#48;&#51;&#x37;&#x36;&#x40;&#x71;&#x71;&#46;&#99;&#x6f;&#x6d;">3343780376@qq.com</a></p>
+<p>或直接在github提交issue</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/huoxue1/leafBotPlugin">https://github.com/huoxue1/leafBotPlugin</a></p>
+
+	</article>
+
+	 
+    <div class="kira-post-copyright">
+        <strong>本文作者：</strong>John Doe<br>
+        <strong>本文链接：</strong><a href="http://example.com/2021/08/22/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E6%90%AD%E5%BB%BA%E4%B8%80%E4%B8%AA%E8%87%AA%E5%8A%A8%E5%9B%9E%E5%A4%8Dqq%E6%9C%BA%E5%99%A8%E4%BA%BA/" title="http:&#x2F;&#x2F;example.com&#x2F;2021&#x2F;08&#x2F;22&#x2F;从零开始搭建一个自动回复qq机器人&#x2F;" target="_blank" rel="noopener">http:&#x2F;&#x2F;example.com&#x2F;2021&#x2F;08&#x2F;22&#x2F;从零开始搭建一个自动回复qq机器人&#x2F;</a><br>
+        
+            <strong>版权声明：</strong>本文采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/cn/deed.zh" target="_blank">CC BY-NC-SA 3.0 CN</a> 协议进行许可
+        
+    </div>
+
+  
+	<div class="kira-post-nav">
+		<nav class="post-nav">
+			                          
+			<!-- 先找到与当前文字相同的目录 -->
+			   
+			<!-- 在找到当前文章所在的 index -->
+			       
+			<!-- 下一篇文章 -->
+			<div class="new">
+				<span>下一章</span>
+				<a href="/2021/12/31/leafbot%E6%BA%90%E7%A0%81%E8%A7%A3%E8%AF%BB/"> leafbot源码解读</a>
+			</div>
+			                          
+		</nav>
+	</div>
+	
+	<div class="kira-post-meta kira-rainbow">
+		
+			<a class="kirafont icon-container-fill -link" href="/categories/bot/">bot</a>
+		
+		
+			<a class="kirafont icon-tag-fill -none-link" href="/tags/bot/" rel="tag">bot</a> <a class="kirafont icon-tag-fill -none-link" href="/tags/go/" rel="tag">go</a>
+		
+	</div>
+	
+	<div class="kira-post-footer">
+		
+
+		
+	</div>
+	
+</div>
+
+				</div>
+			</div>
+			<div class="kira-right-column">
+	<a onclick="document.querySelector('#kira-top-header').scrollIntoView({behavior: 'smooth'});" class="kira-backtotop" aria-label="回到顶部" title="回到顶部">
+		<button class="mdui-fab mdui-ripple">
+			<i class="kirafont icon-caret-up"></i>
+		</button>
+	</a>
+</div>
+
+		</div>
+	</body>
+</html>

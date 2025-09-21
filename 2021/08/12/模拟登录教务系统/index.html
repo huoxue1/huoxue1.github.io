@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html 
+	lang="zh">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		
+<link rel="stylesheet" href="/css/layout.css">
+
+		
+		<title> 模拟登录教务系统 -  火雪的个人博客</title>
+		<!-- <link rel="stylesheet" href="https://unpkg.com/mdui@1.0.2/dist/css/mdui.min.css" /> -->
+		<!-- <script src="https://unpkg.com/mdui@1.0.2/dist/js/mdui.min.js"></script> -->
+		
+<link rel="stylesheet" href="/lib/mdui/mdui.min.css">
+
+		
+<script src="/lib/mdui/mdui.min.js"></script>
+
+		<!-- lazyload -->
+		
+<script src="/lib/lazysizes.js"></script>
+
+		<!-- smooth-scrolling -->
+		
+<script src="/lib/smooth-scrolling.js"></script>
+
+		<!-- highlight -->
+		
+<link rel="stylesheet" href="/lib/highlight/atom-one-dark.min.css">
+
+		
+<script src="/lib/highlight/highlight.min.js"></script>
+
+		<!-- 预置 kiraicon -->
+		
+<link rel="stylesheet" href="/lib/iconfont/iconfont.css">
+
+		
+		<link
+			rel="shortcut icon"
+			href="https://kira.host/assets/Pictures/Others/116359b4ccf19917.jpg"
+			type="image/png"
+		/>
+		
+<link rel="stylesheet" href="/deps/css/APlayer.min.css">
+
+		
+		
+<script src="/deps/js/APlayer.min.js"></script>
+<script src="/deps/js/Meting.min.js"></script>
+
+	<meta name="generator" content="Hexo 8.0.0"></head>
+
+	<body>
+		<div
+			class="kira-background"
+			style="background-image: url('https://kira.host/assets/Pictures/Others/-f0d5cc34c6e5aa7_compressed.jpg')"
+		></div>
+		<div class="kira-header">
+    <a
+        class="kira-drawer-button mdui-ripple"
+        title="导航栏"
+        onclick="document.querySelector('.kira-sidebar-modal').classList.add('show');document.querySelector('.kira-sidebar#sidebar').classList.add('show');"
+    >
+        <i class="kirafont icon-menu"></i>
+    </a>
+    <a href="/" title="火雪的个人博客">
+        <img
+			src="https://kira.host/assets/Pictures/Others/20220922230447.jpg"
+			alt="John Doe"
+		/>
+    </a>
+</div>
+		<div class="kira-body">
+			<div class="kira-sidebar" id="sidebar">
+	<div class="kira-avatar mdui-ripple">
+		<a target="_blank" rel="noopener" href="https://kira.host/assets/Pictures/Others/20220922230447.jpg" title="John Doe">
+			<img
+				src="https://kira.host/assets/Pictures/Others/20220922230447.jpg"
+				alt="John Doe"
+			/>
+		</a>
+	</div>
+	<div class="kira-count">
+		<div><span>文章</span>25</div>
+		<div><span>标签</span>20</div>
+		<div><span>分类</span>11</div>
+	</div>
+	<div class="kira-list">
+		
+		<a
+			class="kira-list-item mdui-ripple false"
+			href="/"
+			title="回到首页"
+		>
+			<i
+				class="kirafont
+					
+						icon-home
+					"
+			></i>
+			<div class="kira-list-item-content">
+				回到首页
+			</div>
+		</a>
+		
+	</div>
+	<aside id="kira-sidebar">
+		
+			<div class="kira-widget-wrap">
+	<div class="kira-widget kira-social">
+		
+			<a
+				class="mdui-ripple"
+				href="https://github.com/huoxue1"
+				target="_blank"
+				mdui-tooltip="{content: 'GitHub'}"
+				style="color: rgb(25, 23, 23); background-color: rgba(25, 23, 23, .15);"
+			>
+				<i
+					class="kirafont
+					
+						icon-github
+					"
+				></i>
+			</a>
+		
+	</div>
+</div>
+
+		
+			
+  <div class="kira-widget-wrap">
+    <h3 class="kira-widget-title">分类</h3>
+    <div class="kira-widget">
+      <ul class="category-list">
+        
+        
+
+        
+          <li class="category-list-item">
+            <a class="category-list-link" href="/categories/bot/">
+              bot
+            </a>
+            <span class="category-list-count">2</span>
+          </li>
+        
+          <li class="category-list-item">
+            <a class="category-list-link" href="/categories/bot-go/">
+              bot,go
+            </a>
+            <span class="category-list-count">1</span>
+          </li>
+        
+          <li class="category-list-item">
+            <a class="category-list-link" href="/categories/default/">
+              default
+            </a>
+            <span class="category-list-count">1</span>
+          </li>
+        
+          <li class="category-list-item">
+            <a class="category-list-link" href="/categories/exception/">
+              exception
+            </a>
+            <span class="category-list-count">1</span>
+          </li>
+        
+          <li class="category-list-item">
+            <a class="category-list-link" href="/categories/linux/">
+              linux
+            </a>
+            <span class="category-list-count">3</span>
+          </li>
+        
+          <li class="category-list-item">
+            <a class="category-list-link" href="/categories/异常处理/">
+              异常处理
+            </a>
+            <span class="category-list-count">1</span>
+          </li>
+        
+          <li class="category-list-item">
+            <a class="category-list-link" href="/categories/数据结构/">
+              数据结构
+            </a>
+            <span class="category-list-count">2</span>
+          </li>
+        
+          <li class="category-list-item">
+            <a class="category-list-link" href="/categories/数据结构-二叉树/">
+              数据结构, 二叉树
+            </a>
+            <span class="category-list-count">1</span>
+          </li>
+        
+          <li class="category-list-item">
+            <a class="category-list-link" href="/categories/数据结构-C语言/">
+              数据结构,C语言
+            </a>
+            <span class="category-list-count">1</span>
+          </li>
+        
+          <li class="category-list-item">
+            <a class="category-list-link" href="/categories/毕业设计/">
+              毕业设计
+            </a>
+            <span class="category-list-count">7</span>
+          </li>
+        
+          <li class="category-list-item">
+            <a class="category-list-link" href="/categories/笔记/">
+              笔记
+            </a>
+            <span class="category-list-count">1</span>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+		
+			
+	<div class="kira-widget-wrap">
+		<div id="randomtagcloud" class="kira-widget tagcloud kira-rainbow">
+			<a href="/tags/android/" style="font-size: 10px;">android</a> <a href="/tags/ant-design/" style="font-size: 17.5px;">ant design</a> <a href="/tags/bot/" style="font-size: 12.5px;">bot</a> <a href="/tags/bot-go/" style="font-size: 10px;">bot,go</a> <a href="/tags/exception/" style="font-size: 15px;">exception</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/go/" style="font-size: 10px;">go</a> <a href="/tags/go-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E9%93%BE%E6%A0%88/" style="font-size: 10px;">go,数据结构,链栈</a> <a href="/tags/java/" style="font-size: 20px;">java</a> <a href="/tags/linux/" style="font-size: 15px;">linux</a> <a href="/tags/office/" style="font-size: 10px;">office</a> <a href="/tags/postgres/" style="font-size: 10px;">postgres</a> <a href="/tags/python/" style="font-size: 10px;">python</a> <a href="/tags/react/" style="font-size: 17.5px;">react</a> <a href="/tags/spring-mvc/" style="font-size: 10px;">spring mvc</a> <a href="/tags/ssm/" style="font-size: 17.5px;">ssm</a> <a href="/tags/typescript/" style="font-size: 17.5px;">typescript</a> <a href="/tags/undertow/" style="font-size: 10px;">undertow</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 12.5px;">数据结构</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-C%E8%AF%AD%E8%A8%80/" style="font-size: 10px;">数据结构,C语言</a>
+		</div>
+		
+			<script>
+				const maxTagCounts = parseInt(5);
+				const tagsLength = parseInt(20);
+				let tagsArr = [];
+				for(let i = 0; i < tagsLength; i++){
+					tagsArr.push(i);
+				}
+				tagsArr.sort(function (l, r) {
+					return Math.random() > 0.5 ? -1 : 1;
+				});
+				tagsArr = tagsArr.slice(0, maxTagCounts < tagsLength ? tagsLength - maxTagCounts : 0);
+				const tagCloudContainer = document.querySelector('#randomtagcloud');
+				for(let tagIdx = 0; tagIdx < tagsArr.length; tagIdx++){
+					tagCloudContainer.children[tagsArr[tagIdx]].style.display = 'none';
+				}
+			</script>
+		
+	</div>
+
+
+		
+			
+	<div class="kira-widget-wrap">
+		<h3 class="kira-widget-title">
+			文章归档
+		</h3>
+		<div class="kira-widget">
+			<ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/">2025</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/">2023</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/">2022</a><span class="archive-list-count">14</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/">2021</a><span class="archive-list-count">8</span></li></ul>
+		</div>
+	</div>
+
+
+		
+	</aside>
+	<div class="kira-copyright">
+		&copy; 2025
+		<a href="/">John Doe</a>
+		Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> &
+		<a href="https://github.com/ch1ny/kira-hexo/" target="_blank">Kira-Hexo</a>
+		<br />
+		
+		
+	</div>
+</div>
+<div
+	class="kira-sidebar-modal"
+	id="sidebar-modal"
+	onclick="(function(self) {
+		self.classList.remove('show');
+		document.querySelector('.kira-sidebar.show#sidebar').classList.remove('show');
+	})(this)"
+></div>
+			<div class="kira-content">
+				<div id="kira-top-header"></div>
+				<div class="kira-main-content">
+					
+<link rel="stylesheet" href="/css/kira-image.css">
+
+
+<script src="/js/kira-image.js"></script>
+
+<div class="kira-image">
+    <div class="kira-image-modal">
+        <div class="kira-image-header">
+            <div class="kira-image-counter"></div>
+            <div class="kira-image-title"></div>
+            <div class="kira-image-operation">
+                <div class="kira-image-operation-button" id="kira-image-operation-button-zoom">
+                    <i class="kirafont icon-zoom-in"></i>
+                </div>
+                <div class="kira-image-operation-button" id="kira-image-operation-button-close">
+                    <i class="kirafont icon-close"></i>
+                </div>
+            </div>
+        </div>
+        <div class="kira-image-container">
+            <div class="kira-image-prev-button-panel">
+                <div class="kira-image-exchange-button">
+                    <i class="kirafont icon-left"></i>
+                </div>
+            </div>
+            <div class="kira-image-list">
+                <div class="kira-image-prev">
+                    <img />
+                </div>
+                <div class="kira-image-now">
+                    <img />
+                </div>
+                <div class="kira-image-next">
+                    <img />
+                </div>
+            </div>
+            <div class="kira-image-next-button-panel">
+                <div class="kira-image-exchange-button">
+                    <i class="kirafont icon-right"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+	
+<link rel="stylesheet" href="/css/kira-code-copy.css">
+
+	
+<script src="/js/kira-code-copy.js"></script>
+
+
+<div class="kira-post">
+	<article>
+		
+		<div
+			class="kira-post-cover"
+			style="padding-bottom: '56.25%'"
+		>
+			<img
+				data-src="https://kira.host/assets/Pictures/Others/-f0d5cc34c6e5aa7_compressed.jpg"
+				data-sizes="auto"
+				alt="模拟登录教务系统"
+				class="lazyload kira-post-cover-image disabled-kira-image"
+			/>
+			<h1>模拟登录教务系统</h1>
+		</div>
+		
+		<div class="kira-post-meta kira-rainbow" style="margin:10px 0!important;">
+			<a><i class="kirafont icon-calendar-fill"></i>2021年08月12日</a>
+			<a><i class="kirafont icon-edit-fill"></i>1.9k 字</a>
+			<a><i class="kirafont icon-time-circle-fill"></i>大概 9 分钟</a>
+		</div>
+		<p>+++</p>
+<h1 id="1-分析协议"><a href="#1-分析协议" class="headerlink" title="1.分析协议"></a>1.分析协议</h1><h2 id="1-1-使用fiddler进行抓包"><a href="#1-1-使用fiddler进行抓包" class="headerlink" title="1.1. 使用fiddler进行抓包"></a>1.1. 使用fiddler进行抓包</h2><p>首先尝试登录，登录网页为<a target="_blank" rel="noopener" href="http://jwc.scnucas.com/home.aspx">http://jwc.scnucas.com/home.aspx</a>然后通过fiddler抓包获取传递的参数。</p>
+<p><img data-fancybox="gallery" data-sizes="auto" data-src="https://github.com/3343780376/myBlog/blob/master/resources/static/image/scnucas/1.png?raw=true" alt="fiddler" class="lazyload"></p>
+<p>发现其中有两个参数乱码，通过fiddler的syntaview选项可以找到内容</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">typeName=%D1%A7%C9%FA<br>txt_psasas=%C7%EB%CA%E4%C8%EB%C3%DC%C2%EB<br></code></pre></td></tr></table></figure>
+
+<p>通过GBK解码得知，typeName的值为‘学生’， txtpsasas的值为‘请输入密码’，可得知这两个参数并不是我们需要的，<br>此时就只能通过分析‘dsdsdsdsdxcxdfgfg’和‘fgfggfdgtyuuyyuuckjg’参数了。可猜测这两个参数是加密后的验 证码和密码。然后通过正常解密手段尝试不通，就只能阅读javascript源码了。</p>
+<h2 id="1-2-使用浏览器自带的网络分析工具"><a href="#1-2-使用浏览器自带的网络分析工具" class="headerlink" title="1.2. 使用浏览器自带的网络分析工具"></a>1.2. 使用浏览器自带的网络分析工具</h2><p>通过浏览器的检查工具发现，登录区域是一个iframe页面，链接为<a target="_blank" rel="noopener" href="http://jwc.scnucas.com/_data/login_home.aspx">http://jwc.scnucas.com/_data/login_home.aspx</a>, 我们讲该网页下载到本地后进行阅读。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs javascript">&lt;td align=<span class="hljs-string">&quot;left&quot;</span> valign=<span class="hljs-string">&quot;bottom&quot;</span>&gt;<br>    <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;tx1&quot;</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;txt_pewerwedsdfsdff&quot;</span></span></span><br><span class="hljs-tag"><span class="language-xml">           <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;display:none&quot;</span></span></span><br><span class="hljs-tag"><span class="language-xml">           <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;password&quot;</span> <span class="hljs-attr">maxLength</span>=<span class="hljs-string">&quot;25&quot;</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;txt_pewerwedsdfsdff&quot;</span> <span class="hljs-attr">autocomplete</span>=<span class="hljs-string">&quot;off&quot;</span></span></span><br><span class="hljs-tag"><span class="language-xml">           <span class="hljs-attr">onblur</span>=<span class="hljs-string">&quot;shtitblur(this);chkpwd(this)&quot;</span> <span class="hljs-attr">onkeyup</span>=<span class="hljs-string">&quot;chkpwd(this)&quot;</span>&gt;</span></span><br><span class="language-xml">        <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;tx1&quot;</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;txt_psasas&quot;</span> <span class="hljs-attr">onfocus</span>=<span class="hljs-string">&quot;shtitcus(this)&quot;</span></span></span><br><span class="hljs-tag"><span class="language-xml">               <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;&quot;</span></span></span><br><span class="hljs-tag"><span class="language-xml">               <span class="hljs-attr">maxLength</span>=<span class="hljs-string">&quot;25&quot;</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;txt_psasas&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;请输入密码&quot;</span> <span class="hljs-attr">autocomplete</span>=<span class="hljs-string">&quot;off&quot;</span> <span class="hljs-attr">onkeyup</span>=<span class="hljs-string">&quot;shtitblur(this)&quot;</span>&gt;</span></span><br><span class="language-xml"><span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span></span><br><span class="language-xml"></span><br></code></pre></td></tr></table></figure>
+
+<p>通过上面这段html发现关键函数‘shtitcus(this)’，然后通过notepad++的搜索功能找到了该函数</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">function</span> <span class="hljs-title function_">shtitcus</span>(<span class="hljs-params">obj</span>) &#123;<br>    <span class="hljs-keyword">if</span> (obj.<span class="hljs-property">id</span> == <span class="hljs-string">&quot;txt_sdertfgsadscxcadsads&quot;</span>) &#123;<br>        <span class="hljs-keyword">if</span> (obj.<span class="hljs-property">value</span> == <span class="hljs-string">&quot;请输入验证码&quot;</span>) &#123;<br>            obj.<span class="hljs-property">value</span> = <span class="hljs-string">&quot;&quot;</span>;<br>            obj.<span class="hljs-property">style</span>.<span class="hljs-property">color</span> = <span class="hljs-string">&quot;black&quot;</span>;<br>        &#125;<br>    &#125;<br>    <span class="hljs-keyword">if</span> (obj.<span class="hljs-property">id</span> == <span class="hljs-string">&quot;txt_psasas&quot;</span>) &#123;<br>        <span class="hljs-keyword">if</span> (obj.<span class="hljs-property">value</span> == <span class="hljs-string">&quot;请输入密码&quot;</span>) &#123;<br>            obj.<span class="hljs-property">style</span>.<span class="hljs-property">display</span> = <span class="hljs-string">&quot;none&quot;</span>;<br>            <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">getElementById</span>(<span class="hljs-string">&quot;txt_pewerwedsdfsdff&quot;</span>).<span class="hljs-property">style</span>.<span class="hljs-property">display</span> = <span class="hljs-string">&quot;&quot;</span>;<br>            <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">getElementById</span>(<span class="hljs-string">&quot;txt_pewerwedsdfsdff&quot;</span>).<span class="hljs-title function_">focus</span>();<br>        &#125;<br>    &#125;<br>    <span class="hljs-keyword">if</span> (obj.<span class="hljs-property">id</span> == <span class="hljs-string">&quot;txt_asmcdefsddsd&quot;</span>) &#123;<br>        <span class="hljs-keyword">if</span> (obj.<span class="hljs-property">value</span> == <span class="hljs-string">&quot;请输入帐号&quot;</span>) &#123;<br>            obj.<span class="hljs-property">value</span> = <span class="hljs-string">&quot;&quot;</span>;<br>            obj.<span class="hljs-property">style</span>.<span class="hljs-property">color</span> = <span class="hljs-string">&quot;black&quot;</span>;<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>也就是该函数判断当id为txt_psasas的input输入框获得焦点时触发，然后通过设置display的值来隐藏该输入框，并且使id为txt_pewerwedsdfsdff的<br>input输入框获得焦点。所以当我们正常通过检查得到的input是错误的输入框。然后我们发现真实输入框还有一个事件触发函数chkpwd函数。尝试搜索到该函数。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">function</span> <span class="hljs-title function_">chkpwd</span>(<span class="hljs-params">obj</span>) &#123;<br>    <span class="hljs-keyword">if</span> (obj.<span class="hljs-property">value</span> != <span class="hljs-string">&#x27;&#x27;</span>) &#123;<br>        <span class="hljs-keyword">var</span> s = <span class="hljs-title function_">md5</span>(<span class="hljs-variable language_">document</span>.<span class="hljs-property">all</span>.<span class="hljs-property">txt_asmcdefsddsd</span>.<span class="hljs-property">value</span> + <span class="hljs-title function_">md5</span>(obj.<span class="hljs-property">value</span>).<span class="hljs-title function_">substring</span>(<span class="hljs-number">0</span>, <span class="hljs-number">30</span>).<span class="hljs-title function_">toUpperCase</span>() + <span class="hljs-string">&#x27;13671&#x27;</span>).<span class="hljs-title function_">substring</span>(<span class="hljs-number">0</span>, <span class="hljs-number">30</span>).<span class="hljs-title function_">toUpperCase</span>();<br>        <span class="hljs-variable language_">document</span>.<span class="hljs-property">all</span>.<span class="hljs-property">dsdsdsdsdxcxdfgfg</span>.<span class="hljs-property">value</span> = s;<br>    &#125; <span class="hljs-keyword">else</span> &#123;<br>        <span class="hljs-variable language_">document</span>.<span class="hljs-property">all</span>.<span class="hljs-property">dsdsdsdsdxcxdfgfg</span>.<span class="hljs-property">value</span> = obj.<span class="hljs-property">value</span>;<br>    &#125;<br>    <span class="hljs-title function_">chkLxstr</span>(obj.<span class="hljs-property">value</span>);<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>然后我在这里就找到了上文提到的dsdsdsdsdxcxdfgfg的值了，该值就是通过加密之后的密码。然后在一起还找到了chkyzm函数。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">function</span> <span class="hljs-title function_">chkyzm</span>(<span class="hljs-params">obj</span>) &#123;<br>    <span class="hljs-keyword">if</span> (obj.<span class="hljs-property">value</span> != <span class="hljs-string">&#x27;&#x27;</span>) &#123;<br>        <span class="hljs-keyword">var</span> s = <span class="hljs-title function_">md5</span>(<span class="hljs-title function_">md5</span>(obj.<span class="hljs-property">value</span>.<span class="hljs-title function_">toUpperCase</span>()).<span class="hljs-title function_">substring</span>(<span class="hljs-number">0</span>, <span class="hljs-number">30</span>).<span class="hljs-title function_">toUpperCase</span>() + <span class="hljs-string">&#x27;13671&#x27;</span>).<span class="hljs-title function_">substring</span>(<span class="hljs-number">0</span>, <span class="hljs-number">30</span>).<span class="hljs-title function_">toUpperCase</span>();<br>        <span class="hljs-variable language_">document</span>.<span class="hljs-property">all</span>.<span class="hljs-property">fgfggfdgtyuuyyuuckjg</span>.<span class="hljs-property">value</span> = s;<br>    &#125; <span class="hljs-keyword">else</span> &#123;<br>        <span class="hljs-variable language_">document</span>.<span class="hljs-property">all</span>.<span class="hljs-property">fgfggfdgtyuuyyuuckjg</span>.<span class="hljs-property">value</span> = obj.<span class="hljs-property">value</span>.<span class="hljs-title function_">toUpperCase</span>();<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>所以说fgfggfdgtyuuyyuuckjg就是验证码加密后的值。至此我们基本已经有了头绪，这时候就指向了md5这个加密函数了。<br>通过浏览器的网络分析找到md5文件里面的md5函数。然后一部一部分析发现如果需要重构这个加密函数，那不过又是大废周折。<br>正好，最近学了node.js的一点基础。不妨直接使用node.js来调用这个加密函数。然后通过api的形式来调用。</p>
+<h1 id="2-模拟登录"><a href="#2-模拟登录" class="headerlink" title="2.模拟登录"></a>2.模拟登录</h1><h2 id="2-1-使用node-js编写加密api"><a href="#2-1-使用node-js编写加密api" class="headerlink" title="2.1. 使用node.js编写加密api"></a>2.1. 使用node.js编写加密api</h2><p>在这里使用了node.js的express框架。代码如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-comment">//将md5.js下载到同级目录，</span><br><span class="hljs-comment">//使用npm安装express和bodu-parser npm install express , npm install body-parser</span><br><br><br><span class="hljs-keyword">var</span> md5 = <span class="hljs-built_in">require</span>(<span class="hljs-string">&quot;./md5&quot;</span>);<br><span class="hljs-keyword">var</span> express = <span class="hljs-built_in">require</span>(<span class="hljs-string">&quot;express&quot;</span>);<br><span class="hljs-keyword">var</span> path = <span class="hljs-built_in">require</span>(<span class="hljs-string">&quot;path&quot;</span>)<br><br><span class="hljs-keyword">var</span> app = <span class="hljs-title function_">express</span>();<br><span class="hljs-keyword">var</span> bodyParser = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;body-parser&#x27;</span>);<br>app.<span class="hljs-title function_">use</span>(bodyParser.<span class="hljs-title function_">urlencoded</span>(&#123;<br>    <span class="hljs-attr">extended</span>:<span class="hljs-literal">true</span><br>&#125;));<br><br><span class="hljs-keyword">function</span> <span class="hljs-title function_">chkpwd</span>(<span class="hljs-params">account, pass</span>) &#123;<br>    <span class="hljs-keyword">if</span> (pass !== <span class="hljs-string">&#x27;&#x27;</span>) &#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-title function_">md5</span>(account + <span class="hljs-title function_">md5</span>(pass).<span class="hljs-title function_">substring</span>(<span class="hljs-number">0</span>, <span class="hljs-number">30</span>).<span class="hljs-title function_">toUpperCase</span>() + <span class="hljs-string">&#x27;13671&#x27;</span>).<span class="hljs-title function_">substring</span>(<span class="hljs-number">0</span>, <span class="hljs-number">30</span>).<span class="hljs-title function_">toUpperCase</span>();<br>    &#125; <span class="hljs-keyword">else</span> &#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;&quot;</span>;<br>    &#125;<br>&#125;<br><br><span class="hljs-keyword">function</span> <span class="hljs-title function_">chkyzm</span>(<span class="hljs-params">value</span>) &#123;<br>    <span class="hljs-keyword">if</span> (value !== <span class="hljs-string">&#x27;&#x27;</span>) &#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-title function_">md5</span>(<span class="hljs-title function_">md5</span>(value.<span class="hljs-title function_">toUpperCase</span>()).<span class="hljs-title function_">substring</span>(<span class="hljs-number">0</span>, <span class="hljs-number">30</span>).<span class="hljs-title function_">toUpperCase</span>() + <span class="hljs-string">&#x27;13671&#x27;</span>).<span class="hljs-title function_">substring</span>(<span class="hljs-number">0</span>, <span class="hljs-number">30</span>).<span class="hljs-title function_">toUpperCase</span>();<br>    &#125; <span class="hljs-keyword">else</span> &#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;&quot;</span><br>    &#125;<br>&#125;<br><br>app.<span class="hljs-title function_">post</span>(<span class="hljs-string">&quot;/login&quot;</span>,<span class="hljs-keyword">function</span> (<span class="hljs-params">req,res</span>) &#123;<br>    <span class="hljs-keyword">var</span> account = req.<span class="hljs-property">body</span>.<span class="hljs-property">account</span>;<br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(account)<br>    <span class="hljs-keyword">var</span> password = req.<span class="hljs-property">body</span>.<span class="hljs-property">password</span>;<br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(account+password)<br>    <span class="hljs-keyword">var</span> data = <span class="hljs-title function_">chkpwd</span>(account,password);<br>    res.<span class="hljs-title function_">send</span>(data)<br>&#125;)<br><br>app.<span class="hljs-title function_">post</span>(<span class="hljs-string">&quot;/yzm&quot;</span>,<span class="hljs-keyword">function</span> (<span class="hljs-params">req,res</span>) &#123;<br>    <span class="hljs-keyword">var</span> value = req.<span class="hljs-property">body</span>.<span class="hljs-property">value</span>;<br>    <span class="hljs-keyword">var</span> yzm = <span class="hljs-title function_">chkyzm</span>(value);<br>    res.<span class="hljs-title function_">send</span>(yzm)<br>&#125;)<br><br>app.<span class="hljs-title function_">listen</span>(<span class="hljs-number">10001</span>,<span class="hljs-string">&quot;127.0.0.1&quot;</span>)<br></code></pre></td></tr></table></figure>
+
+<p>当我们此时使用post方法访问<a target="_blank" rel="noopener" href="http://127.0.0.1:10001/login">http://127.0.0.1:10001/login</a>,然后加上需要加密账号和密码，就可以返回<br>加密后的内容了。同理<a target="_blank" rel="noopener" href="http://127.0.0.1:10001/yzm">http://127.0.0.1:10001/yzm</a>可以对验证码进行加密。</p>
+<h2 id="2-2-使用python模拟登录"><a href="#2-2-使用python模拟登录" class="headerlink" title="2.2. 使用python模拟登录"></a>2.2. 使用python模拟登录</h2><p>首先创建类和构造方法</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Education</span>:<br><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">__init__</span>(<span class="hljs-params">self, account: <span class="hljs-built_in">str</span>, password: <span class="hljs-built_in">str</span></span>):<br>        <span class="hljs-variable language_">self</span>.account = account<br>        <span class="hljs-variable language_">self</span>.password = password<br>        <span class="hljs-variable language_">self</span>.client = httpx.Client()<br>        <span class="hljs-variable language_">self</span>.source = <span class="hljs-string">&quot;http://jwc.scnucas.com&quot;</span><br></code></pre></td></tr></table></figure>
+
+<p>然后在类里面编写两个加密api调用的函数</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs python">//加密账户和密码<br><span class="hljs-keyword">def</span> <span class="hljs-title function_">__md5Account</span>(<span class="hljs-params">self</span>) -&gt; <span class="hljs-built_in">str</span>:<br>    data = &#123;<br>        <span class="hljs-string">&quot;account&quot;</span>: <span class="hljs-variable language_">self</span>.account,<br>        <span class="hljs-string">&quot;password&quot;</span>: <span class="hljs-variable language_">self</span>.password<br>    &#125;<br>    <span class="hljs-keyword">return</span> httpx.post(<span class="hljs-string">&quot;http://47.110.228.1:10001/login&quot;</span>, data=data).text<br><br>//加密验证码<br><span class="hljs-keyword">def</span> <span class="hljs-title function_">__md5_verification</span>(<span class="hljs-params">self</span>):<br>    content = <span class="hljs-built_in">input</span>(<span class="hljs-string">&quot;请输入验证码：&quot;</span>)<br>    data = &#123;<br>        <span class="hljs-string">&quot;value&quot;</span>: content<br>    &#125;<br>    result = httpx.post(<span class="hljs-string">&quot;http://47.110.228.1:10001/yzm&quot;</span>, data=data)<br><br>    <span class="hljs-keyword">return</span> result<br></code></pre></td></tr></table></figure>
+
+<p>然后编写发送请求的工具方法，因为教务系统偶尔会返回503服务器繁忙，所以我们对此进行判断并且重新进行请求,</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">__ask</span>(<span class="hljs-params">self, url: <span class="hljs-built_in">str</span>, method: <span class="hljs-built_in">str</span>, data=<span class="hljs-literal">None</span></span>) -&gt; httpx.Response:        //带上常用请求头        headers = &#123;            <span class="hljs-string">&#x27;Content-Type&#x27;</span>: <span class="hljs-string">&#x27;application/x-www-form-urlencoded&#x27;</span>,            <span class="hljs-string">&#x27;Host&#x27;</span>: <span class="hljs-string">&#x27;jwc.scnucas.com&#x27;</span>,            <span class="hljs-string">&#x27;Referer&#x27;</span>: <span class="hljs-string">&#x27;http://jwc.scnucas.com/_data/login_home.aspx&#x27;</span>,            <span class="hljs-string">&#x27;User-Agent&#x27;</span>: <span class="hljs-string">&#x27;Mozilla / 5.0(Windows NT 10.0;Win64;x64) AppleWebKit / 537.36(KHTML, likeGecko) Chrome / 88.0.4324.96Safari / 537.36Edg / 88.0.705.50&#x27;</span>        &#125;        <span class="hljs-keyword">if</span> data <span class="hljs-keyword">is</span> <span class="hljs-literal">None</span>:            data = &#123;&#125;        response = <span class="hljs-variable language_">self</span>.client.request(method=method, url=url, headers=headers, data=data, allow_redirects=<span class="hljs-literal">False</span>,)        code = response.status_code        <span class="hljs-keyword">while</span> code &gt;= <span class="hljs-number">500</span>:            response = <span class="hljs-variable language_">self</span>.client.request(method=method, url=url, data=data, allow_redirects=<span class="hljs-literal">False</span>)            code = response.status_code        response.encoding = <span class="hljs-string">&quot;GBK&quot;</span>        <span class="hljs-keyword">return</span> response<br></code></pre></td></tr></table></figure>
+
+<p>最后就是调用该方法进行登录</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">login</span>(<span class="hljs-params">self</span>):<br>    //这是模拟使用get方法获取登录页面<br>    <span class="hljs-variable language_">self</span>.__ask(<span class="hljs-variable language_">self</span>.source + <span class="hljs-string">&quot;/_data/login_home.aspx&quot;</span>, <span class="hljs-string">&quot;GET&quot;</span>, data=<span class="hljs-literal">None</span>)<br>    //该接口是获得验证码的接口<br>    a = <span class="hljs-variable language_">self</span>.__ask(<span class="hljs-variable language_">self</span>.source + <span class="hljs-string">&quot;/sys/ValidateCode.aspx&quot;</span>, <span class="hljs-string">&quot;GET&quot;</span>).content<br>    <span class="hljs-keyword">with</span> <span class="hljs-built_in">open</span>(<span class="hljs-string">&quot;code.png&quot;</span>, <span class="hljs-string">&quot;wb+&quot;</span>) <span class="hljs-keyword">as</span> f:<br>        f.write(a)<br>    //使用PIL库的Image方法打开验证码<br>    Image.<span class="hljs-built_in">open</span>(<span class="hljs-string">&quot;code.png&quot;</span>).show()<br>    data = &#123;<br>        <span class="hljs-comment"># &quot;__VIEWSTATE&quot;: view,</span><br>        <span class="hljs-string">&quot;pcInfo&quot;</span>: <span class="hljs-string">&quot;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) &quot;</span><br>                  <span class="hljs-string">&quot;Chrome/88.0.4324.96 Safari/537.36 Edg/88.0.705.50undefined5.0 (Windows NT 10.0; Win64; x64) &quot;</span><br>                  <span class="hljs-string">&quot;AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.96 Safari/537.36 Edg/88.0.705.50 &quot;</span><br>                  <span class="hljs-string">&quot;SN:NULL&quot;</span>,<br>        <span class="hljs-string">&quot;txt_mm_expression&quot;</span>: <span class="hljs-string">&quot;&quot;</span>,<br>        <span class="hljs-string">&quot;txt_mm_length&quot;</span>: <span class="hljs-string">&quot;&quot;</span>,<br>        <span class="hljs-string">&quot;txt_mm_userzh&quot;</span>: <span class="hljs-string">&quot;&quot;</span>,<br>        <span class="hljs-string">&quot;typeName&quot;</span>: <span class="hljs-string">&quot;学生&quot;</span>,<br>        <span class="hljs-string">&quot;dsdsdsdsdxcxdfgfg&quot;</span>: <span class="hljs-variable language_">self</span>.__md5Account(),<br>        <span class="hljs-string">&quot;fgfggfdgtyuuyyuuckjg&quot;</span>: <span class="hljs-variable language_">self</span>.__md5_verification().text,<br><br>        <span class="hljs-string">&quot;Sel_Type&quot;</span>: <span class="hljs-string">&quot;STU&quot;</span>,<br>        <span class="hljs-string">&quot;txt_asmcdefsddsd&quot;</span>: <span class="hljs-string">&quot;19104978&quot;</span>,<br>        <span class="hljs-string">&quot;txt_pewerwedsdfsdff&quot;</span>: <span class="hljs-string">&quot;&quot;</span>,<br>        <span class="hljs-string">&quot;txt_psasas&quot;</span>: <span class="hljs-string">&quot;请输入密码&quot;</span>,<br>        <span class="hljs-string">&quot;txt_sdertfgsadscxcadsads&quot;</span>: <span class="hljs-string">&quot;&quot;</span><br>    &#125;<br><br>    result = <span class="hljs-variable language_">self</span>.__ask(<span class="hljs-variable language_">self</span>.source + <span class="hljs-string">&quot;/_data/login_home.aspx&quot;</span>, <span class="hljs-string">&quot;POST&quot;</span>, data=data).text<br></code></pre></td></tr></table></figure>
+
+<p>通过发现当登录成功的时候，就会出现‘window.top.document.location.replace(“..&#x2F;MAINFRM.aspx”)’语句进行页面跳转。<br>所以我们只需要判断返回的结果有没有该语句就可以确定是否登录成功。修改上面代码为：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs python">result = <span class="hljs-variable language_">self</span>.__ask(<span class="hljs-variable language_">self</span>.source + <span class="hljs-string">&quot;/_data/login_home.aspx&quot;</span>, <span class="hljs-string">&quot;POST&quot;</span>, data=data).text.find(<br>            <span class="hljs-string">&#x27;window.top.document.location.replace(&quot;../MAINFRM.aspx&quot;)&#x27;</span>)<br>        <span class="hljs-keyword">if</span> result != -<span class="hljs-number">1</span>:<br>            <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;登录成功\n<span class="hljs-subst">&#123;self.account&#125;</span>&quot;</span>)<br>        <span class="hljs-keyword">else</span>:<br>            <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;登录失败&quot;</span>)<br>            exit(<span class="hljs-number">3</span>)<br></code></pre></td></tr></table></figure>
+
+<p>然后尝试调用该类</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&#x27;__main__&#x27;</span>:<br>    account = <span class="hljs-built_in">input</span>(<span class="hljs-string">&quot;请输入你的教务系统账号：&quot;</span>)<br>    password = <span class="hljs-built_in">input</span>(<span class="hljs-string">&quot;请输入你的教务系统密码：&quot;</span>)<br>    e = Education(account=account,password=password)<br>    e.login()<br></code></pre></td></tr></table></figure>
+
+	</article>
+
+	 
+    <div class="kira-post-copyright">
+        <strong>本文作者：</strong>John Doe<br>
+        <strong>本文链接：</strong><a href="http://example.com/2021/08/12/%E6%A8%A1%E6%8B%9F%E7%99%BB%E5%BD%95%E6%95%99%E5%8A%A1%E7%B3%BB%E7%BB%9F/" title="http:&#x2F;&#x2F;example.com&#x2F;2021&#x2F;08&#x2F;12&#x2F;模拟登录教务系统&#x2F;" target="_blank" rel="noopener">http:&#x2F;&#x2F;example.com&#x2F;2021&#x2F;08&#x2F;12&#x2F;模拟登录教务系统&#x2F;</a><br>
+        
+            <strong>版权声明：</strong>本文采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/cn/deed.zh" target="_blank">CC BY-NC-SA 3.0 CN</a> 协议进行许可
+        
+    </div>
+
+  
+	<div class="kira-post-nav">
+		<nav class="post-nav">
+			                      
+		</nav>
+	</div>
+	
+	<div class="kira-post-meta kira-rainbow">
+		
+		
+			<a class="kirafont icon-tag-fill -none-link" href="/tags/python/" rel="tag">python</a>
+		
+	</div>
+	
+	<div class="kira-post-footer">
+		
+
+		
+	</div>
+	
+</div>
+
+				</div>
+			</div>
+			<div class="kira-right-column">
+	<a onclick="document.querySelector('#kira-top-header').scrollIntoView({behavior: 'smooth'});" class="kira-backtotop" aria-label="回到顶部" title="回到顶部">
+		<button class="mdui-fab mdui-ripple">
+			<i class="kirafont icon-caret-up"></i>
+		</button>
+	</a>
+</div>
+
+		</div>
+	</body>
+</html>

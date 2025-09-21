@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html 
+	lang="zh">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		
+<link rel="stylesheet" href="/css/layout.css">
+
+		
+		<title> office之excel基础讲解 -  火雪的个人博客</title>
+		<!-- <link rel="stylesheet" href="https://unpkg.com/mdui@1.0.2/dist/css/mdui.min.css" /> -->
+		<!-- <script src="https://unpkg.com/mdui@1.0.2/dist/js/mdui.min.js"></script> -->
+		
+<link rel="stylesheet" href="/lib/mdui/mdui.min.css">
+
+		
+<script src="/lib/mdui/mdui.min.js"></script>
+
+		<!-- lazyload -->
+		
+<script src="/lib/lazysizes.js"></script>
+
+		<!-- smooth-scrolling -->
+		
+<script src="/lib/smooth-scrolling.js"></script>
+
+		<!-- highlight -->
+		
+<link rel="stylesheet" href="/lib/highlight/atom-one-dark.min.css">
+
+		
+<script src="/lib/highlight/highlight.min.js"></script>
+
+		<!-- 预置 kiraicon -->
+		
+<link rel="stylesheet" href="/lib/iconfont/iconfont.css">
+
+		
+		<link
+			rel="shortcut icon"
+			href="https://kira.host/assets/Pictures/Others/116359b4ccf19917.jpg"
+			type="image/png"
+		/>
+		
+<link rel="stylesheet" href="/deps/css/APlayer.min.css">
+
+		
+		
+<script src="/deps/js/APlayer.min.js"></script>
+<script src="/deps/js/Meting.min.js"></script>
+
+	<meta name="generator" content="Hexo 8.0.0"></head>
+
+	<body>
+		<div
+			class="kira-background"
+			style="background-image: url('https://kira.host/assets/Pictures/Others/-f0d5cc34c6e5aa7_compressed.jpg')"
+		></div>
+		<div class="kira-header">
+    <a
+        class="kira-drawer-button mdui-ripple"
+        title="导航栏"
+        onclick="document.querySelector('.kira-sidebar-modal').classList.add('show');document.querySelector('.kira-sidebar#sidebar').classList.add('show');"
+    >
+        <i class="kirafont icon-menu"></i>
+    </a>
+    <a href="/" title="火雪的个人博客">
+        <img
+			src="https://kira.host/assets/Pictures/Others/20220922230447.jpg"
+			alt="John Doe"
+		/>
+    </a>
+</div>
+		<div class="kira-body">
+			<div class="kira-sidebar" id="sidebar">
+	<div class="kira-avatar mdui-ripple">
+		<a target="_blank" rel="noopener" href="https://kira.host/assets/Pictures/Others/20220922230447.jpg" title="John Doe">
+			<img
+				src="https://kira.host/assets/Pictures/Others/20220922230447.jpg"
+				alt="John Doe"
+			/>
+		</a>
+	</div>
+	<div class="kira-count">
+		<div><span>文章</span>25</div>
+		<div><span>标签</span>20</div>
+		<div><span>分类</span>11</div>
+	</div>
+	<div class="kira-list">
+		
+		<a
+			class="kira-list-item mdui-ripple false"
+			href="/"
+			title="回到首页"
+		>
+			<i
+				class="kirafont
+					
+						icon-home
+					"
+			></i>
+			<div class="kira-list-item-content">
+				回到首页
+			</div>
+		</a>
+		
+	</div>
+	<aside id="kira-sidebar">
+		
+			<div class="kira-widget-wrap">
+	<div class="kira-widget kira-social">
+		
+			<a
+				class="mdui-ripple"
+				href="https://github.com/huoxue1"
+				target="_blank"
+				mdui-tooltip="{content: 'GitHub'}"
+				style="color: rgb(25, 23, 23); background-color: rgba(25, 23, 23, .15);"
+			>
+				<i
+					class="kirafont
+					
+						icon-github
+					"
+				></i>
+			</a>
+		
+	</div>
+</div>
+
+		
+			
+  <div class="kira-widget-wrap">
+    <h3 class="kira-widget-title">分类</h3>
+    <div class="kira-widget">
+      <ul class="category-list">
+        
+        
+
+        
+          <li class="category-list-item">
+            <a class="category-list-link" href="/categories/bot/">
+              bot
+            </a>
+            <span class="category-list-count">2</span>
+          </li>
+        
+          <li class="category-list-item">
+            <a class="category-list-link" href="/categories/bot-go/">
+              bot,go
+            </a>
+            <span class="category-list-count">1</span>
+          </li>
+        
+          <li class="category-list-item">
+            <a class="category-list-link" href="/categories/default/">
+              default
+            </a>
+            <span class="category-list-count">1</span>
+          </li>
+        
+          <li class="category-list-item">
+            <a class="category-list-link" href="/categories/exception/">
+              exception
+            </a>
+            <span class="category-list-count">1</span>
+          </li>
+        
+          <li class="category-list-item">
+            <a class="category-list-link" href="/categories/linux/">
+              linux
+            </a>
+            <span class="category-list-count">3</span>
+          </li>
+        
+          <li class="category-list-item">
+            <a class="category-list-link" href="/categories/异常处理/">
+              异常处理
+            </a>
+            <span class="category-list-count">1</span>
+          </li>
+        
+          <li class="category-list-item">
+            <a class="category-list-link" href="/categories/数据结构/">
+              数据结构
+            </a>
+            <span class="category-list-count">2</span>
+          </li>
+        
+          <li class="category-list-item">
+            <a class="category-list-link" href="/categories/数据结构-二叉树/">
+              数据结构, 二叉树
+            </a>
+            <span class="category-list-count">1</span>
+          </li>
+        
+          <li class="category-list-item">
+            <a class="category-list-link" href="/categories/数据结构-C语言/">
+              数据结构,C语言
+            </a>
+            <span class="category-list-count">1</span>
+          </li>
+        
+          <li class="category-list-item">
+            <a class="category-list-link" href="/categories/毕业设计/">
+              毕业设计
+            </a>
+            <span class="category-list-count">7</span>
+          </li>
+        
+          <li class="category-list-item">
+            <a class="category-list-link" href="/categories/笔记/">
+              笔记
+            </a>
+            <span class="category-list-count">1</span>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+		
+			
+	<div class="kira-widget-wrap">
+		<div id="randomtagcloud" class="kira-widget tagcloud kira-rainbow">
+			<a href="/tags/android/" style="font-size: 10px;">android</a> <a href="/tags/ant-design/" style="font-size: 17.5px;">ant design</a> <a href="/tags/bot/" style="font-size: 12.5px;">bot</a> <a href="/tags/bot-go/" style="font-size: 10px;">bot,go</a> <a href="/tags/exception/" style="font-size: 15px;">exception</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/go/" style="font-size: 10px;">go</a> <a href="/tags/go-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E9%93%BE%E6%A0%88/" style="font-size: 10px;">go,数据结构,链栈</a> <a href="/tags/java/" style="font-size: 20px;">java</a> <a href="/tags/linux/" style="font-size: 15px;">linux</a> <a href="/tags/office/" style="font-size: 10px;">office</a> <a href="/tags/postgres/" style="font-size: 10px;">postgres</a> <a href="/tags/python/" style="font-size: 10px;">python</a> <a href="/tags/react/" style="font-size: 17.5px;">react</a> <a href="/tags/spring-mvc/" style="font-size: 10px;">spring mvc</a> <a href="/tags/ssm/" style="font-size: 17.5px;">ssm</a> <a href="/tags/typescript/" style="font-size: 17.5px;">typescript</a> <a href="/tags/undertow/" style="font-size: 10px;">undertow</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 12.5px;">数据结构</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-C%E8%AF%AD%E8%A8%80/" style="font-size: 10px;">数据结构,C语言</a>
+		</div>
+		
+			<script>
+				const maxTagCounts = parseInt(5);
+				const tagsLength = parseInt(20);
+				let tagsArr = [];
+				for(let i = 0; i < tagsLength; i++){
+					tagsArr.push(i);
+				}
+				tagsArr.sort(function (l, r) {
+					return Math.random() > 0.5 ? -1 : 1;
+				});
+				tagsArr = tagsArr.slice(0, maxTagCounts < tagsLength ? tagsLength - maxTagCounts : 0);
+				const tagCloudContainer = document.querySelector('#randomtagcloud');
+				for(let tagIdx = 0; tagIdx < tagsArr.length; tagIdx++){
+					tagCloudContainer.children[tagsArr[tagIdx]].style.display = 'none';
+				}
+			</script>
+		
+	</div>
+
+
+		
+			
+	<div class="kira-widget-wrap">
+		<h3 class="kira-widget-title">
+			文章归档
+		</h3>
+		<div class="kira-widget">
+			<ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/">2025</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/">2023</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/">2022</a><span class="archive-list-count">14</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/">2021</a><span class="archive-list-count">8</span></li></ul>
+		</div>
+	</div>
+
+
+		
+	</aside>
+	<div class="kira-copyright">
+		&copy; 2025
+		<a href="/">John Doe</a>
+		Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> &
+		<a href="https://github.com/ch1ny/kira-hexo/" target="_blank">Kira-Hexo</a>
+		<br />
+		
+		
+	</div>
+</div>
+<div
+	class="kira-sidebar-modal"
+	id="sidebar-modal"
+	onclick="(function(self) {
+		self.classList.remove('show');
+		document.querySelector('.kira-sidebar.show#sidebar').classList.remove('show');
+	})(this)"
+></div>
+			<div class="kira-content">
+				<div id="kira-top-header"></div>
+				<div class="kira-main-content">
+					
+<link rel="stylesheet" href="/css/kira-image.css">
+
+
+<script src="/js/kira-image.js"></script>
+
+<div class="kira-image">
+    <div class="kira-image-modal">
+        <div class="kira-image-header">
+            <div class="kira-image-counter"></div>
+            <div class="kira-image-title"></div>
+            <div class="kira-image-operation">
+                <div class="kira-image-operation-button" id="kira-image-operation-button-zoom">
+                    <i class="kirafont icon-zoom-in"></i>
+                </div>
+                <div class="kira-image-operation-button" id="kira-image-operation-button-close">
+                    <i class="kirafont icon-close"></i>
+                </div>
+            </div>
+        </div>
+        <div class="kira-image-container">
+            <div class="kira-image-prev-button-panel">
+                <div class="kira-image-exchange-button">
+                    <i class="kirafont icon-left"></i>
+                </div>
+            </div>
+            <div class="kira-image-list">
+                <div class="kira-image-prev">
+                    <img />
+                </div>
+                <div class="kira-image-now">
+                    <img />
+                </div>
+                <div class="kira-image-next">
+                    <img />
+                </div>
+            </div>
+            <div class="kira-image-next-button-panel">
+                <div class="kira-image-exchange-button">
+                    <i class="kirafont icon-right"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+	
+<link rel="stylesheet" href="/css/kira-code-copy.css">
+
+	
+<script src="/js/kira-code-copy.js"></script>
+
+
+<div class="kira-post">
+	<article>
+		
+		<div
+			class="kira-post-cover"
+			style="padding-bottom: '56.25%'"
+		>
+			<img
+				data-src="https://kira.host/assets/Pictures/Others/-f0d5cc34c6e5aa7_compressed.jpg"
+				data-sizes="auto"
+				alt="office之excel基础讲解"
+				class="lazyload kira-post-cover-image disabled-kira-image"
+			/>
+			<h1>office之excel基础讲解</h1>
+		</div>
+		
+		<div class="kira-post-meta kira-rainbow" style="margin:10px 0!important;">
+			<a><i class="kirafont icon-calendar-fill"></i>2022年04月16日</a>
+			<a><i class="kirafont icon-edit-fill"></i>1.1k 字</a>
+			<a><i class="kirafont icon-time-circle-fill"></i>大概 4 分钟</a>
+		</div>
+		<h1 id="Office"><a href="#Office" class="headerlink" title="Office"></a>Office</h1><p>常用的office有以下两种</p>
+<ul>
+<li><h3 id="Wps-Office"><a href="#Wps-Office" class="headerlink" title="Wps Office"></a>Wps Office</h3><ul>
+<li>包括了Word和excel和ppt</li>
+</ul>
+</li>
+<li><h3 id="Micosoft-Office"><a href="#Micosoft-Office" class="headerlink" title="Micosoft Office"></a>Micosoft Office</h3><ul>
+<li>Word    文档编辑软件</li>
+<li>Excel   表格数据处理软件</li>
+<li>PPt     幻灯片制作软件<blockquote>
+<p>因为一般的windows笔记本电脑都预装了Micosoft Office,所以我们一般都使用Micosoft Office,下面我们讲的Office都是Micosoft Office。</p>
+</blockquote>
+</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>当然，计算机二级即有Micosoft Office，也有Wps Office，所以大家要根据自己的使用情况进行报名。</p>
+</blockquote>
+<blockquote>
+<p>计算机二级考试从2021年3月份开始，考试将才用Office 2016版本进行考试，学校机房预装版本为office2010,一般笔记本预装版本为office 2010,虽然各个版本相差不大，但是大家如果以防万一还是最好选择自行安装Office 2016版本</p>
+</blockquote>
+<blockquote>
+<p>office安装包下载网站推荐： <a target="_blank" rel="noopener" href="https://msdn.itellyou.cn/">https://msdn.itellyou.cn/</a></p>
+</blockquote>
+<h1 id="Excel基础"><a href="#Excel基础" class="headerlink" title="Excel基础"></a>Excel基础</h1><h2 id="1-1-excel文件创建"><a href="#1-1-excel文件创建" class="headerlink" title="1.1. excel文件创建"></a>1.1. excel文件创建</h2><p><img src="https://s2.loli.net/2022/04/16/kAv3RSXbNUayKMY.png"></p>
+<h2 id="1-2-excel的构成"><a href="#1-2-excel的构成" class="headerlink" title="1.2. excel的构成"></a>1.2. excel的构成</h2><ul>
+<li>一个excel文件为一个工作簿，excel文件的后缀为<code>.docx</code>,老版本office生成的后缀名为<code>.doc</code></li>
+<li>一个工作簿包括了多个工作表</li>
+</ul>
+<p><img src="https://s2.loli.net/2022/04/16/DxzYMwl5u3WZokh.png"></p>
+<ul>
+<li>一个工作表包括了无数个的单元格</li>
+</ul>
+<h2 id="1-3-excel的行高和列宽"><a href="#1-3-excel的行高和列宽" class="headerlink" title="1.3 excel的行高和列宽"></a>1.3 excel的行高和列宽</h2><blockquote>
+<p>可直接通过拖动进行设置，也可以右键行头或列头进行设置<br><img src="https://s2.loli.net/2022/04/16/v1YMyHNx94CVnsS.png"><br><img src="https://s2.loli.net/2022/04/16/gtNUp1ZqAuM9k8P.png"></p>
+</blockquote>
+<p><img src="https://s2.loli.net/2022/04/16/GRcDfdk89PEs4w5.png"></p>
+<blockquote>
+<p>友情提醒：行高和列宽都可以通过格式刷进行改变，所以我们只需要设置一行合适的行高，然后用格式刷就可以了</p>
+</blockquote>
+<blockquote>
+<p>当出现 <code>######</code>的时候一般是因为列宽太窄了，就会导致出现上述情况，只需要将列宽增大就可以</p>
+</blockquote>
+<h2 id="1-4-excel的表头制作"><a href="#1-4-excel的表头制作" class="headerlink" title="1.4 excel的表头制作"></a>1.4 excel的表头制作</h2><blockquote>
+<p>excel表头一般通过合并单元格生成<br><img src="https://s2.loli.net/2022/04/16/tlIXN1WdY9w7nMh.png"></p>
+</blockquote>
+<h2 id="1-5-excel的数据类型"><a href="#1-5-excel的数据类型" class="headerlink" title="1.5 excel的数据类型"></a>1.5 excel的数据类型</h2><p><img src="https://s2.loli.net/2022/04/16/k9vJ1ZDCipwa45c.png"></p>
+<blockquote>
+<p>当输入大数字时，默认会变成科学计数法的形式显示，我们只需要在前面加上<code>&#39;</code>就可以显示原本的样式</p>
+</blockquote>
+<h2 id="1-6-excel边框"><a href="#1-6-excel边框" class="headerlink" title="1.6 excel边框"></a>1.6 excel边框</h2><ul>
+<li>内边框</li>
+<li>外边框</li>
+</ul>
+<p><img src="https://s2.loli.net/2022/04/16/y4i5R3olJC2zF7H.png"></p>
+<h2 id="1-7-excel条件格式"><a href="#1-7-excel条件格式" class="headerlink" title="1.7 excel条件格式"></a>1.7 excel条件格式</h2><blockquote>
+<p>可以根据特定的条件而设置单元格的格式<br><img src="https://s2.loli.net/2022/04/16/kV9G25iMbaQSzCY.png"></p>
+</blockquote>
+<p><img src="https://s2.loli.net/2022/04/16/NR6aldZUcBzViOs.png"></p>
+<h2 id="1-8-excel序列填充"><a href="#1-8-excel序列填充" class="headerlink" title="1.8 excel序列填充"></a>1.8 excel序列填充</h2><p><img src="https://s2.loli.net/2022/04/16/Qvyc9mb67TldPMA.png"></p>
+<h2 id="1-9-excel排序筛选"><a href="#1-9-excel排序筛选" class="headerlink" title="1.9 excel排序筛选"></a>1.9 excel排序筛选</h2><p><img src="https://s2.loli.net/2022/04/16/4k6Cg3Bdt1LEymj.png"></p>
+<h2 id="1-10-excel图表生成"><a href="#1-10-excel图表生成" class="headerlink" title="1.10 excel图表生成"></a>1.10 excel图表生成</h2><p><img src="https://s2.loli.net/2022/04/16/5P42MzAfpxjdDEO.png"></p>
+<h1 id="Excel进阶知识"><a href="#Excel进阶知识" class="headerlink" title="Excel进阶知识"></a>Excel进阶知识</h1><h2 id="2-1-Excel的公式"><a href="#2-1-Excel的公式" class="headerlink" title="2.1 Excel的公式"></a>2.1 Excel的公式</h2><blockquote>
+<p>excel的公式可以说是excel的灵魂，用的好可以减少很多没必要的工作量，同时在计算机二级中明确要求了公式的使用。<br><img src="https://s2.loli.net/2022/04/16/OAoNViE2CzkZScf.png"></p>
+</blockquote>
+<blockquote>
+<p>公式的原理类似高中数学所学的函数 <code>y = f(x) </code>，我们需要将对于的单元格引用传给公式，公式会自动根据规则计算结果并输出到当前单元格。</p>
+</blockquote>
+<blockquote>
+<p>单元格的引用，单元格通过两个坐标进行引用，例如<code>A1 A2 B3</code>,此种引用为相对引用，当我们将公式所在单元格进行序列填充时，所引用的单元格会进行对应方向改变。例如B1单元格的公式为<code>=A1+C1</code>,如果我们将单元格序列填充到B2时，公式会自动变成<code>A2+C2</code>,如果我们希望填充后，对应引用不改变，那么我们可以在引用前加上<code>$</code>,例如<code>=$A$1+$B$1</code></p>
+</blockquote>
+<blockquote>
+<p>单元格可以跨表引用，即在引用前加上表名，例如：<code>Sheet1!B2</code>,代表引用Sheet1表格的B2单元格</p>
+</blockquote>
+<h2 id="2-1-1-公式的四则运算"><a href="#2-1-1-公式的四则运算" class="headerlink" title="2.1.1 公式的四则运算"></a>2.1.1 公式的四则运算</h2><ul>
+<li>加  <code>+</code></li>
+<li>减  <code>-</code></li>
+<li>乘  <code>*</code></li>
+<li>除  <code>/</code></li>
+</ul>
+<p>例如：</p>
+<p><img src="https://s2.loli.net/2022/04/16/eSQ9NfGztOVJnH7.png"></p>
+<blockquote>
+<p>当然，如果很多值进行四则运算时，也有对应的公式，例如+可以使用<code>sum()</code>公式，-可以用<code>imsub()</code>公式,*可以用<code>product()</code>代替，&#x2F;可以用<code>quotient()</code>代替</p>
+</blockquote>
+<p><img src="https://s2.loli.net/2022/04/16/l8E9cdvfYnxpq5C.png"></p>
+<ul>
+<li><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs if```公式"><br>![](https://s2.loli.net/2022/04/16/Zlfqcaju5JOrGeX.png)<br><br>&gt; 通俗的理解为，需要三个参数，第一个参数为一个表达式，例如大于，小于，等于，第二个为如果表达式成立的返回，第三个为表达式不成立的返回值。<br><br>![](https://s2.loli.net/2022/04/16/ORKLwJSXDNGivCI.png)<br><br>+ ```vlookup```公式<br><br>&gt; 用于条件查询<br><br>![](https://s2.loli.net/2022/04/16/au3WRYETkhivVBI.png)<br><br>![](https://s2.loli.net/2022/04/16/c7QfHXzrweGLuvj.png)<br><br>![](https://s2.loli.net/2022/04/16/krVv6pXoFEHCj9P.png)<br><br></code></pre></td></tr></table></figure>
+vlookup(要查找的值，查找的范围，需要的值在范围中的第几列，模糊查询还是准确查询)</li>
+</ul>
+<p>上面的方法含义为：在B3到C7中模糊查找姓名为王五的的第二列的值</p>
+<pre><code>
+# 关于
+&gt; excel的更多使用技巧就希望同学们能够自行摸索了，毕竟实践课程只有自己摸索才是最有用的，在实践中遇到不懂得可以合理运用搜索引擎
+
+## 个人博客 https://shhy.xyz
+</code></pre>
+
+	</article>
+
+	 
+    <div class="kira-post-copyright">
+        <strong>本文作者：</strong>John Doe<br>
+        <strong>本文链接：</strong><a href="http://example.com/2022/04/16/office%E4%B9%8Bexcel%E5%9F%BA%E7%A1%80%E8%AE%B2%E8%A7%A3/" title="http:&#x2F;&#x2F;example.com&#x2F;2022&#x2F;04&#x2F;16&#x2F;office之excel基础讲解&#x2F;" target="_blank" rel="noopener">http:&#x2F;&#x2F;example.com&#x2F;2022&#x2F;04&#x2F;16&#x2F;office之excel基础讲解&#x2F;</a><br>
+        
+            <strong>版权声明：</strong>本文采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/cn/deed.zh" target="_blank">CC BY-NC-SA 3.0 CN</a> 协议进行许可
+        
+    </div>
+
+  
+	<div class="kira-post-nav">
+		<nav class="post-nav">
+			                                  
+			<!-- 先找到与当前文字相同的目录 -->
+			   
+			<!-- 在找到当前文章所在的 index -->
+			                  
+		</nav>
+	</div>
+	
+	<div class="kira-post-meta kira-rainbow">
+		
+			<a class="kirafont icon-container-fill -link" href="/categories/default/">default</a>
+		
+		
+			<a class="kirafont icon-tag-fill -none-link" href="/tags/office/" rel="tag">office</a>
+		
+	</div>
+	
+	<div class="kira-post-footer">
+		
+
+		
+	</div>
+	
+</div>
+
+				</div>
+			</div>
+			<div class="kira-right-column">
+	<a onclick="document.querySelector('#kira-top-header').scrollIntoView({behavior: 'smooth'});" class="kira-backtotop" aria-label="回到顶部" title="回到顶部">
+		<button class="mdui-fab mdui-ripple">
+			<i class="kirafont icon-caret-up"></i>
+		</button>
+	</a>
+</div>
+
+		</div>
+	</body>
+</html>

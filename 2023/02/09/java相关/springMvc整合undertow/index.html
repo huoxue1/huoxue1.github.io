@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html 
+	lang="zh">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		
+<link rel="stylesheet" href="/css/layout.css">
+
+		
+		<title> springMvc整合undertow容器 -  火雪的个人博客</title>
+		<!-- <link rel="stylesheet" href="https://unpkg.com/mdui@1.0.2/dist/css/mdui.min.css" /> -->
+		<!-- <script src="https://unpkg.com/mdui@1.0.2/dist/js/mdui.min.js"></script> -->
+		
+<link rel="stylesheet" href="/lib/mdui/mdui.min.css">
+
+		
+<script src="/lib/mdui/mdui.min.js"></script>
+
+		<!-- lazyload -->
+		
+<script src="/lib/lazysizes.js"></script>
+
+		<!-- smooth-scrolling -->
+		
+<script src="/lib/smooth-scrolling.js"></script>
+
+		<!-- highlight -->
+		
+<link rel="stylesheet" href="/lib/highlight/atom-one-dark.min.css">
+
+		
+<script src="/lib/highlight/highlight.min.js"></script>
+
+		<!-- 预置 kiraicon -->
+		
+<link rel="stylesheet" href="/lib/iconfont/iconfont.css">
+
+		
+		<link
+			rel="shortcut icon"
+			href="https://kira.host/assets/Pictures/Others/116359b4ccf19917.jpg"
+			type="image/png"
+		/>
+		
+<link rel="stylesheet" href="/deps/css/APlayer.min.css">
+
+		
+		
+<script src="/deps/js/APlayer.min.js"></script>
+<script src="/deps/js/Meting.min.js"></script>
+
+	<meta name="generator" content="Hexo 8.0.0"></head>
+
+	<body>
+		<div
+			class="kira-background"
+			style="background-image: url('https://kira.host/assets/Pictures/Others/-f0d5cc34c6e5aa7_compressed.jpg')"
+		></div>
+		<div class="kira-header">
+    <a
+        class="kira-drawer-button mdui-ripple"
+        title="导航栏"
+        onclick="document.querySelector('.kira-sidebar-modal').classList.add('show');document.querySelector('.kira-sidebar#sidebar').classList.add('show');"
+    >
+        <i class="kirafont icon-menu"></i>
+    </a>
+    <a href="/" title="火雪的个人博客">
+        <img
+			src="https://kira.host/assets/Pictures/Others/20220922230447.jpg"
+			alt="John Doe"
+		/>
+    </a>
+</div>
+		<div class="kira-body">
+			<div class="kira-sidebar" id="sidebar">
+	<div class="kira-avatar mdui-ripple">
+		<a target="_blank" rel="noopener" href="https://kira.host/assets/Pictures/Others/20220922230447.jpg" title="John Doe">
+			<img
+				src="https://kira.host/assets/Pictures/Others/20220922230447.jpg"
+				alt="John Doe"
+			/>
+		</a>
+	</div>
+	<div class="kira-count">
+		<div><span>文章</span>25</div>
+		<div><span>标签</span>20</div>
+		<div><span>分类</span>11</div>
+	</div>
+	<div class="kira-list">
+		
+		<a
+			class="kira-list-item mdui-ripple false"
+			href="/"
+			title="回到首页"
+		>
+			<i
+				class="kirafont
+					
+						icon-home
+					"
+			></i>
+			<div class="kira-list-item-content">
+				回到首页
+			</div>
+		</a>
+		
+	</div>
+	<aside id="kira-sidebar">
+		
+			<div class="kira-widget-wrap">
+	<div class="kira-widget kira-social">
+		
+			<a
+				class="mdui-ripple"
+				href="https://github.com/huoxue1"
+				target="_blank"
+				mdui-tooltip="{content: 'GitHub'}"
+				style="color: rgb(25, 23, 23); background-color: rgba(25, 23, 23, .15);"
+			>
+				<i
+					class="kirafont
+					
+						icon-github
+					"
+				></i>
+			</a>
+		
+	</div>
+</div>
+
+		
+			
+  <div class="kira-widget-wrap">
+    <h3 class="kira-widget-title">分类</h3>
+    <div class="kira-widget">
+      <ul class="category-list">
+        
+        
+
+        
+          <li class="category-list-item">
+            <a class="category-list-link" href="/categories/bot/">
+              bot
+            </a>
+            <span class="category-list-count">2</span>
+          </li>
+        
+          <li class="category-list-item">
+            <a class="category-list-link" href="/categories/bot-go/">
+              bot,go
+            </a>
+            <span class="category-list-count">1</span>
+          </li>
+        
+          <li class="category-list-item">
+            <a class="category-list-link" href="/categories/default/">
+              default
+            </a>
+            <span class="category-list-count">1</span>
+          </li>
+        
+          <li class="category-list-item">
+            <a class="category-list-link" href="/categories/exception/">
+              exception
+            </a>
+            <span class="category-list-count">1</span>
+          </li>
+        
+          <li class="category-list-item">
+            <a class="category-list-link" href="/categories/linux/">
+              linux
+            </a>
+            <span class="category-list-count">3</span>
+          </li>
+        
+          <li class="category-list-item">
+            <a class="category-list-link" href="/categories/异常处理/">
+              异常处理
+            </a>
+            <span class="category-list-count">1</span>
+          </li>
+        
+          <li class="category-list-item">
+            <a class="category-list-link" href="/categories/数据结构/">
+              数据结构
+            </a>
+            <span class="category-list-count">2</span>
+          </li>
+        
+          <li class="category-list-item">
+            <a class="category-list-link" href="/categories/数据结构-二叉树/">
+              数据结构, 二叉树
+            </a>
+            <span class="category-list-count">1</span>
+          </li>
+        
+          <li class="category-list-item">
+            <a class="category-list-link" href="/categories/数据结构-C语言/">
+              数据结构,C语言
+            </a>
+            <span class="category-list-count">1</span>
+          </li>
+        
+          <li class="category-list-item">
+            <a class="category-list-link" href="/categories/毕业设计/">
+              毕业设计
+            </a>
+            <span class="category-list-count">7</span>
+          </li>
+        
+          <li class="category-list-item">
+            <a class="category-list-link" href="/categories/笔记/">
+              笔记
+            </a>
+            <span class="category-list-count">1</span>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+		
+			
+	<div class="kira-widget-wrap">
+		<div id="randomtagcloud" class="kira-widget tagcloud kira-rainbow">
+			<a href="/tags/android/" style="font-size: 10px;">android</a> <a href="/tags/ant-design/" style="font-size: 17.5px;">ant design</a> <a href="/tags/bot/" style="font-size: 12.5px;">bot</a> <a href="/tags/bot-go/" style="font-size: 10px;">bot,go</a> <a href="/tags/exception/" style="font-size: 15px;">exception</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/go/" style="font-size: 10px;">go</a> <a href="/tags/go-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E9%93%BE%E6%A0%88/" style="font-size: 10px;">go,数据结构,链栈</a> <a href="/tags/java/" style="font-size: 20px;">java</a> <a href="/tags/linux/" style="font-size: 15px;">linux</a> <a href="/tags/office/" style="font-size: 10px;">office</a> <a href="/tags/postgres/" style="font-size: 10px;">postgres</a> <a href="/tags/python/" style="font-size: 10px;">python</a> <a href="/tags/react/" style="font-size: 17.5px;">react</a> <a href="/tags/spring-mvc/" style="font-size: 10px;">spring mvc</a> <a href="/tags/ssm/" style="font-size: 17.5px;">ssm</a> <a href="/tags/typescript/" style="font-size: 17.5px;">typescript</a> <a href="/tags/undertow/" style="font-size: 10px;">undertow</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 12.5px;">数据结构</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-C%E8%AF%AD%E8%A8%80/" style="font-size: 10px;">数据结构,C语言</a>
+		</div>
+		
+			<script>
+				const maxTagCounts = parseInt(5);
+				const tagsLength = parseInt(20);
+				let tagsArr = [];
+				for(let i = 0; i < tagsLength; i++){
+					tagsArr.push(i);
+				}
+				tagsArr.sort(function (l, r) {
+					return Math.random() > 0.5 ? -1 : 1;
+				});
+				tagsArr = tagsArr.slice(0, maxTagCounts < tagsLength ? tagsLength - maxTagCounts : 0);
+				const tagCloudContainer = document.querySelector('#randomtagcloud');
+				for(let tagIdx = 0; tagIdx < tagsArr.length; tagIdx++){
+					tagCloudContainer.children[tagsArr[tagIdx]].style.display = 'none';
+				}
+			</script>
+		
+	</div>
+
+
+		
+			
+	<div class="kira-widget-wrap">
+		<h3 class="kira-widget-title">
+			文章归档
+		</h3>
+		<div class="kira-widget">
+			<ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/">2025</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/">2023</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/">2022</a><span class="archive-list-count">14</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/">2021</a><span class="archive-list-count">8</span></li></ul>
+		</div>
+	</div>
+
+
+		
+	</aside>
+	<div class="kira-copyright">
+		&copy; 2025
+		<a href="/">John Doe</a>
+		Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> &
+		<a href="https://github.com/ch1ny/kira-hexo/" target="_blank">Kira-Hexo</a>
+		<br />
+		
+		
+	</div>
+</div>
+<div
+	class="kira-sidebar-modal"
+	id="sidebar-modal"
+	onclick="(function(self) {
+		self.classList.remove('show');
+		document.querySelector('.kira-sidebar.show#sidebar').classList.remove('show');
+	})(this)"
+></div>
+			<div class="kira-content">
+				<div id="kira-top-header"></div>
+				<div class="kira-main-content">
+					
+<link rel="stylesheet" href="/css/kira-image.css">
+
+
+<script src="/js/kira-image.js"></script>
+
+<div class="kira-image">
+    <div class="kira-image-modal">
+        <div class="kira-image-header">
+            <div class="kira-image-counter"></div>
+            <div class="kira-image-title"></div>
+            <div class="kira-image-operation">
+                <div class="kira-image-operation-button" id="kira-image-operation-button-zoom">
+                    <i class="kirafont icon-zoom-in"></i>
+                </div>
+                <div class="kira-image-operation-button" id="kira-image-operation-button-close">
+                    <i class="kirafont icon-close"></i>
+                </div>
+            </div>
+        </div>
+        <div class="kira-image-container">
+            <div class="kira-image-prev-button-panel">
+                <div class="kira-image-exchange-button">
+                    <i class="kirafont icon-left"></i>
+                </div>
+            </div>
+            <div class="kira-image-list">
+                <div class="kira-image-prev">
+                    <img />
+                </div>
+                <div class="kira-image-now">
+                    <img />
+                </div>
+                <div class="kira-image-next">
+                    <img />
+                </div>
+            </div>
+            <div class="kira-image-next-button-panel">
+                <div class="kira-image-exchange-button">
+                    <i class="kirafont icon-right"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+	
+<link rel="stylesheet" href="/css/kira-code-copy.css">
+
+	
+<script src="/js/kira-code-copy.js"></script>
+
+
+<div class="kira-post">
+	<article>
+		
+		<div
+			class="kira-post-cover"
+			style="padding-bottom: '56.25%'"
+		>
+			<img
+				data-src="https://kira.host/assets/Pictures/Others/-f0d5cc34c6e5aa7_compressed.jpg"
+				data-sizes="auto"
+				alt="springMvc整合undertow容器"
+				class="lazyload kira-post-cover-image disabled-kira-image"
+			/>
+			<h1>springMvc整合undertow容器</h1>
+		</div>
+		
+		<div class="kira-post-meta kira-rainbow" style="margin:10px 0!important;">
+			<a><i class="kirafont icon-calendar-fill"></i>2023年02月09日</a>
+			<a><i class="kirafont icon-edit-fill"></i>1.4k 字</a>
+			<a><i class="kirafont icon-time-circle-fill"></i>大概 7 分钟</a>
+		</div>
+		<blockquote>
+<p>        因为项目要求用springMvc，但是默认以war包发布到tomact下每一次启动都会很慢，所以希望能用一个嵌入式的web容器，了解到undertow对于小型项目还不错，就使用了undertow.</p>
+</blockquote>
+<blockquote>
+<p>        最开始用的Jfinal-undertow，但是突然看到出了spring6.0，就想体验一下，spring6.0对应的servlet版本比较高，jfinal-undertow并不兼容，所以就自己找到了undertow进行使用，以下就是折腾的经历。</p>
+</blockquote>
+<h1 id="1-依赖安装"><a href="#1-依赖安装" class="headerlink" title="1. 依赖安装"></a>1. 依赖安装</h1><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-comment">&lt;!-- https://mvnrepository.com/artifact/io.undertow/undertow-servlet --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>io.undertow<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>undertow-servlet<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>2.3.3.Final<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span><br><br><span class="hljs-comment">&lt;!-- https://mvnrepository.com/artifact/io.undertow/undertow-core --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>io.undertow<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>undertow-core<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>2.3.3.Final<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<p>        在项目原本的依赖下加入以上两个依赖，版本需要对应一样，分别是undertow的核心依赖和undertow的servlet相关实现。</p>
+<h1 id="2-运行整合"><a href="#2-运行整合" class="headerlink" title="2. 运行整合"></a>2. 运行整合</h1><h2 id="2-1-添加servlet"><a href="#2-1-添加servlet" class="headerlink" title="2.1 添加servlet"></a>2.1 添加servlet</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">// 创建servletInfo，指定servlet的命名和servlet对应的class</span><br><span class="hljs-type">ServletInfo</span> <span class="hljs-variable">info</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">ServletInfo</span>(<span class="hljs-string">&quot;mvc&quot;</span>, DispatcherServlet.class)<br>        <span class="hljs-comment">// 添加映射路径</span><br>        .addMapping(<span class="hljs-string">&quot;/&quot;</span>)<br>        <span class="hljs-comment">// 设置InitParam，制定了spring-mvc的配置文件位置</span><br>        .addInitParam(<span class="hljs-string">&quot;contextConfigLocation&quot;</span>,<span class="hljs-string">&quot;classpath:spring-config/spring-mvc.xml&quot;</span>)<br>        <span class="hljs-comment">// 设置什么时候进行初始化</span><br>        .setLoadOnStartup(<span class="hljs-number">1</span>);<br></code></pre></td></tr></table></figure>
+
+<h2 id="2-2-创建容器"><a href="#2-2-创建容器" class="headerlink" title="2.2 创建容器"></a>2.2 创建容器</h2><p>   undertow的一个web容器就是一个<strong>DeploymentManager</strong>，该接口的默认实现类就是<strong>DeploymentManagerImpl</strong>，然后需要两个参数，分别是<strong>DeploymentInfo</strong>和<strong>ServletContainer</strong>，所以需要先创建DeploymentInfo，然后创建ServletContainer，因为ServletContainer也需要DeploymentInfo作为参数，代码如下所示。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">// 创建DeploymentInfo 对象</span><br><span class="hljs-type">DeploymentInfo</span> <span class="hljs-variable">deploymentInfo</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">DeploymentInfo</span>()<br>                <span class="hljs-comment">// 指定类加载器</span><br>                .setClassLoader(TestServer.class.getClassLoader())<br>                <span class="hljs-comment">// 设置contextPath</span><br>                .setContextPath(<span class="hljs-string">&quot;/&quot;</span>)<br>                <span class="hljs-comment">// 设置容器名称</span><br>                .setDeploymentName(<span class="hljs-string">&quot;myUndertow&quot;</span>)<br>                <span class="hljs-comment">// 设置初始化参数，制定了spring的配置文件的位置</span><br>                .addInitParameter(<span class="hljs-string">&quot;contextConfigLocation&quot;</span>,<span class="hljs-string">&quot;classpath:spring-config/spring.xml&quot;</span>)<br>                <span class="hljs-comment">// 设置了一个监听器，用于初始化spring</span><br>                .addListener(<span class="hljs-keyword">new</span> <span class="hljs-title class_">ListenerInfo</span>(ContextLoaderListener.class))<br>                <span class="hljs-comment">// 添加servlet</span><br>                .addServlet(info)<br>                <span class="hljs-comment">// 添加一个过滤器，放置乱码问题</span><br>                .addFilter(<br>                        <span class="hljs-keyword">new</span> <span class="hljs-title class_">FilterInfo</span>(<span class="hljs-string">&quot;Encoding&quot;</span>, CharacterEncodingFilter.class)<br>                        .addInitParam(<span class="hljs-string">&quot;encoding&quot;</span>,<span class="hljs-string">&quot;utf-8&quot;</span>)<br>                );<br>        <span class="hljs-comment">// 创建一个ServletContainer，并添加deploymentInfo</span><br>        <span class="hljs-type">ServletContainerImpl</span> <span class="hljs-variable">container</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">ServletContainerImpl</span>();<br>        container.addDeployment(deploymentInfo);<br>        <span class="hljs-comment">// 创建一个DeploymentManagerImpl</span><br>        <span class="hljs-type">DeploymentManagerImpl</span> <span class="hljs-variable">manager</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">DeploymentManagerImpl</span>(deploymentInfo, container);<br>        <span class="hljs-comment">// 部署该容器，一定要部署否则会报各种空指针</span><br>        manager.deploy();<br></code></pre></td></tr></table></figure>
+
+<h2 id="2-3-添加HttpHandler"><a href="#2-3-添加HttpHandler" class="headerlink" title="2.3 添加HttpHandler"></a>2.3 添加HttpHandler</h2><p>        因为是web项目，所以使用HttpHandler，HttpHandler默认有很多实现类，这里使用了最好理解的<strong>PathHandler</strong>，创建完之后添加到<strong>Undertow</strong>的Builder参数中，作为一个Listener,然后启动Undertow。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">// 创建一个PathHandler,然后添加一个前缀匹配，DeploymentManagerImpl 调用start方法后会返回一个HttpHandler类型</span><br><span class="hljs-type">PathHandler</span> <span class="hljs-variable">root</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">PathHandler</span>().addPrefixPath(deploymentInfo.getContextPath(), manager.start());<br><span class="hljs-comment">// 创建一个Undertow对象并配置启动的端口等参数，然后调用start方法启动</span><br>Undertow.<span class="hljs-type">Builder</span> <span class="hljs-variable">builder</span> <span class="hljs-operator">=</span> Undertow.builder().addHttpListener(port, host, root);<br><span class="hljs-type">Undertow</span> <span class="hljs-variable">undertow</span> <span class="hljs-operator">=</span> builder.build();<br>undertow.start();<br>logger.info(<span class="hljs-string">&quot;  the undertow success listen http://&quot;</span>+host+<span class="hljs-string">&quot;:&quot;</span>+port);<br></code></pre></td></tr></table></figure>
+
+<h2 id="2-4-读取配置文件"><a href="#2-4-读取配置文件" class="headerlink" title="2.4 读取配置文件"></a>2.4 读取配置文件</h2><p>        我也希望向springBoot项目一样可以直接读取端口等参数直接启动，但是因为容器运行时spring容器还没有运行，所以我才用的方法是手动读取文件并注入字段。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">initConfig</span><span class="hljs-params">(String configPath)</span> <span class="hljs-keyword">throws</span> IllegalAccessException &#123;<br>    <span class="hljs-keyword">if</span> (configPath.equals(<span class="hljs-string">&quot;&quot;</span>))&#123;<br>        configPath = <span class="hljs-string">&quot;config/application.yml&quot;</span>;<br>    &#125;<br>    <span class="hljs-comment">// 读取yaml文件并转换为propperties</span><br>    <span class="hljs-type">YamlPropertiesFactoryBean</span> <span class="hljs-variable">propertiesFactoryBean</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">YamlPropertiesFactoryBean</span>();<br>    propertiesFactoryBean.setResources(<span class="hljs-keyword">new</span> <span class="hljs-title class_">ClassPathResource</span>(configPath));<br>    <span class="hljs-comment">// 配置log4j基本信息</span><br>    PropertyConfigurator.configure(propertiesFactoryBean.getObject());<br>    <span class="hljs-comment">// 读取当前类的字段</span><br>    Field[] fields = <span class="hljs-built_in">this</span>.getClass().getDeclaredFields();<br>    <span class="hljs-keyword">for</span> (Field field:fields<br>         ) &#123;<br>        <span class="hljs-comment">// 检查是否包含Value注解</span><br>        <span class="hljs-keyword">if</span> (field.getAnnotation(Value.class) != <span class="hljs-literal">null</span>) &#123;<br>            <span class="hljs-type">String</span> <span class="hljs-variable">value</span> <span class="hljs-operator">=</span> field.getAnnotation(Value.class).value();<br>            value = value.substring(<span class="hljs-number">2</span>).substring(<span class="hljs-number">0</span>, value.length() - <span class="hljs-number">3</span>);<br>            <span class="hljs-comment">// 注入参数</span><br>            field.set(<span class="hljs-built_in">this</span>,propertiesFactoryBean.getObject().get(value));<br>        &#125;<br>    &#125;<br>&#125;<br><br><span class="hljs-meta">@Value(&quot;$&#123;server.host&#125;&quot;)</span><br><span class="hljs-keyword">public</span> String host;<br><br><span class="hljs-meta">@Value(&quot;$&#123;server.port&#125;&quot;)</span><br><span class="hljs-keyword">public</span> Integer port;<br></code></pre></td></tr></table></figure>
+
+<h1 id="3-最后"><a href="#3-最后" class="headerlink" title="3. 最后"></a>3. 最后</h1><p>完整代码如下</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">package</span> org.gjs;<br><br><span class="hljs-keyword">import</span> io.undertow.Undertow;<br><span class="hljs-keyword">import</span> io.undertow.server.handlers.PathHandler;<br><span class="hljs-keyword">import</span> io.undertow.servlet.UndertowServletMessages;<br><span class="hljs-keyword">import</span> io.undertow.servlet.api.DeploymentInfo;<br><span class="hljs-keyword">import</span> io.undertow.servlet.api.FilterInfo;<br><span class="hljs-keyword">import</span> io.undertow.servlet.api.ListenerInfo;<br><span class="hljs-keyword">import</span> io.undertow.servlet.api.ServletInfo;<br><span class="hljs-keyword">import</span> io.undertow.servlet.core.DeploymentImpl;<br><span class="hljs-keyword">import</span> io.undertow.servlet.core.DeploymentManagerImpl;<br><span class="hljs-keyword">import</span> io.undertow.servlet.core.ManagedServlet;<br><span class="hljs-keyword">import</span> io.undertow.servlet.core.ServletContainerImpl;<br><span class="hljs-keyword">import</span> io.undertow.servlet.handlers.ServletHandler;<br><span class="hljs-keyword">import</span> io.undertow.servlet.handlers.ServletInitialHandler;<br><span class="hljs-keyword">import</span> io.undertow.servlet.handlers.ServletPathMatches;<br><span class="hljs-keyword">import</span> io.undertow.servlet.spec.ServletContextImpl;<br><span class="hljs-keyword">import</span> jakarta.servlet.ServletException;<br><span class="hljs-keyword">import</span> org.apache.log4j.Logger;<br><span class="hljs-keyword">import</span> org.apache.log4j.PropertyConfigurator;<br><span class="hljs-keyword">import</span> org.gjs.config.MyUndertowConfig;<br><span class="hljs-keyword">import</span> org.springframework.beans.factory.annotation.Value;<br><span class="hljs-keyword">import</span> org.springframework.beans.factory.config.YamlPropertiesFactoryBean;<br><span class="hljs-keyword">import</span> org.springframework.core.io.ClassPathResource;<br><span class="hljs-keyword">import</span> org.springframework.http.server.reactive.UndertowHttpHandlerAdapter;<br><span class="hljs-keyword">import</span> org.springframework.web.context.ContextLoaderListener;<br><span class="hljs-keyword">import</span> org.springframework.web.filter.CharacterEncodingFilter;<br><span class="hljs-keyword">import</span> org.springframework.web.servlet.DispatcherServlet;<br><br><span class="hljs-keyword">import</span> java.lang.reflect.Field;<br><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">TestServer</span> &#123;<br><br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">final</span> <span class="hljs-type">Logger</span> <span class="hljs-variable">logger</span> <span class="hljs-operator">=</span> Logger.getLogger(<span class="hljs-built_in">this</span>.getClass());<br><br><br><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> <span class="hljs-keyword">throws</span> ServletException, IllegalAccessException &#123;<br>        <span class="hljs-type">TestServer</span> <span class="hljs-variable">server</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">TestServer</span>();<br>        server.initConfig(<span class="hljs-string">&quot;&quot;</span>);<br>        server.start();<br>    &#125;<br><br><br><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">initConfig</span><span class="hljs-params">(String configPath)</span> <span class="hljs-keyword">throws</span> IllegalAccessException &#123;<br>        <span class="hljs-keyword">if</span> (configPath.equals(<span class="hljs-string">&quot;&quot;</span>))&#123;<br>            configPath = <span class="hljs-string">&quot;config/application.yml&quot;</span>;<br>        &#125;<br>        <span class="hljs-type">YamlPropertiesFactoryBean</span> <span class="hljs-variable">propertiesFactoryBean</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">YamlPropertiesFactoryBean</span>();<br>        propertiesFactoryBean.setResources(<span class="hljs-keyword">new</span> <span class="hljs-title class_">ClassPathResource</span>(configPath));<br>        <span class="hljs-comment">// 配置log4j基本信息</span><br>        PropertyConfigurator.configure(propertiesFactoryBean.getObject());<br><br>        Field[] fields = <span class="hljs-built_in">this</span>.getClass().getDeclaredFields();<br>        <span class="hljs-keyword">for</span> (Field field:fields<br>             ) &#123;<br>            <span class="hljs-keyword">if</span> (field.getAnnotation(Value.class) != <span class="hljs-literal">null</span>) &#123;<br>                <span class="hljs-type">String</span> <span class="hljs-variable">value</span> <span class="hljs-operator">=</span> field.getAnnotation(Value.class).value();<br>                value = value.substring(<span class="hljs-number">2</span>).substring(<span class="hljs-number">0</span>, value.length() - <span class="hljs-number">3</span>);<br>                field.set(<span class="hljs-built_in">this</span>,propertiesFactoryBean.getObject().get(value));<br>            &#125;<br>        &#125;<br>    &#125;<br><br>    <span class="hljs-meta">@Value(&quot;$&#123;server.host&#125;&quot;)</span><br>    <span class="hljs-keyword">public</span> String host;<br><br>    <span class="hljs-meta">@Value(&quot;$&#123;server.port&#125;&quot;)</span><br>    <span class="hljs-keyword">public</span> Integer port;<br><br>    <span class="hljs-keyword">public</span>  <span class="hljs-keyword">void</span> <span class="hljs-title function_">start</span><span class="hljs-params">()</span> <span class="hljs-keyword">throws</span> ServletException &#123;<br><br>        <span class="hljs-type">ServletInfo</span> <span class="hljs-variable">info</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">ServletInfo</span>(<span class="hljs-string">&quot;mvc&quot;</span>, DispatcherServlet.class)<br>        .addMapping(<span class="hljs-string">&quot;/&quot;</span>)<br>        .addInitParam(<span class="hljs-string">&quot;contextConfigLocation&quot;</span>,<span class="hljs-string">&quot;classpath:spring-config/spring-mvc.xml&quot;</span>)<br>        .setLoadOnStartup(<span class="hljs-number">1</span>);<br><br>        <span class="hljs-type">DeploymentInfo</span> <span class="hljs-variable">deploymentInfo</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">DeploymentInfo</span>()<br>                .setClassLoader(TestServer.class.getClassLoader())<br>                .setContextPath(<span class="hljs-string">&quot;/&quot;</span>)<br>                .setDeploymentName(<span class="hljs-string">&quot;myUndertow&quot;</span>)<br>                .addInitParameter(<span class="hljs-string">&quot;contextConfigLocation&quot;</span>,<span class="hljs-string">&quot;classpath:spring-config/spring.xml&quot;</span>)<br>                .addListener(<span class="hljs-keyword">new</span> <span class="hljs-title class_">ListenerInfo</span>(ContextLoaderListener.class))<br>                .addServlet(info)<br>                .addFilter(<br>                        <span class="hljs-keyword">new</span> <span class="hljs-title class_">FilterInfo</span>(<span class="hljs-string">&quot;Encoding&quot;</span>, CharacterEncodingFilter.class)<br>                        .addInitParam(<span class="hljs-string">&quot;encoding&quot;</span>,<span class="hljs-string">&quot;utf-8&quot;</span>)<br>                );<br><br>        <span class="hljs-type">ServletContainerImpl</span> <span class="hljs-variable">container</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">ServletContainerImpl</span>();<br>        container.addDeployment(deploymentInfo);<br>        <span class="hljs-type">DeploymentManagerImpl</span> <span class="hljs-variable">manager</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">DeploymentManagerImpl</span>(deploymentInfo, container);<br>        manager.deploy();<br><br>        <span class="hljs-type">PathHandler</span> <span class="hljs-variable">root</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">PathHandler</span>().addPrefixPath(deploymentInfo.getContextPath(), manager.start());<br>        Undertow.<span class="hljs-type">Builder</span> <span class="hljs-variable">builder</span> <span class="hljs-operator">=</span> Undertow.builder().addHttpListener(port, host, root);<br>        <span class="hljs-type">Undertow</span> <span class="hljs-variable">undertow</span> <span class="hljs-operator">=</span> builder.build();<br>        undertow.start();<br>        logger.info(<span class="hljs-string">&quot;  the undertow success listen http://&quot;</span>+host+<span class="hljs-string">&quot;:&quot;</span>+port);<br>    &#125;<br>&#125;<br><br></code></pre></td></tr></table></figure>
+
+	</article>
+
+	 
+    <div class="kira-post-copyright">
+        <strong>本文作者：</strong>John Doe<br>
+        <strong>本文链接：</strong><a href="http://example.com/2023/02/09/java%E7%9B%B8%E5%85%B3/springMvc%E6%95%B4%E5%90%88undertow/" title="http:&#x2F;&#x2F;example.com&#x2F;2023&#x2F;02&#x2F;09&#x2F;java相关&#x2F;springMvc整合undertow&#x2F;" target="_blank" rel="noopener">http:&#x2F;&#x2F;example.com&#x2F;2023&#x2F;02&#x2F;09&#x2F;java相关&#x2F;springMvc整合undertow&#x2F;</a><br>
+        
+            <strong>版权声明：</strong>本文采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/cn/deed.zh" target="_blank">CC BY-NC-SA 3.0 CN</a> 协议进行许可
+        
+    </div>
+
+  
+	<div class="kira-post-nav">
+		<nav class="post-nav">
+			  
+			<!-- 先找到与当前文字相同的目录 -->
+			                     
+			<!-- 在找到当前文章所在的 index -->
+			                        
+			<!-- 上一篇文章 -->
+			<div class="old">
+				<span>上一章</span>
+				<a href="/2022/12/15/%E6%AF%95%E4%B8%9A%E8%AE%BA%E6%96%87/%E6%AF%95%E4%B8%9A%E8%AE%BA%E6%96%87-5/"> 毕业设计(5)</a>
+			</div>
+			                                                  
+		</nav>
+	</div>
+	
+	<div class="kira-post-meta kira-rainbow">
+		
+			<a class="kirafont icon-container-fill -link" href="/categories/%E6%AF%95%E4%B8%9A%E8%AE%BE%E8%AE%A1/">毕业设计</a>
+		
+		
+			<a class="kirafont icon-tag-fill -none-link" href="/tags/java/" rel="tag">java</a> <a class="kirafont icon-tag-fill -none-link" href="/tags/spring-mvc/" rel="tag">spring mvc</a> <a class="kirafont icon-tag-fill -none-link" href="/tags/undertow/" rel="tag">undertow</a>
+		
+	</div>
+	
+	<div class="kira-post-footer">
+		
+
+		
+	</div>
+	
+</div>
+
+				</div>
+			</div>
+			<div class="kira-right-column">
+	<a onclick="document.querySelector('#kira-top-header').scrollIntoView({behavior: 'smooth'});" class="kira-backtotop" aria-label="回到顶部" title="回到顶部">
+		<button class="mdui-fab mdui-ripple">
+			<i class="kirafont icon-caret-up"></i>
+		</button>
+	</a>
+</div>
+
+		</div>
+	</body>
+</html>
